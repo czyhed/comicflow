@@ -1,0 +1,60 @@
+kind: pipeline
+type: docker
+name: comicflow-backend
+
+concurrency:
+  limit: 1
+
+trigger:
+  event: [push]
+  branch: [main]
+
+# Applies to the built-in clone step as well as user steps.
+environment:
+  GIT_CONFIG_PARAMETERS: "'http.version=HTTP/1.1'"
+
+clone:
+  retries: 3
+
+steps:
+  - name: backend-checks
+    image: python:3.12-bookworm
+    pull: if-not-exists
+    environment:
+      COMICFLOW_RUNTIME: memory
+      PROVIDER_MODE: mock
+      IMAGE_PROVIDER_MODE: disabled
+      USE_MINIMAX_H3: "false"
+      PIP_INDEX_URL: https://mirrors.aliyun.com/pypi/simple/
+    commands:
+      - python -m pip install --no-cache-dir uv==0.11.25
+      - sed -i 's|http://deb.debian.org|https://mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources
+      - apt-get update && apt-get install -y --no-install-recommends ffmpeg fonts-noto-cjk
+      # Export exact locked versions/hashes; frozen uv sync retains overseas artifact URLs.
+      - uv export --frozen --no-emit-project --output-file /tmp/comicflow-checks.txt
+      - uv venv .venv
+      - uv pip sync --python .venv/bin/python --require-hashes --default-index https://mirrors.aliyun.com/pypi/simple/ /tmp/comicflow-checks.txt
+      - uv run --no-sync ruff check backend/src backend/tests
+      - uv run --no-sync mypy --package comicflow
+      - uv run --no-sync pytest backend/tests -q
+
+  - name: deploy
+    image: docker:28-cli
+    pull: if-not-exists
+    environment:
+      APP_VERSION: ${DRONE_COMMIT_SHA}
+      DOCKER_HOST: unix:///var/run/docker.sock
+      DEPLOY_WORKERS: "true"
+      BACKEND_EXTERNAL_ENV:
+        from_secret: backend_external_env
+    volumes:
+      - name: docker-sock
+        path: /var/run/docker.sock
+    commands:
+      - sh deploy/backend-external.sh
+
+# Both repositories must use a Docker Runner on the deployment server and be Trusted.
+volumes:
+  - name: docker-sock
+    host:
+      path: /var/run/docker.sock

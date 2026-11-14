@@ -1,0 +1,18 @@
+.project-picker { width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); margin: auto; padding: 22px; border: 1px solid #343840; border-radius: 12px; background: #17191d; color: #edf0f2; overflow-y: auto; font-size: 14px; }
+.project-picker::backdrop { background: rgba(0, 0, 0, .65); }
+.project-picker header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.project-picker h2 { margin: 0 0 8px; font-size: 20px; }
+.project-picker p { color: #adb5c1; line-height: 1.6; }
+.project-picker label { display: grid; gap: 8px; margin-top: 18px; }
+.project-picker input { width: 100%; padding: 11px; border: 1px solid #414852; border-radius: 6px; color: #edf0f2; background: #101215; font: inherit; }
+.project-picker button { padding: 9px 12px; border: 1px solid #414852; border-radius: 6px; background: #23282f; color: #edf0f2; font: inherit; cursor: pointer; }
+.project-picker button:disabled { opacity: .5; cursor: wait; }
+.project-picker button:focus-visible, .project-picker input:focus-visible { outline: 2px solid #55dd7b; outline-offset: 2px; }
+.project-picker-note { padding: 10px; background: #25251d; border-radius: 6px; }
+.project-picker ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.project-picker li button { width: 100%; display: grid; gap: 6px; text-align: left; overflow-wrap: anywhere; }
+.project-picker li button:hover, .project-picker li button[aria-current=true] { border-color: #55a56b; background: #1a2c21; }
+.project-picker small { color: #adb5c1; font-size: 12px; }
+.topbar .project-heading { min-width: 0; flex-wrap: wrap; }
+.current-project-title { max-width: min(300px, 65vw); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #edf0f2; }
+.topbar .top-actions { flex-wrap: wrap; }

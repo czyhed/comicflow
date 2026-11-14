@@ -1,0 +1,10 @@
+# 仓库内统一 LF，工作区行尾由 core.autocrlf 决定。
+* text=auto
+
+# Shell 脚本必须是 LF：CRLF 会让 bash 在 shebang 行报 `$'\r': command not found`，
+# 在 Git Bash 和容器里都跑不起来。
+*.sh text eol=lf
+
+# Windows 批处理和 PowerShell 保持 CRLF。
+*.bat text eol=crlf
+*.ps1 text eol=crlf

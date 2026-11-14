@@ -1,0 +1,80 @@
+/* Light-theme rules from the top of styles.css that the dark layer never overrode
+   (white selected cards, pink error bars, white story paper, 8-10px labels). */
+.asset-list > button:hover, .shot-rail > button:hover, .character-list > button:hover { background: #1e2228; }
+.asset-list > button.selected, .shot-rail > button.selected { background: #1f2a23; border-color: #3a6146; box-shadow: none; color: #e6eee8; }
+.asset-list button strong, .shot-rail button strong { color: inherit; }
+.column-title { color: #c9ced5; font-size: 12px; }
+.column-title span { background: #262a31; color: #a3a9b2; font-size: 11px; }
+.error-banner { margin-top: 10px; padding: 10px 12px; border: 1px solid #5a2f2f; border-radius: 8px; background: #2a1719; color: #ffb4b0; font-size: 13px; line-height: 1.6; }
+.error-banner button { margin-left: 8px; padding: 4px 10px; border: 1px solid #7a3d3d; border-radius: 6px; background: #3a1f22; color: #ffd0cc; cursor: pointer; }
+.script-split-panel { background: #101215; }
+.story-source-paper { background: #17191d; border-color: #2b2e34; border-radius: 12px; box-shadow: none; }
+.story-source-paper h2 { color: #eef0f3; }
+.story-source-paper p { color: #c3c8cf; font-size: 14px; }
+.editor-toolbar strong { font-size: 14px; color: #eef0f3; }
+.editor-toolbar span { font-size: 12px; color: #98a0a9; }
+.editor-toolbar .editor-save { min-height: 32px; padding: 0 14px; border: 1px solid #3a6146; background: #17231a; color: #8fe0a3; font-size: 13px; }
+.editor-toolbar .editor-save:disabled { border-color: #2b3036; background: #16191e; color: #6d747d; opacity: 1; }
+.editor-toolbar .editor-save:not(:disabled):hover { background: #1f3325; }
+/* Top bar and module navigation were 10px. */
+.topbar { font-size: 12px; }
+.top-actions button { font-size: 12px; }
+.module-nav button { font-size: 13px; }
+@media (max-width: 760px) {
+  .module-nav { max-width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+  .module-nav button { flex: 0 0 auto; }
+}
+.editor-footer { font-size: 13px; color: #a3a9b2; }
+.editor-footer button { padding: 9px 16px; border-radius: 7px; background: var(--accent); color: #071109; font-size: 13px; font-weight: 700; cursor: pointer; }
+.editor-footer button:disabled { opacity: .6; cursor: not-allowed; }
+.empty-workspace strong { color: #dfe3e8; font-size: 15px; }
+.empty-workspace span { font-size: 13px; }
+.eyebrow { font-size: 11px; letter-spacing: .04em; }
+
+/* Collapsed technical details (job ids, supplier task ids, billing caveats). */
+.tech-details { margin-top: 10px; border-top: 1px solid #252a30; padding-top: 8px; color: #8a919b; font-size: 12px; }
+.tech-details > summary { cursor: pointer; color: #8a919b; font-size: 12px; list-style-position: inside; }
+.tech-details > summary:hover { color: #d5dae0; }
+.tech-details-body { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; padding: 10px 12px; border-radius: 8px; background: #121418; overflow-wrap: anywhere; }
+.tech-details-body p, .tech-details-body li, .tech-details-body dd, .tech-details-body dt { margin: 0; font-size: 12px; line-height: 1.6; }
+.tech-details-body dl { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; margin: 0; }
+.tech-details-body dl div { display: contents; }
+.tech-details-body ol { margin: 0; padding-left: 18px; }
+.list-hint { margin: 4px 6px 8px; color: #7d848e; font-size: 12px; }
+.preflight-calls { color: #a3a9b2; font-size: 12px; }
+.video-job-note { color: #a3a9b2; }
+
+/* Shot thumbnails show the adopted frame when one exists (falls back to the tone block). */
+.shot-thumb, .board-frame { position: relative; overflow: hidden; }
+.shot-thumb { width: 44px; height: 58px; border-radius: 5px; }
+.shot-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.board-frame { aspect-ratio: 3 / 4; border-radius: 6px; }
+.board-frame span, .board-frame i { z-index: 1; font-size: 11px; border-radius: 4px; }
+.shot-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; align-content: start; }
+.shot-grid article { border-radius: 10px; padding: 8px; }
+.storyboard-actions p { font-size: 13px; color: #a3a9b2; }
+.inspector label { font-size: 12px; color: #9aa1ab; }
+.inspector input, .inspector textarea, .inspector select { font-size: 13px; }
+.inspector-head strong { font-size: 14px; }
+.inspector-head span { background: #1f2a23; color: #8fe0a3; font-size: 11px; }
+.inspector-note { font-size: 12px; color: #8a919b; }
+.shot-rail button strong { font-size: 12px; }
+.shot-rail button small { font-size: 11px; }
+.shot-grid article > strong { font-size: 13px; }
+.shot-grid article > p { height: auto; max-height: 40px; font-size: 12px; }
+
+/* Module navigation as a step bar: one look in every module, done marks, resources aside. */
+.studio-shell > .module-nav, .workbench-toolbar { flex: 0 0 56px; padding: 0 24px; }
+.workbench-toolbar > .module-nav, .studio-shell > .module-nav { flex: 1 1 auto; max-width: none; flex-wrap: nowrap; gap: 4px; }
+.module-nav button { position: relative; min-height: 34px; padding: 0 12px; gap: 6px; }
+.module-nav button.step-done:not(.active) { color: #b9c2bc; }
+.module-nav .step-check { color: #45e66b; }
+.module-nav .step-hint { padding: 1px 6px; border-radius: 999px; background: #262b32; color: #c9ced5; font-size: 11px; line-height: 16px; }
+.module-nav button.active .step-hint { background: #1d3a26; color: #a7f0b8; }
+.module-nav button.nav-aside { margin-left: auto; }
+.module-nav button.nav-aside::before { content: ""; position: absolute; left: -6px; top: 8px; bottom: 8px; width: 1px; background: #2b3036; }
+
+/* Mini tab bars (export preview video/cover/subtitle) used a light active state. */
+.mini-tabs { padding: 3px; border: 1px solid #2b3036; border-radius: 8px; }
+.mini-tabs button { padding: 6px 12px; border-radius: 6px; color: #9aa1ab; font-size: 12px; }
+.mini-tabs button.active { background: #2a3038; color: #eef0f3; }

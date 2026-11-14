@@ -1,0 +1,26 @@
+# Reuses the isolated services; never load business Compose/.env files.
+services:
+  postgres:
+    extends: {file: image-runtime.compose.yml, service: postgres}
+  redis:
+    extends: {file: image-runtime.compose.yml, service: redis}
+  minio:
+    extends: {file: image-runtime.compose.yml, service: minio}
+  verify:
+    extends: {file: image-runtime.compose.yml, service: verify}
+    entrypoint: [/app/.venv/bin/python, /workspace/tests/integration/serve_production_runtime.py]
+    volumes:
+      - ${COMICFLOW_VERIFY_OUTPUT:-../../var/verification/full-flow-20260921}:/verification
+  web:
+    image: nginx:latest
+    pull_policy: never
+    ports: ["127.0.0.1:4184:80"]
+    volumes:
+      - ../../frontend/dist:/usr/share/nginx/html:ro
+      - ./production-nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on: [verify, minio]
+    networks: [default, browser]
+networks:
+  default:
+    internal: true
+  browser: {}

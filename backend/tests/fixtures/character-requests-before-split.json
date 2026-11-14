@@ -1,0 +1,84 @@
+[
+  {
+    "shot": {
+      "id": "<operation-id>",
+      "imagePurpose": "character-reference",
+      "durationSec": 4,
+      "styleSnapshot": null,
+      "visualDescription": "写实电影感，单人全身，纯色背景。\n\n\n【角色视觉锁｜角色身份锚点｜最高优先级】保持提示词中定义的年龄感、脸型骨相、眉眼鼻唇、发型发色、肤色、体型比例和标志性特征；这些内容不得被画风、光线、姿势或背景改变。\n【当前造型】严格保持服装层级、剪裁、颜色、配饰、磨损和季节逻辑；不要把身份特征与服装状态混淆，不得擅自增加帽子、武器、首饰或其他服装。\n【材质细节】自然肤质和真实织物纤维清晰可见，金属、皮革、木料等材质有细微纹理和正确反光。\n【摄影与构图】高端角色设定图，单一人物、全身、正面、自然站姿，脸部和服装无遮挡；50mm 等效视角，人物比例自然，眼睛和服装细节清晰对焦，主体占画面约 70%，四周留出安全边界。\n【布光与后期】主光方向为左前方，柔和大面积主光、弱补光、细微轮廓光，受控阴影，干净色彩分离，明暗过渡细腻，保持统一画风；禁止塑料感、棚拍过曝、脏噪点和过度锐化。\n【背景与禁止项】中性低干扰纯色背景，人物轮廓清楚；不得新增人物、文字、标签、边框或水印。\n\n竖版 9:16 构图。",
+      "skillExecution": {
+        "skill": "xiaoluo-visual-assets",
+        "task": "character-reference",
+        "files": [
+          "xiaoluo-visual-assets/SKILL.md",
+          "xiaoluo-visual-assets/references/character-assets.md"
+        ],
+        "sha256": "3296cf7d416303259d07d6eef487fd36b8f60317f31b4c750e2ea45478381e41"
+      }
+    },
+    "characters": []
+  },
+  {
+    "shot": {
+      "id": "<operation-id>",
+      "imagePurpose": "character-reference-view",
+      "styleSnapshot": null,
+      "visualDescription": "写实电影感，单人全身，纯色背景。。基于已确认的角色参考图，生成正面视角角色参考图。保持同一张脸、发型、体型、服装、颜色、年龄和画风，纯色背景，只改变观察角度，不新增人物，不添加文字或水印。\n\n\n【角色视觉锁｜身份不可变】生成 front 视角，只改变观察角度；保持同一张脸的脸型骨相、眉眼鼻唇、发型发色、年龄感、体型比例和标志性特征。\n【当前造型锁】保持同一套服装的层级、剪裁、颜色、配饰、磨损和材质细节；只改变机位，不得重设计角色，不得新增人物、文字、标签、边框或水印。\n【材质细节】自然肤质和真实织物纤维清晰可见，金属、皮革、木料等材质有细微纹理和正确反光。\n【摄影与布光】视角变化来自真实机位，50mm 等效视角，人物比例自然，眼睛和服装细节清晰；主光方向为左前方，柔和主光、弱补光和细微轮廓光，色彩准确，受控阴影，统一画风。\n\n竖版 9:16 构图。",
+      "view": "front",
+      "sourceImageUrl": "https://offline.invalid/images/1.png",
+      "sourceImageObjectKey": "images/1.png",
+      "skillExecution": {
+        "skill": "xiaoluo-visual-assets",
+        "task": "character-view",
+        "files": [
+          "xiaoluo-visual-assets/SKILL.md",
+          "xiaoluo-visual-assets/references/character-assets.md"
+        ],
+        "sha256": "3296cf7d416303259d07d6eef487fd36b8f60317f31b4c750e2ea45478381e41"
+      }
+    },
+    "characters": []
+  },
+  {
+    "shot": {
+      "id": "<operation-id>",
+      "imagePurpose": "character-reference-view",
+      "styleSnapshot": null,
+      "visualDescription": "写实电影感，单人全身，纯色背景。。基于已确认的角色参考图，生成三分之四侧面视角角色参考图。保持同一张脸、发型、体型、服装、颜色、年龄和画风，纯色背景，只改变观察角度，不新增人物，不添加文字或水印。\n\n\n【角色视觉锁｜身份不可变】生成 three-quarter 视角，只改变观察角度；保持同一张脸的脸型骨相、眉眼鼻唇、发型发色、年龄感、体型比例和标志性特征。\n【当前造型锁】保持同一套服装的层级、剪裁、颜色、配饰、磨损和材质细节；只改变机位，不得重设计角色，不得新增人物、文字、标签、边框或水印。\n【材质细节】自然肤质和真实织物纤维清晰可见，金属、皮革、木料等材质有细微纹理和正确反光。\n【摄影与布光】视角变化来自真实机位，50mm 等效视角，人物比例自然，眼睛和服装细节清晰；主光方向为左前方，柔和主光、弱补光和细微轮廓光，色彩准确，受控阴影，统一画风。\n\n竖版 9:16 构图。",
+      "view": "three-quarter",
+      "sourceImageUrl": "https://offline.invalid/images/1.png",
+      "sourceImageObjectKey": "images/1.png",
+      "skillExecution": {
+        "skill": "xiaoluo-visual-assets",
+        "task": "character-view",
+        "files": [
+          "xiaoluo-visual-assets/SKILL.md",
+          "xiaoluo-visual-assets/references/character-assets.md"
+        ],
+        "sha256": "3296cf7d416303259d07d6eef487fd36b8f60317f31b4c750e2ea45478381e41"
+      }
+    },
+    "characters": []
+  },
+  {
+    "shot": {
+      "id": "<operation-id>",
+      "imagePurpose": "character-reference-view",
+      "styleSnapshot": null,
+      "visualDescription": "写实电影感，单人全身，纯色背景。。基于已确认的角色参考图，生成侧面视角角色参考图。保持同一张脸、发型、体型、服装、颜色、年龄和画风，纯色背景，只改变观察角度，不新增人物，不添加文字或水印。\n\n\n【角色视觉锁｜身份不可变】生成 profile 视角，只改变观察角度；保持同一张脸的脸型骨相、眉眼鼻唇、发型发色、年龄感、体型比例和标志性特征。\n【当前造型锁】保持同一套服装的层级、剪裁、颜色、配饰、磨损和材质细节；只改变机位，不得重设计角色，不得新增人物、文字、标签、边框或水印。\n【材质细节】自然肤质和真实织物纤维清晰可见，金属、皮革、木料等材质有细微纹理和正确反光。\n【摄影与布光】视角变化来自真实机位，50mm 等效视角，人物比例自然，眼睛和服装细节清晰；主光方向为左前方，柔和主光、弱补光和细微轮廓光，色彩准确，受控阴影，统一画风。\n\n竖版 9:16 构图。",
+      "view": "profile",
+      "sourceImageUrl": "https://offline.invalid/images/1.png",
+      "sourceImageObjectKey": "images/1.png",
+      "skillExecution": {
+        "skill": "xiaoluo-visual-assets",
+        "task": "character-view",
+        "files": [
+          "xiaoluo-visual-assets/SKILL.md",
+          "xiaoluo-visual-assets/references/character-assets.md"
+        ],
+        "sha256": "3296cf7d416303259d07d6eef487fd36b8f60317f31b4c750e2ea45478381e41"
+      }
+    },
+    "characters": []
+  }
+]

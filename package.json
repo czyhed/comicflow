@@ -1,0 +1,13 @@
+{
+  "name": "comicflow",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "pnpm test:python && pnpm --dir frontend typecheck && pnpm --dir frontend build",
+    "test:python": "uv run pytest",
+    "dev": "pnpm --parallel --stream dev:api dev:web",
+    "dev:api": "uv run uvicorn comicflow.api.app:app --app-dir backend/src --reload --port 8000",
+    "dev:web": "pnpm --dir frontend dev",
+    "dev:worker": "uv run celery -A comicflow.worker.celery_app:celery_app worker --loglevel=INFO"
+  }
+}

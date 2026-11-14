@@ -1,0 +1,47 @@
+kind: pipeline
+type: docker
+name: comicflow-web
+
+concurrency:
+  limit: 1
+
+trigger:
+  event: [push]
+  branch: [main]
+
+# Applies to the built-in clone step as well as user steps.
+environment:
+  GIT_CONFIG_PARAMETERS: "'http.version=HTTP/1.1'"
+
+clone:
+  retries: 3
+
+steps:
+  - name: frontend-checks
+    image: mcr.microsoft.com/playwright:v1.62.1-noble
+    pull: if-not-exists
+    commands:
+      - apt-get update && apt-get install -y --no-install-recommends ffmpeg && rm -rf /var/lib/apt/lists/*
+      - npm install --global pnpm@11.19.0
+      - pnpm install --frozen-lockfile
+      - pnpm --dir frontend typecheck
+      - pnpm --dir frontend build
+      - node --test frontend/tests/*.test.mjs
+      - pnpm --dir frontend test:e2e
+
+  - name: deploy
+    image: docker:28-cli
+    pull: if-not-exists
+    environment:
+      APP_VERSION: ${DRONE_COMMIT_SHA}
+      DOCKER_HOST: unix:///var/run/docker.sock
+    volumes:
+      - name: docker-sock
+        path: /var/run/docker.sock
+    commands:
+      - sh deploy/web.sh
+
+volumes:
+  - name: docker-sock
+    host:
+      path: /var/run/docker.sock

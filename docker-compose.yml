@@ -1,0 +1,236 @@
+services:
+  api:
+    volumes: ["comicflow-model-config:/app/var/config"]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["uv", "run", "uvicorn", "comicflow.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      COMICFLOW_RUNTIME: postgresql
+      MODEL_CONFIG_ENCRYPTION_KEY: ${MODEL_CONFIG_ENCRYPTION_KEY:-}
+      DATABASE_URL: postgresql+asyncpg://comicflow:comicflow_dev_only@postgres:5432/comicflow
+      REDIS_URL: redis://redis:6379/0
+      S3_ENDPOINT: http://object-store:9000
+      S3_REGION: us-east-1
+      S3_BUCKET: comicflow
+      S3_ACCESS_KEY_ID: comicflow
+      S3_SECRET_ACCESS_KEY: comicflow_dev_only
+      PROVIDER_MODE: ${PROVIDER_MODE:-mock}
+      BAILIAN_API_KEY: ${BAILIAN_API_KEY:-}
+      TEXT_PROVIDER_PROVIDER: ${TEXT_PROVIDER_PROVIDER:-bailian}
+      DOUBAO_API_KEY: ${DOUBAO_API_KEY:-}
+      DOUBAO_BASE_URL: ${DOUBAO_BASE_URL:-https://ark.cn-beijing.volces.com/api/v3}
+      IMAGE_PROVIDER_MODE: ${IMAGE_PROVIDER_MODE:-disabled}
+      IMAGE_PROVIDER_API_KEY: ${IMAGE_PROVIDER_API_KEY:-${BAILIAN_API_KEY:-}}
+      IMAGE_PROVIDER_BASE_URL: ${IMAGE_PROVIDER_BASE_URL:-https://dashscope.aliyuncs.com/api/v1}
+      IMAGE_PROVIDER_MODEL: ${IMAGE_PROVIDER_MODEL:-wanx2.1-t2i-plus}
+      IMAGE_PROVIDER_SIZE: ${IMAGE_PROVIDER_SIZE:-720*1280}
+      IMAGE_PROVIDER_TIMEOUT_MS: ${IMAGE_PROVIDER_TIMEOUT_MS:-180000}
+      IMAGE_PROVIDER_PROTOCOL: ${IMAGE_PROVIDER_PROTOCOL:-auto}
+      IMAGE_PROVIDER_SUBMIT_PATH: ${IMAGE_PROVIDER_SUBMIT_PATH:-}
+      IMAGE_PROVIDER_QUERY_PATH: ${IMAGE_PROVIDER_QUERY_PATH:-}
+      TEXT_PROVIDER_MODEL: ${TEXT_PROVIDER_MODEL:-qwen-plus}
+      TEXT_PROVIDER_TIMEOUT_MS: ${TEXT_PROVIDER_TIMEOUT_MS:-120000}
+      PROVIDER_EVALUATION_GATE: ${PROVIDER_EVALUATION_GATE:-}
+      BAILIAN_BASE_URL: ${BAILIAN_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      COMICFLOW_COMPOSITION_PROVIDER: ${COMICFLOW_COMPOSITION_PROVIDER:-mock}
+      S3_PUBLIC_ENDPOINT: ${S3_PUBLIC_ENDPOINT:-http://127.0.0.1:19000}
+      MEDIA_PROVIDER_MODE: ${MEDIA_PROVIDER_MODE:-}
+      TTS_PROVIDER_MODE: ${TTS_PROVIDER_MODE:-}
+      TTS_PROVIDER_MODEL: ${TTS_PROVIDER_MODEL:-qwen3-tts-flash}
+      TTS_VOICE: ${TTS_VOICE:-Cherry}
+      VISUAL_PROVIDER_MODE: ${VISUAL_PROVIDER_MODE:-}
+      VISUAL_PROVIDER_MODEL: ${VISUAL_PROVIDER_MODEL:-wanx2.1-t2i-plus}
+      VISUAL_IMAGE_SIZE: ${VISUAL_IMAGE_SIZE:-720*1280}
+      MINIMAX_API_KEY: ${MINIMAX_API_KEY:-}
+      MINIMAX_BASE_URL: ${MINIMAX_BASE_URL:-https://cp.compshare.cn}
+      MINIMAX_VIDEO_MODEL: ${MINIMAX_VIDEO_MODEL:-MiniMax-H3}
+      MINIMAX_VIDEO_RESOLUTION: ${MINIMAX_VIDEO_RESOLUTION:-768P}
+      MINIMAX_PROMPT_MODE: ${MINIMAX_PROMPT_MODE:-local-skill}
+      MINIMAX_SUBMIT_PATH: ${MINIMAX_SUBMIT_PATH:-/minimax/v2/video_generation}
+      MINIMAX_QUERY_PATH: ${MINIMAX_QUERY_PATH:-/minimax/v2/query/video_generation/{task_id}}
+      USE_MINIMAX_H3: ${USE_MINIMAX_H3:-false}
+      MINIMAX_TIMEOUT_SECONDS: ${MINIMAX_TIMEOUT_SECONDS:-600}
+      MINIMAX_POLL_INTERVAL_SECONDS: ${MINIMAX_POLL_INTERVAL_SECONDS:-5}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+      object-store-init:
+        condition: service_completed_successfully
+    ports: ["18001:8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  worker:
+    volumes: ["comicflow-model-config:/app/var/config"]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["uv", "run", "celery", "-A", "comicflow.worker.celery_app:celery_app", "worker", "--loglevel=INFO"]
+    environment:
+      COMICFLOW_RUNTIME: postgresql
+      MODEL_CONFIG_ENCRYPTION_KEY: ${MODEL_CONFIG_ENCRYPTION_KEY:-}
+      DATABASE_URL: postgresql+asyncpg://comicflow:comicflow_dev_only@postgres:5432/comicflow
+      REDIS_URL: redis://redis:6379/0
+      S3_ENDPOINT: http://object-store:9000
+      S3_BUCKET: comicflow
+      S3_ACCESS_KEY_ID: comicflow
+      S3_SECRET_ACCESS_KEY: comicflow_dev_only
+      PROVIDER_MODE: ${PROVIDER_MODE:-mock}
+      BAILIAN_API_KEY: ${BAILIAN_API_KEY:-}
+      TEXT_PROVIDER_PROVIDER: ${TEXT_PROVIDER_PROVIDER:-bailian}
+      DOUBAO_API_KEY: ${DOUBAO_API_KEY:-}
+      DOUBAO_BASE_URL: ${DOUBAO_BASE_URL:-https://ark.cn-beijing.volces.com/api/v3}
+      IMAGE_PROVIDER_MODE: ${IMAGE_PROVIDER_MODE:-disabled}
+      IMAGE_PROVIDER_API_KEY: ${IMAGE_PROVIDER_API_KEY:-${BAILIAN_API_KEY:-}}
+      IMAGE_PROVIDER_BASE_URL: ${IMAGE_PROVIDER_BASE_URL:-https://dashscope.aliyuncs.com/api/v1}
+      IMAGE_PROVIDER_MODEL: ${IMAGE_PROVIDER_MODEL:-wanx2.1-t2i-plus}
+      IMAGE_PROVIDER_SIZE: ${IMAGE_PROVIDER_SIZE:-720*1280}
+      IMAGE_PROVIDER_TIMEOUT_MS: ${IMAGE_PROVIDER_TIMEOUT_MS:-180000}
+      IMAGE_PROVIDER_PROTOCOL: ${IMAGE_PROVIDER_PROTOCOL:-auto}
+      IMAGE_PROVIDER_SUBMIT_PATH: ${IMAGE_PROVIDER_SUBMIT_PATH:-}
+      IMAGE_PROVIDER_QUERY_PATH: ${IMAGE_PROVIDER_QUERY_PATH:-}
+      TEXT_PROVIDER_MODEL: ${TEXT_PROVIDER_MODEL:-qwen-plus}
+      TEXT_PROVIDER_TIMEOUT_MS: ${TEXT_PROVIDER_TIMEOUT_MS:-120000}
+      PROVIDER_EVALUATION_GATE: ${PROVIDER_EVALUATION_GATE:-}
+      BAILIAN_BASE_URL: ${BAILIAN_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      COMICFLOW_COMPOSITION_PROVIDER: ${COMICFLOW_COMPOSITION_PROVIDER:-mock}
+      S3_PUBLIC_ENDPOINT: ${S3_PUBLIC_ENDPOINT:-http://127.0.0.1:19000}
+      MEDIA_PROVIDER_MODE: ${MEDIA_PROVIDER_MODE:-}
+      TTS_PROVIDER_MODE: ${TTS_PROVIDER_MODE:-}
+      TTS_PROVIDER_MODEL: ${TTS_PROVIDER_MODEL:-qwen3-tts-flash}
+      TTS_VOICE: ${TTS_VOICE:-Cherry}
+      VISUAL_PROVIDER_MODE: ${VISUAL_PROVIDER_MODE:-}
+      VISUAL_PROVIDER_MODEL: ${VISUAL_PROVIDER_MODEL:-wanx2.1-t2i-plus}
+      VISUAL_IMAGE_SIZE: ${VISUAL_IMAGE_SIZE:-720*1280}
+      MINIMAX_API_KEY: ${MINIMAX_API_KEY:-}
+      MINIMAX_BASE_URL: ${MINIMAX_BASE_URL:-https://cp.compshare.cn}
+      MINIMAX_VIDEO_MODEL: ${MINIMAX_VIDEO_MODEL:-MiniMax-H3}
+      MINIMAX_VIDEO_RESOLUTION: ${MINIMAX_VIDEO_RESOLUTION:-768P}
+      MINIMAX_PROMPT_MODE: ${MINIMAX_PROMPT_MODE:-local-skill}
+      MINIMAX_SUBMIT_PATH: ${MINIMAX_SUBMIT_PATH:-/minimax/v2/video_generation}
+      MINIMAX_QUERY_PATH: ${MINIMAX_QUERY_PATH:-/minimax/v2/query/video_generation/{task_id}}
+      USE_MINIMAX_H3: ${USE_MINIMAX_H3:-false}
+      MINIMAX_TIMEOUT_SECONDS: ${MINIMAX_TIMEOUT_SECONDS:-600}
+      MINIMAX_POLL_INTERVAL_SECONDS: ${MINIMAX_POLL_INTERVAL_SECONDS:-5}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+      object-store-init:
+        condition: service_completed_successfully
+  beat:
+    volumes: ["comicflow-model-config:/app/var/config"]
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["uv", "run", "celery", "-A", "comicflow.worker.celery_app:celery_app", "beat", "--loglevel=INFO"]
+    environment:
+      COMICFLOW_RUNTIME: postgresql
+      MODEL_CONFIG_ENCRYPTION_KEY: ${MODEL_CONFIG_ENCRYPTION_KEY:-}
+      DATABASE_URL: postgresql+asyncpg://comicflow:comicflow_dev_only@postgres:5432/comicflow
+      REDIS_URL: redis://redis:6379/0
+      S3_ENDPOINT: http://object-store:9000
+      S3_REGION: us-east-1
+      S3_BUCKET: comicflow
+      S3_ACCESS_KEY_ID: comicflow
+      S3_SECRET_ACCESS_KEY: comicflow_dev_only
+      PROVIDER_MODE: ${PROVIDER_MODE:-mock}
+      BAILIAN_API_KEY: ${BAILIAN_API_KEY:-}
+      TEXT_PROVIDER_PROVIDER: ${TEXT_PROVIDER_PROVIDER:-bailian}
+      DOUBAO_API_KEY: ${DOUBAO_API_KEY:-}
+      DOUBAO_BASE_URL: ${DOUBAO_BASE_URL:-https://ark.cn-beijing.volces.com/api/v3}
+      IMAGE_PROVIDER_MODE: ${IMAGE_PROVIDER_MODE:-disabled}
+      IMAGE_PROVIDER_API_KEY: ${IMAGE_PROVIDER_API_KEY:-${BAILIAN_API_KEY:-}}
+      IMAGE_PROVIDER_BASE_URL: ${IMAGE_PROVIDER_BASE_URL:-https://dashscope.aliyuncs.com/api/v1}
+      IMAGE_PROVIDER_MODEL: ${IMAGE_PROVIDER_MODEL:-wanx2.1-t2i-plus}
+      IMAGE_PROVIDER_SIZE: ${IMAGE_PROVIDER_SIZE:-720*1280}
+      IMAGE_PROVIDER_TIMEOUT_MS: ${IMAGE_PROVIDER_TIMEOUT_MS:-180000}
+      TEXT_PROVIDER_MODEL: ${TEXT_PROVIDER_MODEL:-qwen-plus}
+      TEXT_PROVIDER_TIMEOUT_MS: ${TEXT_PROVIDER_TIMEOUT_MS:-120000}
+      PROVIDER_EVALUATION_GATE: ${PROVIDER_EVALUATION_GATE:-}
+      BAILIAN_BASE_URL: ${BAILIAN_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      COMICFLOW_COMPOSITION_PROVIDER: ${COMICFLOW_COMPOSITION_PROVIDER:-mock}
+      S3_PUBLIC_ENDPOINT: ${S3_PUBLIC_ENDPOINT:-http://127.0.0.1:19000}
+      MEDIA_PROVIDER_MODE: ${MEDIA_PROVIDER_MODE:-}
+      TTS_PROVIDER_MODE: ${TTS_PROVIDER_MODE:-}
+      TTS_PROVIDER_MODEL: ${TTS_PROVIDER_MODEL:-qwen3-tts-flash}
+      TTS_VOICE: ${TTS_VOICE:-Cherry}
+      VISUAL_PROVIDER_MODE: ${VISUAL_PROVIDER_MODE:-}
+      VISUAL_PROVIDER_MODEL: ${VISUAL_PROVIDER_MODEL:-wanx2.1-t2i-plus}
+      VISUAL_IMAGE_SIZE: ${VISUAL_IMAGE_SIZE:-720*1280}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+  migrate:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    command: ["uv", "run", "alembic", "upgrade", "head"]
+    environment:
+      DATABASE_URL: postgresql+asyncpg://comicflow:comicflow_dev_only@postgres:5432/comicflow
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: comicflow
+      POSTGRES_USER: comicflow
+      POSTGRES_PASSWORD: comicflow_dev_only
+    ports: ["15432:5432"]
+    volumes: ["comicflow-postgres:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U comicflow -d comicflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    ports: ["16379:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  object-store:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: comicflow
+      MINIO_ROOT_PASSWORD: comicflow_dev_only
+    ports: ["19000:9000", "19001:9001"]
+    volumes: ["comicflow-objects:/data"]
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  object-store-init:
+    image: minio/mc:latest
+    depends_on:
+      object-store:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command: >-
+      "mc alias set local http://object-store:9000 comicflow comicflow_dev_only &&
+      mc mb --ignore-existing local/comicflow"
+    restart: "no"
+volumes:
+  comicflow-model-config:
+  comicflow-postgres:
+  comicflow-objects:

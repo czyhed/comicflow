@@ -1,0 +1,42 @@
+{
+  "xianyu-LICENSE.txt": {
+    "repository": "xianyu110/awesome-minimax-h3-prompts",
+    "path": "LICENSE",
+    "apiUrl": "https://api.github.com/repos/xianyu110/awesome-minimax-h3-prompts/contents/LICENSE",
+    "gitBlobSha": "1d334e8c861a495ce1fb40a92b51b75e5b4b65b4",
+    "immutableApiUrl": "https://api.github.com/repos/xianyu110/awesome-minimax-h3-prompts/git/blobs/1d334e8c861a495ce1fb40a92b51b75e5b4b65b4",
+    "readAt": "2026-09-22T14:24:53.203731+00:00",
+    "sha256": "622265c450b0f9d4e10db237b11cb2fceb91a099e656e5864ba3671f3c8b8f07",
+    "bytes": 1085
+  },
+  "gallery": {
+    "repository": "xianyu110/awesome-minimax-h3-prompts",
+    "path": "prompts/GALLERY.md",
+    "apiUrl": "https://api.github.com/repos/xianyu110/awesome-minimax-h3-prompts/contents/prompts/GALLERY.md",
+    "gitBlobSha": "cb114c34b34469b940064872ff5a679c1b3f5afd",
+    "immutableApiUrl": "https://api.github.com/repos/xianyu110/awesome-minimax-h3-prompts/git/blobs/cb114c34b34469b940064872ff5a679c1b3f5afd",
+    "readAt": "2026-09-22T14:24:57.183638+00:00",
+    "sha256": "bfbb56e03d6d6aa049858e888d04d352bc05a73d8b3598057aba992a1d108fb0",
+    "bytes": 340617
+  },
+  "zerolu-LICENSE.txt": {
+    "repository": "ZeroLu/awesome-minimax-h3",
+    "path": "LICENSE",
+    "apiUrl": "https://api.github.com/repos/ZeroLu/awesome-minimax-h3/contents/LICENSE",
+    "gitBlobSha": "5027643c5b938f061c4e57fa023c14e76d219eae",
+    "immutableApiUrl": "https://api.github.com/repos/ZeroLu/awesome-minimax-h3/git/blobs/5027643c5b938f061c4e57fa023c14e76d219eae",
+    "readAt": "2026-09-22T14:24:53.226507+00:00",
+    "sha256": "39f44e589235f753fd4dc15cafc6f62965d81ee61839f7f5b66c8dcb5f173e82",
+    "bytes": 1063
+  },
+  "zerolu-upstream.json": {
+    "repository": "ZeroLu/awesome-minimax-h3",
+    "path": "data/community-x-minimax-h3-cases.json",
+    "apiUrl": "https://api.github.com/repos/ZeroLu/awesome-minimax-h3/contents/data/community-x-minimax-h3-cases.json",
+    "gitBlobSha": "bc9c535d1993389f5754879f0d68f43bd17c121a",
+    "immutableApiUrl": "https://api.github.com/repos/ZeroLu/awesome-minimax-h3/git/blobs/bc9c535d1993389f5754879f0d68f43bd17c121a",
+    "readAt": "2026-09-22T14:24:53.779908+00:00",
+    "sha256": "229825a90ce9136b260ca693b3942adcfcba56a716d2d166c08870d69f6c155f",
+    "bytes": 26621
+  }
+}

@@ -1,0 +1,12 @@
+# Overlay only for compose.external-data.yml on the production Drone Runner.
+services:
+  api:
+    ports: !reset []
+    networks:
+      default:
+      edge:
+        aliases: [comicflow-api]
+networks:
+  edge:
+    external: true
+    name: comicflow-edge

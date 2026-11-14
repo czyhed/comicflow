@@ -1,0 +1,15 @@
+services:
+  web:
+    image: comicflow-web:${APP_VERSION:-local}
+    build:
+      context: ..
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${WEB_BIND_ADDRESS:-0.0.0.0}:${WEB_PORT:-18080}:80"
+    networks:
+      - edge
+networks:
+  edge:
+    external: true
+    name: comicflow-edge

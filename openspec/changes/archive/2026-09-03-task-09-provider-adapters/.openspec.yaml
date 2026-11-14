@@ -1,0 +1,3 @@
+schema: spec-driven
+created: 2026-09-03
+goal: 在保持默认Mock模式的前提下，补齐图像视频、TTS口型、审核Provider边界并建立可重复评测

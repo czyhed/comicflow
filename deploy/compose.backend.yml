@@ -1,0 +1,127 @@
+x-runtime: &runtime
+  image: comicflow-backend:${APP_VERSION:-local}
+  build:
+    context: ..
+    dockerfile: backend/Dockerfile
+  env_file:
+    - runtime.env
+  volumes:
+    - model-config:/app/var/config
+  environment:
+    COMICFLOW_RUNTIME: postgresql
+    DATABASE_URL: postgresql+asyncpg://comicflow:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}@postgres:5432/comicflow
+    REDIS_URL: redis://redis:6379/0
+    S3_ENDPOINT: http://object-store:9000
+    S3_PUBLIC_ENDPOINT: ${S3_PUBLIC_ENDPOINT:?Set the public frontend origin}
+    S3_REGION: us-east-1
+    S3_BUCKET: comicflow
+    S3_ACCESS_KEY_ID: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER}
+    S3_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD}
+    EXPORT_DOWNLOAD_SECRET: ${EXPORT_DOWNLOAD_SECRET:?Set EXPORT_DOWNLOAD_SECRET}
+    EXPORT_OUTPUT_DIR: /app/var/exports
+  restart: unless-stopped
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+    object-store:
+      condition: service_healthy
+
+services:
+  api:
+    <<: *runtime
+    command: ["uvicorn", "comicflow.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
+    networks:
+      default:
+      edge:
+        aliases: [comicflow-api]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  worker:
+    <<: *runtime
+    command: ["celery", "-A", "comicflow.worker.celery_app:celery_app", "worker", "--loglevel=INFO", "--hostname=worker@%h"]
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A comicflow.worker.celery_app:celery_app inspect ping -d worker@$$HOSTNAME --timeout 5 | grep -q pong"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+  beat:
+    <<: *runtime
+    command: ["celery", "-A", "comicflow.worker.celery_app:celery_app", "beat", "--loglevel=INFO", "--schedule=/app/var/celerybeat-schedule"]
+    volumes:
+      - beat-state:/app/var
+      - model-config:/app/var/config
+  migrate:
+    <<: *runtime
+    command: ["alembic", "upgrade", "head"]
+    restart: "no"
+    profiles: [setup]
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: comicflow
+      POSTGRES_USER: comicflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "comicflow", "-d", "comicflow"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  object-store:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD}
+    volumes:
+      - object-data:/data
+    networks:
+      default:
+      edge:
+        aliases: [comicflow-objects]
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  object-store-init:
+    image: minio/mc:RELEASE.2025-04-16T18-13-26Z
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD}
+    entrypoint: ["/bin/sh", "-ec"]
+    command:
+      - 'mc alias set local http://object-store:9000 "$$MINIO_ROOT_USER" "$$MINIO_ROOT_PASSWORD" >/dev/null && mc mb --ignore-existing local/comicflow'
+    restart: "no"
+    profiles: [setup]
+
+networks:
+  edge:
+    external: true
+    name: comicflow-edge
+volumes:
+  model-config:
+  postgres-data:
+  redis-data:
+  object-data:
+  beat-state:

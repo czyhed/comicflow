@@ -1,0 +1,59 @@
+/* Create page: split preview (ScriptPreviewPanel) and the generated script draft (2026-10-08).
+   Shares the index chips and speech badges defined in script-editor.css. */
+
+/* ---- Split preview ---- */
+.script-review { padding: 20px 24px; gap: 4px; }
+.script-review > header { padding-bottom: 14px; border-bottom: 1px solid #252a30; }
+.review-kicker { display: inline-block; margin-bottom: 6px; padding: 2px 8px; border-radius: 999px; background: #2a2416; color: #f0c27a; font-size: 12px; }
+.script-review h2 { font-size: 22px; color: #eef0f3; }
+.script-review header p { margin: 4px 0 0; color: #a3a9b2; font-size: 13px; }
+.script-review header .review-warning { color: #f0c27a; }
+.script-review-content { padding: 6px 6px 6px 0; display: flex; flex-direction: column; gap: 14px; }
+.script-review-scene { padding: 16px 18px; border: 1px solid #2f3a33; border-radius: 14px; background: linear-gradient(180deg, #172019 0%, #15181c 60%); }
+.script-review h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 16px; color: #eef0f3; }
+.script-review dl { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 0 0 12px; }
+.script-review dl > div { padding: 8px 10px; border-radius: 8px; background: #111418; }
+.script-review dt { font-size: 12px; color: #8a919b; }
+.script-review dd { margin: 3px 0 0; font-size: 13px; color: #dfe3e8; }
+.script-review dd.empty { color: #5d646d; }
+.script-review-shot { margin-top: 10px; padding: 12px 14px; border: 1px solid #2b3036; border-radius: 12px; background: #16191e; }
+.script-review h4 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 14px; color: #eef0f3; }
+.script-review h4 small { color: #8a919b; font-size: 12px; font-weight: 400; }
+.script-review h4 .speech-badge { font-style: normal; margin-left: auto; }
+.review-shot-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 14px; }
+.review-shot-body h5 { display: flex; align-items: center; gap: 5px; margin: 0 0 4px; color: #9aa1ab; font-size: 12px; font-weight: 600; }
+.script-review-shot p { margin: 4px 0; font-size: 13px; color: #c9ced5; }
+.script-review .script-preview-footer { border-radius: 0 0 10px 10px; }
+.script-review .script-preview-footer button, .script-review .script-preview-open-top { min-height: 38px; padding: 0 16px; border-radius: 8px; font-size: 13px; }
+.script-review .script-preview-open { border-color: #3c7148; background: #45e66b; color: #071109; font-weight: 700; }
+.script-review .script-preview-open:disabled { opacity: .6; }
+
+/* ---- Generated script draft on the create page ---- */
+.script-preview { gap: 4px; }
+.script-preview .eyebrow, .story-text-preview .eyebrow, .generation-progress .eyebrow, .guided-chat .eyebrow { color: #8fe0a3; text-transform: none; }
+.script-preview .preview-title-display { font-size: 20px; color: #eef0f3; }
+.script-preview-head > small { color: #a3a9b2; font-size: 13px; }
+.preview-field { gap: 6px; margin: 8px 0; color: #9aa1ab; font-size: 12px; }
+.preview-field input, .preview-field textarea { min-height: 36px; padding: 8px 10px; border-radius: 8px; font-size: 14px; line-height: 1.6; }
+.preview-field textarea { min-height: 64px; }
+.script-preview-list { display: flex; flex-direction: column; gap: 12px; padding-top: 12px; }
+.script-preview .script-preview-shot { display: block; padding: 12px 14px; border: 1px solid #2b3036; border-radius: 12px; background: #16191e; }
+.draft-shot-head { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; }
+.draft-shot-head .shot-index { align-self: center; }
+.draft-shot-title { flex: 1 1 200px; margin: 0; }
+.draft-shot-head .shot-preview-meta { align-self: center; margin: 0; }
+.shot-preview-meta { font-size: 12px; color: #9aa1ab; }
+.shot-preview-meta span { min-height: 22px; padding: 0 8px; border-radius: 999px; }
+.shot-preview-meta span:last-child { padding: 0 8px; }
+.shot-preview-meta .speech-badge { border: 1px solid #2f5a3b; background: transparent; }
+.shot-preview-meta .speech-badge.ok { color: #8fe0a3; }
+.shot-preview-meta .speech-badge.near { border-color: #6b5226; color: #f0c27a; }
+.shot-preview-meta .speech-badge.over { border-color: #6b302c; color: #ff9d94; }
+.draft-shot-body { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 12px; margin-top: 4px; }
+.script-preview-footer button { min-height: 40px; border-radius: 8px; font-size: 13px; }
+.script-preview-footer .script-preview-open { background: #45e66b; border-color: #45e66b; color: #071109; font-weight: 700; }
+.story-text-preview .preview-field textarea { font-size: 15px; line-height: 1.85; padding: 14px 16px; }
+
+@media (max-width: 900px) {
+  .review-shot-body, .draft-shot-body { grid-template-columns: 1fr; }
+}

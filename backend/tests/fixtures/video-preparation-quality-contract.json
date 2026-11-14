@@ -1,0 +1,675 @@
+{
+  "h3-first": {
+    "model": "MiniMax-H3",
+    "adapter": "minimax-h3",
+    "parameters": {
+      "resolution": "768P",
+      "duration": 5,
+      "ratio": "9:16"
+    },
+    "mode": "ref2va",
+    "prompt": {
+      "kind": "submission",
+      "text": "【参考素材】\n<Picture 1>：角色「林青」参考，保持脸型、五官、肤色、年龄、发型、体型和服装一致，允许动作、机位和光照随剧情变化。板中多个视角是同一个人，不生成分屏、三视图排版或重复人物；只继承身份与服装，不继承板的摄影棚背景、正面站姿或静态构图。\n<Picture 2>：角色「陈明」参考，保持脸型、五官、肤色、年龄、发型、体型和服装一致，允许动作、机位和光照随剧情变化。只继承身份与服装，不继承参考图背景、正面站姿或静态构图。\n<Picture 3>：场景参考，保持建筑、门窗和主要道具的空间关系；人物身份以角色图为准。\n【成片目标】\n制作一段5秒、9:16竖屏短剧视频。\n核心内容：推门进入\n【镜头与动作】\n画面描述定义机位与空间，运镜只描述相机运动，动作三阶段描述人物路径；沿用同一套空间方向和结束状态，不复制人物参考图的机位和站姿。\n原稿涉及接触或位移时，清楚呈现接触对象、移动路径和最终落点；在原定机位与景别内保持关键动作可辨，不用遮挡、空镜或跳切替代完成过程。未写明的动作不补造，静止或停顿按原稿保留。\n画面描述：林青推门走进便利店。\n0–5秒：按上述画面、动作和运镜连续展开，不额外添加剧情。\n动作开始状态：林青在门外\n动作完成状态：林青站在店内\n末帧画面：林青站在店内。\n在本段时长内完成上述动作，结尾达到动作完成状态，不停在中间步骤，也不回到参考图的正面站姿。\n【台词】\n对白逐字保留，按原文的说话人分配，台词只说一次，不改写、不翻译：\n你终于来了。\n原文中的角色名与括号语气是表演标注，不把这些标注读出。\n按原稿区分说话人与倾听者，不能把所有台词分配给第一个角色。\n每句台词只说一次；按原稿语气表达，句间留自然停顿。说话时口型对应台词，说完闭嘴；其他人不跟随张嘴。\n不新增旁白。\n【场景与风格】\n角色1：林青（外貌与服装以<Picture 1>为准），辨识点：短发；蓝色外套\n角色2：陈明（外貌与服装以<Picture 2>为准），辨识点：短发；灰色店员服\n场景：便利店\n光线、色调、景深和材质细节服从上述设定与参考素材，不改变已指定画风。\n【声音】\n显式静音或无配乐要求优先；其余声音匹配画面动作，有对白或旁白时保持清晰，环境声和配乐不盖住人声。\n【限制】\n保持人物身份、脸型、发型、年龄、服装和场景空间一致；不变脸、不串脸、不无故换装，不新增剧情、台词或无关角色。\n不添加对白字幕、乱码、水印或额外标志；原稿要求的可见文字保持原文。避免机械口型、手部畸形、瞬移和无动机跳切，正常切镜按原稿执行。",
+      "rules": {
+        "mode": "context-ir",
+        "inputLanguage": "zh",
+        "useContextIr": true,
+        "localTextCall": false,
+        "compilerVersion": 4,
+        "inputSha256": "1cb9babb168b3a9ca9ee58704387b91d4d3fb8a74127cac6b32f83bbc5093511"
+      },
+      "platformOptimization": true
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "b4cb4106633806407d1a37c1504386af306bbdd1b894a6a4a535aea97beddbca",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "<Picture 1>",
+        "role": "reference_image",
+        "id": "qing",
+        "name": "林青",
+        "view": "reference-board",
+        "fileState": "exists",
+        "sourceId": "ab76299acae628a9"
+      },
+      {
+        "label": "<Picture 2>",
+        "role": "reference_image",
+        "id": "ming",
+        "name": "陈明",
+        "view": "main",
+        "fileState": "exists",
+        "sourceId": "3c2e69987cbb490d"
+      },
+      {
+        "label": "<Picture 3>",
+        "role": "reference_image",
+        "id": "scene",
+        "name": "便利店",
+        "view": "scene-anchor",
+        "fileState": "exists",
+        "sourceId": "d41972d1b8c92a8c"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "h3-reanchor": {
+    "model": "MiniMax-H3",
+    "adapter": "minimax-h3",
+    "parameters": {
+      "resolution": "768P",
+      "duration": 5,
+      "ratio": "9:16"
+    },
+    "mode": "ref2va",
+    "prompt": {
+      "kind": "submission",
+      "text": "【参考素材】\n<Picture 1>：角色「林青」参考，保持脸型、五官、肤色、年龄、发型、体型和服装一致，允许动作、机位和光照随剧情变化。板中多个视角是同一个人，不生成分屏、三视图排版或重复人物；只继承身份与服装，不继承板的摄影棚背景、正面站姿或静态构图。\n<Picture 2>：角色「陈明」参考，保持脸型、五官、肤色、年龄、发型、体型和服装一致，允许动作、机位和光照随剧情变化。只继承身份与服装，不继承参考图背景、正面站姿或静态构图。\n<Picture 3>：上一镜头尾帧，参考人物站位、动作状态和光线，衔接本镜头；这是连续性参考，不把图片中的所有人物或姿态固定不动。\n<Picture 4>：场景参考，保持建筑、门窗和主要道具的空间关系；人物身份以角色图为准。\n【成片目标】\n制作一段5秒、9:16竖屏短剧视频。\n核心内容：推门进入\n【镜头与动作】\n画面描述定义机位与空间，运镜只描述相机运动，动作三阶段描述人物路径；沿用同一套空间方向和结束状态，不复制人物参考图的机位和站姿。\n原稿涉及接触或位移时，清楚呈现接触对象、移动路径和最终落点；在原定机位与景别内保持关键动作可辨，不用遮挡、空镜或跳切替代完成过程。未写明的动作不补造，静止或停顿按原稿保留。\n画面描述：林青推门走进便利店。\n0–5秒：按上述画面、动作和运镜连续展开，不额外添加剧情。\n动作开始状态：林青在门外\n动作完成状态：林青站在店内\n末帧画面：林青站在店内。\n在本段时长内完成上述动作，结尾达到动作完成状态，不停在中间步骤，也不回到参考图的正面站姿。\n【台词】\n对白逐字保留，按原文的说话人分配，台词只说一次，不改写、不翻译：\n你终于来了。\n原文中的角色名与括号语气是表演标注，不把这些标注读出。\n按原稿区分说话人与倾听者，不能把所有台词分配给第一个角色。\n每句台词只说一次；按原稿语气表达，句间留自然停顿。说话时口型对应台词，说完闭嘴；其他人不跟随张嘴。\n不新增旁白。\n【场景与风格】\n角色1：林青（外貌与服装以<Picture 1>为准），辨识点：短发；蓝色外套\n角色2：陈明（外貌与服装以<Picture 2>为准），辨识点：短发；灰色店员服\n场景：便利店\n光线、色调、景深和材质细节服从上述设定与参考素材，不改变已指定画风。\n【声音】\n显式静音或无配乐要求优先；其余声音匹配画面动作，有对白或旁白时保持清晰，环境声和配乐不盖住人声。\n【限制】\n保持人物身份、脸型、发型、年龄、服装和场景空间一致；不变脸、不串脸、不无故换装，不新增剧情、台词或无关角色。\n不添加对白字幕、乱码、水印或额外标志；原稿要求的可见文字保持原文。避免机械口型、手部畸形、瞬移和无动机跳切，正常切镜按原稿执行。",
+      "rules": {
+        "mode": "context-ir",
+        "inputLanguage": "zh",
+        "useContextIr": true,
+        "localTextCall": false,
+        "compilerVersion": 4,
+        "inputSha256": "f55dd2db187f04f674bfbea00924fbbe16653ae6e5a69af6aed84cb3b4099d7a"
+      },
+      "platformOptimization": true
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "6dead9f773fdc9856ef6381ff943ba4c746fefcae11f00806d582c3083031e87",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "上一镜头尾帧作为普通连续性参考，并非严格首帧锁定。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "<Picture 1>",
+        "role": "reference_image",
+        "id": "qing",
+        "name": "林青",
+        "view": "reference-board",
+        "fileState": "exists",
+        "sourceId": "ab76299acae628a9"
+      },
+      {
+        "label": "<Picture 2>",
+        "role": "reference_image",
+        "id": "ming",
+        "name": "陈明",
+        "view": "main",
+        "fileState": "exists",
+        "sourceId": "3c2e69987cbb490d"
+      },
+      {
+        "label": "<Picture 3>",
+        "role": "reference_image",
+        "id": "s1",
+        "name": "previous shot tail frame",
+        "view": "continuity-anchor",
+        "fileState": "exists",
+        "sourceId": "f7f52c44b77e0e07"
+      },
+      {
+        "label": "<Picture 4>",
+        "role": "reference_image",
+        "id": "scene",
+        "name": "便利店",
+        "view": "scene-anchor",
+        "fileState": "exists",
+        "sourceId": "d41972d1b8c92a8c"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "h3-strict": {
+    "model": "MiniMax-H3",
+    "adapter": "minimax-h3",
+    "parameters": {
+      "resolution": "768P",
+      "duration": 5,
+      "ratio": "9:16"
+    },
+    "mode": "i2va",
+    "prompt": {
+      "kind": "submission",
+      "text": "【参考素材】\n<Picture 1>：视频首帧；从图中可见姿态、人物位置、构图和光线开始，连续发展动作。\n【成片目标】\n制作一段5秒、9:16竖屏短剧视频。\n核心内容：推门进入\n【镜头与动作】\n画面描述定义机位与空间，运镜只描述相机运动，动作三阶段描述人物路径；沿用同一套空间方向和结束状态，不复制人物参考图的机位和站姿。\n原稿涉及接触或位移时，清楚呈现接触对象、移动路径和最终落点；在原定机位与景别内保持关键动作可辨，不用遮挡、空镜或跳切替代完成过程。未写明的动作不补造，静止或停顿按原稿保留。\n画面描述：林青推门走进便利店。\n0–5秒：按上述画面、动作和运镜连续展开，不额外添加剧情。\n动作开始状态：林青在门外\n动作完成状态：林青站在店内\n末帧画面：林青站在店内。\n在本段时长内完成上述动作，结尾达到动作完成状态，不停在中间步骤，也不回到参考图的正面站姿。\n【台词】\n对白逐字保留，按原文的说话人分配，台词只说一次，不改写、不翻译：\n你终于来了。\n原文中的角色名与括号语气是表演标注，不把这些标注读出。\n每句台词只说一次；按原稿语气表达，句间留自然停顿。说话时口型对应台词，说完闭嘴；其他人不跟随张嘴。\n不新增旁白。\n【场景与风格】\n场景：便利店\n光线、色调、景深和材质细节服从上述设定与参考素材，不改变已指定画风。\n【声音】\n显式静音或无配乐要求优先；其余声音匹配画面动作，有对白或旁白时保持清晰，环境声和配乐不盖住人声。\n【限制】\n保持人物身份、脸型、发型、年龄、服装和场景空间一致；不变脸、不串脸、不无故换装，不新增剧情、台词或无关角色。\n不添加对白字幕、乱码、水印或额外标志；原稿要求的可见文字保持原文。避免机械口型、手部畸形、瞬移和无动机跳切，正常切镜按原稿执行。",
+      "rules": {
+        "mode": "context-ir",
+        "inputLanguage": "zh",
+        "useContextIr": true,
+        "localTextCall": false,
+        "compilerVersion": 4,
+        "inputSha256": "001a9b322fa0c0949143d2e2938e871ac45baaefeb1adf87afee629246485d7a"
+      },
+      "platformOptimization": true
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "23f3d0d085448dda80541fec05431c587b8dae8319c9eac4846dc8e99404804f",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "<Picture 1>",
+        "role": "first_frame",
+        "id": null,
+        "name": null,
+        "view": null,
+        "fileState": "exists",
+        "sourceId": "f7f52c44b77e0e07"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "h3-explicit": {
+    "model": "MiniMax-H3",
+    "adapter": "minimax-h3",
+    "parameters": {
+      "resolution": "768P",
+      "duration": 5,
+      "ratio": "9:16"
+    },
+    "mode": "i2va",
+    "prompt": {
+      "kind": "submission",
+      "text": "【参考素材】\n<Picture 1>：视频首帧；从图中可见姿态、人物位置、构图和光线开始，连续发展动作。\n【成片目标】\n制作一段5秒、9:16竖屏短剧视频。\n核心内容：推门进入\n【镜头与动作】\n画面描述定义机位与空间，运镜只描述相机运动，动作三阶段描述人物路径；沿用同一套空间方向和结束状态，不复制人物参考图的机位和站姿。\n原稿涉及接触或位移时，清楚呈现接触对象、移动路径和最终落点；在原定机位与景别内保持关键动作可辨，不用遮挡、空镜或跳切替代完成过程。未写明的动作不补造，静止或停顿按原稿保留。\n画面描述：林青推门走进便利店。\n0–5秒：按上述画面、动作和运镜连续展开，不额外添加剧情。\n动作开始状态：林青在门外\n动作完成状态：林青站在店内\n末帧画面：林青站在店内。\n在本段时长内完成上述动作，结尾达到动作完成状态，不停在中间步骤，也不回到参考图的正面站姿。\n【台词】\n对白逐字保留，按原文的说话人分配，台词只说一次，不改写、不翻译：\n你终于来了。\n原文中的角色名与括号语气是表演标注，不把这些标注读出。\n按原稿区分说话人与倾听者，不能把所有台词分配给第一个角色。\n每句台词只说一次；按原稿语气表达，句间留自然停顿。说话时口型对应台词，说完闭嘴；其他人不跟随张嘴。\n不新增旁白。\n【场景与风格】\n角色1：林青\n外貌：短发，圆脸\n服装：蓝色外套\n角色2：陈明\n外貌：短发，方脸\n服装：灰色店员服\n场景：便利店\n光线、色调、景深和材质细节服从上述设定与参考素材，不改变已指定画风。\n【声音】\n显式静音或无配乐要求优先；其余声音匹配画面动作，有对白或旁白时保持清晰，环境声和配乐不盖住人声。\n【限制】\n保持人物身份、脸型、发型、年龄、服装和场景空间一致；不变脸、不串脸、不无故换装，不新增剧情、台词或无关角色。\n不添加对白字幕、乱码、水印或额外标志；原稿要求的可见文字保持原文。避免机械口型、手部畸形、瞬移和无动机跳切，正常切镜按原稿执行。",
+      "rules": {
+        "mode": "context-ir",
+        "inputLanguage": "zh",
+        "useContextIr": true,
+        "localTextCall": false,
+        "compilerVersion": 4,
+        "inputSha256": "034b78c722df7abaf84678de91b027f394336dda3c9ba6b80af475caf78bda3b"
+      },
+      "platformOptimization": true
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "36cb1cef74e701b608da7ef1c5a8e45882f2f8120829c3e793324192e3bdfd26",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "部分角色只有文字设定，未传人物参考图。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "<Picture 1>",
+        "role": "first_frame",
+        "id": null,
+        "name": null,
+        "view": null,
+        "fileState": "exists",
+        "sourceId": "f7f52c44b77e0e07"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "h3-missing-tail": {
+    "ready": false,
+    "fingerprint": null,
+    "errors": [
+      "CASCADE_FRAME_MISSING"
+    ],
+    "warnings": [],
+    "parameters": {},
+    "references": [],
+    "calls": null,
+    "price": null,
+    "model": null,
+    "prompt": null,
+    "errorDetail": {}
+  },
+  "h3-local-skill": {
+    "ready": false,
+    "fingerprint": null,
+    "errors": [
+      "H3_PROMPT_WRITER_REQUIRED"
+    ],
+    "warnings": [],
+    "parameters": {},
+    "references": [],
+    "calls": null,
+    "price": null,
+    "model": null,
+    "prompt": null,
+    "errorDetail": {}
+  },
+  "wan-single": {
+    "model": "wan2.2-i2v-flash",
+    "adapter": "bailian-video",
+    "parameters": {
+      "duration": 5,
+      "resolution": "720P",
+      "prompt_extend": false
+    },
+    "mode": "i2v",
+    "prompt": {
+      "kind": "submission",
+      "text": "林青推门走进便利店。。推门进入。对白：你终于来了。。林青：短发，圆脸；蓝色外套。真实自然的运动节奏，避免过度平滑或机械化的动作，保持画面细节和纹理的真实感，自然的光影变化",
+      "platformOptimization": false
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "9e83cf44e8809aa2f949e3912298c5a30eca757eb8b865f44923d5629a8bce67",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "首帧",
+        "role": "first_frame",
+        "id": null,
+        "name": null,
+        "view": null,
+        "fileState": "exists",
+        "sourceId": "973f86679a81ea96"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "wan-multiple": {
+    "model": "wan2.2-i2v-flash",
+    "adapter": "bailian-video",
+    "parameters": {
+      "duration": 5,
+      "resolution": "720P",
+      "prompt_extend": false
+    },
+    "mode": "i2v",
+    "prompt": {
+      "kind": "submission",
+      "text": "林青推门走进便利店。。推门进入。对白：你终于来了。。林青：短发，圆脸；蓝色外套。陈明：短发，方脸；灰色店员服。真实自然的运动节奏，避免过度平滑或机械化的动作，保持画面细节和纹理的真实感，自然的光影变化",
+      "platformOptimization": false
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "37e712554c34f3ef05fd21dbfa9950897a5d737c2299422a07363de7045f9900",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "首帧",
+        "role": "first_frame",
+        "id": null,
+        "name": null,
+        "view": null,
+        "fileState": "exists",
+        "sourceId": "d41972d1b8c92a8c"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "wan-existing": {
+    "model": "wan2.2-i2v-flash",
+    "adapter": "bailian-video",
+    "parameters": {
+      "duration": 5,
+      "resolution": "720P",
+      "prompt_extend": false
+    },
+    "mode": "i2v",
+    "prompt": {
+      "kind": "submission",
+      "text": "林青推门走进便利店。。推门进入。对白：你终于来了。。林青：短发，圆脸；蓝色外套。陈明：短发，方脸；灰色店员服。真实自然的运动节奏，避免过度平滑或机械化的动作，保持画面细节和纹理的真实感，自然的光影变化",
+      "platformOptimization": false
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "ebb2847a8936d4261feab7f3f559a7a116d03a1f7045bf7025f1e7f9d7e9755b",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "已检查引用结构；文件存在不等于图片有效。像素/格式/大小在提交前校验，外部链接可达性尚未验证。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [
+      {
+        "label": "首帧",
+        "role": "first_frame",
+        "id": null,
+        "name": null,
+        "view": null,
+        "fileState": "exists",
+        "sourceId": "1224ae938e2ec8bd"
+      }
+    ],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "wan-text": {
+    "model": "wan2.2-t2v-plus",
+    "adapter": "bailian-video",
+    "parameters": {
+      "duration": 5,
+      "prompt_extend": false,
+      "size": "720*1280"
+    },
+    "mode": "t2v",
+    "prompt": {
+      "kind": "submission",
+      "text": "林青推门走进便利店。。推门进入。对白：你终于来了。。林青：短发，圆脸；蓝色外套。陈明：短发，方脸；灰色店员服。真实自然的运动节奏，避免过度平滑或机械化的动作，保持画面细节和纹理的真实感，自然的光影变化",
+      "platformOptimization": false
+    },
+    "calls": {
+      "text": 0,
+      "video": 1
+    },
+    "ready": true,
+    "fingerprint": "c0a982ff29eb512cd7611bd4c3a4ca0c50757839d555fb3669446391ecd2cb47",
+    "errors": [],
+    "warnings": [
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  },
+  "mock": {
+    "model": "mock-dynamic-v1（模拟）",
+    "adapter": "mock",
+    "parameters": {
+      "duration": 5
+    },
+    "prompt": null,
+    "calls": {
+      "text": 0,
+      "video": 0
+    },
+    "ready": true,
+    "fingerprint": "cc2975efa2c31f674326c068289a1aab42039fdb3175dba84e0a617904d1a930",
+    "errors": [],
+    "warnings": [
+      "模拟生成不调用模型，不代表真实视频效果。",
+      "动作起始、过程或完成状态未全部单独填写，请核对镜头是否停在中间状态。",
+      "未提供场景参考图；场景依据文字及已列出的帧或参考素材，不会自动生成背景。",
+      "请人工核对画面机位、运镜与动作起终是否一致；本地检查不能判断文字中的空间矛盾。"
+    ],
+    "references": [],
+    "price": null,
+    "modelConfigRevision": 0,
+    "projectVersion": 3,
+    "shotId": "s2",
+    "textModel": null,
+    "style": null,
+    "speech": {
+      "dialogue": "你终于来了。",
+      "narration": ""
+    },
+    "speechReview": {
+      "spokenCharacterCount": 5,
+      "narrationCharacterCount": 0,
+      "totalCharacterCount": 5,
+      "estimatedSpeechSec": 1.0,
+      "durationSec": 5.0,
+      "severity": "ok"
+    },
+    "camera": {
+      "visualDescription": "林青推门走进便利店。",
+      "cameraMovement": ""
+    },
+    "actionStates": {
+      "actionBefore": "林青在门外",
+      "actionMiddle": "",
+      "actionAfter": "林青站在店内"
+    }
+  }
+}

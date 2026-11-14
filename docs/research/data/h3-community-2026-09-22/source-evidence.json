@@ -1,0 +1,31 @@
+{
+  "xianyu110/awesome-minimax-h3-prompts": {
+    "url": "https://api.github.com/repos/xianyu110/awesome-minimax-h3-prompts/contents/README.md",
+    "gitBlobSha": "d4e12988aece18ffe169b51d7fe0c388feaec589",
+    "readAt": "2026-09-22T14:25:50.139854+00:00",
+    "relevantLines": [
+      "| **Author-written** | 150 | Published by the creator. Credited, linked to the original post. Full text lives in our [gallery](https://tryminimax.asia/minimax-h3-prompts) — we index it here rather than copy it, because we do not own it. |",
+      "| **Reconstructed** | 72 | For clips whose creator never published a prompt, we sample 8 frames, hand them to a vision model, and write the prompt that would most plausibly reproduce the clip. **MIT, full text in this repo.** |"
+    ]
+  },
+  "ZeroLu/awesome-minimax-h3": {
+    "url": "https://api.github.com/repos/ZeroLu/awesome-minimax-h3/contents/README.md",
+    "gitBlobSha": "7a16c87cf679c8466c5ef70ae22f1b4baac92b44",
+    "readAt": "2026-09-22T14:25:51.518142+00:00",
+    "relevantLines": [
+      "- Community X cases are archived from public X posts and public mirror captures on August 12, 2026.",
+      "- Items without a complete public prompt are kept in [`data/community-x-minimax-h3-cases.json`](./data/community-x-minimax-h3-cases.json), but are not rendered in the main prompt list."
+    ]
+  },
+  "webPage": {
+    "url": "https://tryminimax.asia/zh/minimax-h3-prompts",
+    "readAt": "2026-09-22T14:25:53.888637+00:00",
+    "status": 200,
+    "sha256": "303894b7c7c5058f541355987b97637065f3b857c518aa864cdaf3f1f9c1fa3a",
+    "bytes": 124650,
+    "renderedPromptIds": 24,
+    "galleryIdsFoundInHtml": 24,
+    "countLabel222": true,
+    "license": "No independent blanket grant established; repository reconstructed text used for full archival"
+  }
+}
