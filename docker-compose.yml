@@ -7,6 +7,9 @@ services:
     command: ["uv", "run", "uvicorn", "comicflow.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
     environment:
       COMICFLOW_RUNTIME: postgresql
+      # Local development only. Production sits behind the gateway, which injects
+      # X-Control-User-Id; the legacy X-User-Id header must stay untrusted there.
+      COMICFLOW_DEV_TRUST_X_USER_ID: ${COMICFLOW_DEV_TRUST_X_USER_ID:-0}
       MODEL_CONFIG_ENCRYPTION_KEY: ${MODEL_CONFIG_ENCRYPTION_KEY:-}
       DATABASE_URL: postgresql+asyncpg://comicflow:comicflow_dev_only@postgres:5432/comicflow
       REDIS_URL: redis://redis:6379/0

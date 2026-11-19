@@ -1,7 +1,7 @@
 """Story/script HTTP routes; model binding and authorization stay request scoped."""
 from collections.abc import Awaitable, Callable
 
-from fastapi import APIRouter, Header
+from fastapi import APIRouter, Depends, Header
 from fastapi.responses import StreamingResponse
 
 from comicflow.api.schemas import (
@@ -13,6 +13,7 @@ from comicflow.api.schemas import (
     VersionedRequest,
 )
 from comicflow.api.text_stream import text_response
+from comicflow.identity.request import current_user_id
 from comicflow.production.pipeline import ProductionPipeline
 
 
@@ -26,7 +27,7 @@ def story_script_router(
     async def generate_script(
         project_id: str,
         idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().generate_script(
@@ -38,7 +39,7 @@ def story_script_router(
     async def generate_story_text(
         project_id: str,
         idempotency_key: str | None = Header(default=None, alias="Idempotency-Key"),
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
         accept: str | None = Header(default=None),
     ) -> dict[str, object] | StreamingResponse:
         await require_project_access(project_id, x_user_id)
@@ -52,7 +53,7 @@ def story_script_router(
     async def update_story_text(
         project_id: str,
         payload: StoryTextUpdateRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().update_story_text(
@@ -62,7 +63,7 @@ def story_script_router(
 
     @router.post("/api/projects/{project_id}/script/guidance")
     async def ask_guided_question(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().ask_guided_question(project_id)
@@ -72,7 +73,7 @@ def story_script_router(
     async def answer_guided_question(
         project_id: str,
         payload: GuidedAnswerRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().answer_guided_question(project_id, payload.answer)
@@ -80,7 +81,7 @@ def story_script_router(
 
     @router.post("/api/projects/{project_id}/script/guidance/skip")
     async def skip_guided_question(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().skip_guided_question(project_id)
@@ -88,7 +89,7 @@ def story_script_router(
 
     @router.post("/api/projects/{project_id}/script/detail")
     async def generate_detailed_script(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().generate_detailed_script(project_id)
@@ -96,7 +97,7 @@ def story_script_router(
 
     @router.post("/api/projects/{project_id}/script/split")
     async def split_script(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().split_script(project_id)
@@ -104,7 +105,7 @@ def story_script_router(
 
     @router.post("/api/projects/{project_id}/script/preview", response_model=None)
     async def preview_script(
-        project_id: str, x_user_id: str | None = Header(default=None),
+        project_id: str, x_user_id: str | None = Depends(current_user_id),
         accept: str | None = Header(default=None),
     ) -> dict[str, object] | StreamingResponse:
         await require_project_access(project_id, x_user_id)
@@ -115,7 +116,7 @@ def story_script_router(
     @router.put('/api/projects/{project_id}/script/preview')
     async def commit_script_preview(
         project_id: str, payload: ScriptUpdateRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().commit_script_preview(
@@ -125,7 +126,7 @@ def story_script_router(
 
     @router.get("/api/projects/{project_id}/versions")
     async def project_script_versions(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> list[dict[str, object]]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().list_script_versions(project_id)
@@ -133,7 +134,7 @@ def story_script_router(
 
     @router.patch("/api/projects/{project_id}/script")
     async def update_script(
-        project_id: str, payload: ScriptUpdateRequest, x_user_id: str | None = Header(default=None)
+        project_id: str, payload: ScriptUpdateRequest, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().update_script(
@@ -143,7 +144,7 @@ def story_script_router(
 
     @router.post("/api/projects/{project_id}/script/confirm")
     async def confirm_script(
-        project_id: str, payload: VersionedRequest, x_user_id: str | None = Header(default=None)
+        project_id: str, payload: VersionedRequest, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().confirm_script(
@@ -155,7 +156,7 @@ def story_script_router(
     async def add_shot(
         project_id: str,
         payload: ShotCreateRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().add_shot(
@@ -168,7 +169,7 @@ def story_script_router(
         project_id: str,
         shot_id: str,
         payload: VersionedRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().duplicate_shot(
@@ -181,7 +182,7 @@ def story_script_router(
         project_id: str,
         shot_id: str,
         payload: VersionedRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().delete_shot(
@@ -191,7 +192,7 @@ def story_script_router(
 
     @router.put("/api/projects/{project_id}/script/shots/order")
     async def reorder_shots(
-        project_id: str, payload: ShotOrderRequest, x_user_id: str | None = Header(default=None)
+        project_id: str, payload: ShotOrderRequest, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().reorder_shots(

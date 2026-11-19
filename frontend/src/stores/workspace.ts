@@ -34,7 +34,6 @@ export const useWorkspace = create<WorkspaceState>((set) => ({
   },
   clearProject: () => {
     localStorage.removeItem('comicflow-project-id')
-    localStorage.removeItem('comicflow-user-id')
     set({ projectId: null, activeModule: 'create', selectedShotId: null })
   },
   setSelectedShotId: (selectedShotId) => set({ selectedShotId }),

@@ -5,7 +5,7 @@ import json
 from collections.abc import AsyncIterator
 from typing import Annotated, Any, Literal
 
-from fastapi import FastAPI, File, Header, Query, Request, UploadFile
+from fastapi import Depends, FastAPI, File, Header, Query, Request, UploadFile
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import ValidationError
 
@@ -24,6 +24,7 @@ from comicflow.api.video import video_router
 from comicflow.domain.errors import DomainError
 from comicflow.domain.models import CreateProject
 from comicflow.identity.magic_link import MagicLinkService
+from comicflow.identity.request import current_user_id
 from comicflow.infrastructure.database import (
     SqlAlchemyCharacterRepository,
     SqlAlchemyProjectRepository,
@@ -684,7 +685,10 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
         return style_catalog()
 
     @app.post("/api/projects", status_code=201)
-    async def create_project(payload: CreateProjectRequest) -> dict[str, object]:
+    async def create_project(
+        payload: CreateProjectRequest,
+        x_user_id: str | None = Depends(current_user_id),
+    ) -> dict[str, object]:
         return await active_runtime.pipeline.create_project(
             CreateProject(
                 input_type=payload.input_type,
@@ -692,7 +696,8 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
                 duration_sec=payload.duration_sec,
                 mode=payload.mode,
                 style_preset_id=payload.style_preset_id,
-            )
+            ),
+            owner_user_id=x_user_id,
         )
 
     @app.get("/api/projects")
@@ -701,7 +706,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
 
     @app.get('/api/projects/{project_id}/video-resources')
     async def video_resources(
-        project_id: str, x_user_id: str | None = Header(default=None),
+        project_id: str, x_user_id: str | None = Depends(current_user_id),
         kind: Literal['all', 'shot', 'export'] = 'all',
         status: Literal['all', 'current', 'historical', 'candidate', 'stale'] = 'all',
         shot_id: str | None = None, offset: int = Query(default=0, ge=0),
@@ -716,7 +721,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
     @app.get('/api/projects/{project_id}/video-resources/{asset_id}/access')
     async def video_resource_access(
         project_id: str, asset_id: str, download: bool = False,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> JSONResponse:
         result = await active_runtime.pipeline.video_resources().access(
             project_id, asset_id, x_user_id, download=download,
@@ -727,7 +732,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
     async def upload_reference_image(
         project_id: str,
         file: Annotated[UploadFile, File()],
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         content = await file.read()
@@ -741,27 +746,27 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
 
     @app.get("/api/projects/{project_id}")
     async def get_snapshot(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         return await active_runtime.pipeline.get_snapshot(project_id, user_id=x_user_id)
 
     @app.post("/api/projects/{project_id}/duplicate", status_code=201)
     async def duplicate_project(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await active_runtime.pipeline.duplicate_project(project_id)
 
     @app.get("/api/projects/{project_id}/generation-session")
     async def generation_session(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await active_runtime.pipeline.get_generation_session(project_id)
 
     @app.post("/api/projects/{project_id}/generation-session/{action}")
     async def update_generation_session(
-        project_id: str, action: str, x_user_id: str | None = Header(default=None)
+        project_id: str, action: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         if action == "advance":
@@ -770,7 +775,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
 
     @app.post("/api/projects/{project_id}/claim")
     async def claim_project(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         if not x_user_id:
             raise DomainError("AUTH_REQUIRED")
@@ -778,7 +783,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
 
     @app.get("/api/projects/{project_id}/credits")
     async def project_credits(
-        project_id: str, x_user_id: str | None = Header(default=None)
+        project_id: str, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         if not x_user_id:
             raise DomainError("AUTH_REQUIRED")
@@ -788,7 +793,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
     @app.get("/api/projects/{project_id}/events")
     async def project_events(
         project_id: str,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
         last_event_id: str | None = Header(default=None, alias="Last-Event-ID"),
     ) -> StreamingResponse:
         await require_project_access(project_id, x_user_id)
@@ -840,7 +845,7 @@ def create_app(runtime: Runtime | None = None) -> FastAPI:
     @app.post('/api/projects/{project_id}/references/{kind}/{target_id}')
     async def generate_project_reference(
         project_id: str, kind: str, target_id: str, payload: VersionedRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         if kind not in {'characters', 'scenes'}:

@@ -180,7 +180,9 @@ class ProductionPipeline:
             return "script_detail"
         return "guided_question"
 
-    async def create_project(self, command: CreateProject) -> JsonObject:
+    async def create_project(
+        self, command: CreateProject, *, owner_user_id: str | None = None
+    ) -> JsonObject:
         style_profile = resolve_style(command.style_preset_id)
         story = command.story.strip()
         if len(story) < 10:
@@ -205,7 +207,7 @@ class ProductionPipeline:
                 "durationSec": command.duration_sec,
                 "mode": command.mode,
             },
-            "ownerUserId": None,
+            "ownerUserId": owner_user_id,
             "visualStyleProfile": style_profile,
             "exportManifest": None,
             "generatedStoryText": story if imported_source else None,

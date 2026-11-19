@@ -1,9 +1,10 @@
 """Explicit shot audio HTTP entry point with the existing access checks."""
 from collections.abc import Awaitable, Callable
 
-from fastapi import APIRouter, Header
+from fastapi import APIRouter, Depends
 
 from comicflow.api.schemas import VersionedRequest
+from comicflow.identity.request import current_user_id
 from comicflow.production.pipeline import ProductionPipeline
 
 
@@ -18,7 +19,7 @@ def audio_router(
         project_id: str,
         shot_id: str,
         payload: VersionedRequest,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().generate_shot_audio(

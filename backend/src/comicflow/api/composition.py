@@ -1,10 +1,11 @@
 """Composition and export HTTP routes, preserving project/job access checks."""
 from collections.abc import Awaitable, Callable
 
-from fastapi import APIRouter, Header, Query
+from fastapi import APIRouter, Depends, Query
 
 from comicflow.api.schemas import CompositionRequest
 from comicflow.domain.errors import DomainError
+from comicflow.identity.request import current_user_id
 from comicflow.production.pipeline import ProductionPipeline
 
 
@@ -17,7 +18,7 @@ def composition_router(
     @router.get("/api/projects/{project_id}/export")
     async def export_package(
         project_id: str, job_id: str | None = Query(default=None),
-        x_user_id: str | None = Header(default=None)
+        x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         if not x_user_id:
             raise DomainError("AUTH_REQUIRED")
@@ -26,7 +27,7 @@ def composition_router(
 
     @router.post("/api/projects/{project_id}/composition", status_code=202)
     async def request_composition(
-        project_id: str, payload: CompositionRequest, x_user_id: str | None = Header(default=None)
+        project_id: str, payload: CompositionRequest, x_user_id: str | None = Depends(current_user_id)
     ) -> dict[str, object]:
         await require_project_access(project_id, x_user_id)
         return await pipeline().request_composition(
@@ -43,7 +44,7 @@ def composition_router(
     async def cancel_job(
         project_id: str,
         job_id: str,
-        x_user_id: str | None = Header(default=None),
+        x_user_id: str | None = Depends(current_user_id),
     ) -> dict[str, object]:
         if not x_user_id:
             raise DomainError("AUTH_REQUIRED")
