@@ -66,7 +66,6 @@ export function CreateWorkspace({ snapshot }: { snapshot?: Snapshot }) {
       setStoryTextDirty(false)
     },
     onSuccess: ({ created, generated, kind }) => {
-      localStorage.setItem('comicflow-user-id', created.guestSession.id)
       setProjectId(created.project.id)
       setGenerationPhase('生成完成')
       if (kind === 'story') {

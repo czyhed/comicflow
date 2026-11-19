@@ -1,5 +1,11 @@
 # ComicFlow
 
+ComicFlow 将故事整理为可编辑剧本，并通过角色资产、分镜生产、任务队列和媒体导出完成动态漫剧制作。
+
+- 文档导航：[docs/README.md](docs/README.md)
+- 架构与领域约束：[工程规约](docs/PROJECT_ENGINEERING_RULES.md)、[数据流](docs/DATA_FLOW.md)
+- 部署与运维：[Drone 部署说明](docs/DRONE_DEPLOYMENT.md)
+
 ## 本地开发
 
 ```bash

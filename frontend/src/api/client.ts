@@ -153,12 +153,12 @@ export class ApiError extends Error {
 }
 
 export async function request<T>(path: string, init?: RequestInit, onProgress?: (event: TextProgress) => void): Promise<T> {
-  const userId = localStorage.getItem('comicflow-user-id')
+  // Identity is injected by the ShiploadAI gateway (X-Control-User-Id). The
+  // browser never supplies it, so no guest id is read from localStorage here.
   let response = await fetch(`${API_ROOT}${path}`, {
     ...init,
     headers: {
       ...(init?.body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
-      ...(userId ? { 'X-User-Id': userId } : {}),
       ...(onProgress ? { Accept: 'text/event-stream' } : {}),
       ...init?.headers,
     },

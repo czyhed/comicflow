@@ -127,6 +127,6 @@ export function AppShell({ children, snapshot, loading = false, loadError = fals
   </main>
     {modelOpen && <ModelApiSettings onClose={() => setModelOpen(false)} />}
     {projectOpen && <ProjectPicker onClose={() => setProjectOpen(false)} />}
-    {claimOpen && snapshot?.project && <ClaimProjectDialog projectId={snapshot.project.id} onClose={() => setClaimOpen(false)} onClaimed={(_userId, available) => { setCredits(available); setClaimOpen(false) }} />}
+    {claimOpen && snapshot?.project && <ClaimProjectDialog projectId={snapshot.project.id} onClose={() => setClaimOpen(false)} onClaimed={(available) => { setCredits(available); setClaimOpen(false) }} />}
   </div>
 }
