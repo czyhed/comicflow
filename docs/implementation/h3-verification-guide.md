@@ -258,7 +258,7 @@ Verification Complete!
 
 验证成功后：
 1. ✅ 标记任务 5 为完成
-2. ✅ 更新 `HANDOFF.md` 和 `minimax-h3-video-workflow.md`
+2. ✅ 更新 `../status/HANDOFF.md` 和 `minimax-h3-video-workflow.md`
 3. ✅ 提交代码到 Git
 4. ✅ 准备合并到 master 分支
 

@@ -22,7 +22,7 @@
 
 > 角色提示词增量（2026-09-09）：角色页已接入当前文本 API，生成中文设定和参考图提示词草稿，用户预览编辑、采用保存后供图片 API 消费；未调用真实模型验收。全量当前为 238 passed / 11 failed / 1 skipped。详细实现与后续范围见任务书末节和 HANDOFF 顶部。
 
-> 最新状态（2026-09-09）：已接入独立图片/视频 API 管理及每次 H3 强制执行 Skill。可行性、已完成范围和下一阶段验收见 `docs/implementation/provider-console-upgrade-assessment.md`，交接以 `HANDOFF.md` 顶部为准。以下模型一致性能力属于待真实验证的预期，不能当作质量结论。
+> 最新状态（2026-09-09）：已接入独立图片/视频 API 管理及每次 H3 强制执行 Skill。可行性、已完成范围和下一阶段验收见 `docs/implementation/provider-console-upgrade-assessment.md`，交接以 `../status/HANDOFF.md` 顶部为准。以下模型一致性能力属于待真实验证的预期，不能当作质量结论。
 
 **目标**：设计完整的漫剧视频生成工作流，解决角色一致性、场景一致性、镜头连贯性问题
 
@@ -370,7 +370,7 @@ H3 使用结构化 Prompt，包含：
 
 ## 2026-09-09 执行状态修正
 
-中文剧本与角色卡闭环已接通，实际《雨夜倒影》中文修订稿保存为版本 4，两张角色卡已持久化。详细操作、验证和后续任务见 `HANDOFF.md` 顶部与 `docs/implementation/minimax-h3-video-workflow.md` 末尾。
+中文剧本与角色卡闭环已接通，实际《雨夜倒影》中文修订稿保存为版本 4，两张角色卡已持久化。详细操作、验证和后续任务见 `../status/HANDOFF.md` 顶部与 `docs/implementation/minimax-h3-video-workflow.md` 末尾。
 
 此前参考背景误走 H3 的路径已改为独立图片 Provider，旧 MP4 历史资产未自动覆盖；Skill 实际文本编译及五种图片/文本模式已通过离线契约验证。全量离线回归更新为 225 passed / 11 failed / 1 skipped，级联门禁与旧 Script/envelope 的 11 项基线失败仍待修复。
 

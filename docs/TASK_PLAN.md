@@ -138,7 +138,7 @@ curl -X POST http://127.0.0.1:18000/api/provider-config/text/test
 8. 下载并验证视频
 
 **记录内容：**
-在 `BLOCKERS.md` 中记录：
+在 `status/BLOCKERS.md` 中记录：
 - 每个步骤的状态（成功/失败/超时）
 - 错误信息（前端 Console + 后端日志）
 - 卡住的具体位置
@@ -146,7 +146,7 @@ curl -X POST http://127.0.0.1:18000/api/provider-config/text/test
 
 **验收标准：**
 - 完整走完一遍流程（无论成功与否）
-- 所有问题已记录到 BLOCKERS.md
+- 所有问题已记录到 status/BLOCKERS.md
 - 已分类：阻塞性 / 非阻塞性
 
 **预计耗时：** 1 小时
@@ -160,7 +160,7 @@ curl -X POST http://127.0.0.1:18000/api/provider-config/text/test
 **目标：** 根据测试结果，确定需要修复的问题清单
 
 **输入：**
-- BLOCKERS.md 中的问题列表
+- status/BLOCKERS.md 中的问题列表
 
 **输出：**
 问题分类：
@@ -390,7 +390,7 @@ BAILIAN_API_KEY=invalid_key
 - `README.md`：更新启动步骤
 - `docs/DECISION_LOG.md`：记录本次重要决策
 - `docs/ACCEPTANCE_PLAN.md`：更新验收记录
-- `BLOCKERS.md`：标记问题状态（已修复/已忽略）
+- `status/BLOCKERS.md`：标记问题状态（已修复/已忽略）
 
 **验收标准：**
 - 所有文档与代码一致

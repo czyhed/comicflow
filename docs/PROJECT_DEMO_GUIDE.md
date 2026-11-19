@@ -588,7 +588,7 @@ API Key 使用 Fernet 加密保存在服务端，主密钥独立管理；数据�
 - [港风武侠风格记录](implementation/wuxia-film-style-2026-09-24.md)
 - [隔离全流程验收](implementation/post-split-flow-verification-2026-09-22.md)
 - [Drone 提交手册](DRONE_SUBMISSION_RUNBOOK.md)
-- [最新交接入口](../HANDOFF.md)
+- [最新交接入口](status/HANDOFF.md)
 - [技术逐项说明与完整请求流程](PROJECT_TECHNOLOGY_GUIDE.md)
 
 ## 11. 演示前最后一遍速记

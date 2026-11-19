@@ -22,7 +22,7 @@
 
 ## 交接给 Claude：当前执行顺序
 
-当前先验收百炼 Wan 2.7 测试链路，不继续扩展 H3 或 JSON 引擎。API 已部署 `input.media` 首帧协议和单角色参考图优先逻辑；`shot_1` 已有成功视频，`shot_2` 曾因错误尾帧级联返回400，代码已修复。API 重启后的测试 Key 不保留，需用户在模型 API 页面重新填写并启用 `wan2.7-i2v / 720P / i2v`，然后只生成一次 `shot_2`。失败时查看受限 `code/request_id`，按 `VIDEO_REQUEST_INVALID`、`VIDEO_QUOTA_EXHAUSTED`、`VIDEO_RATE_LIMITED`、`VIDEO_CONTENT_REJECTED`、`PROVIDER_AUTH_FAILED` 分流；禁止自动重试。完整交接见仓库根目录 `HANDOFF.md` 顶部，问题记录见 `.scratch/character-image-503/issues/04-wan27-media-protocol.md`。
+当前先验收百炼 Wan 2.7 测试链路，不继续扩展 H3 或 JSON 引擎。API 已部署 `input.media` 首帧协议和单角色参考图优先逻辑；`shot_1` 已有成功视频，`shot_2` 曾因错误尾帧级联返回400，代码已修复。API 重启后的测试 Key 不保留，需用户在模型 API 页面重新填写并启用 `wan2.7-i2v / 720P / i2v`，然后只生成一次 `shot_2`。失败时查看受限 `code/request_id`，按 `VIDEO_REQUEST_INVALID`、`VIDEO_QUOTA_EXHAUSTED`、`VIDEO_RATE_LIMITED`、`VIDEO_CONTENT_REJECTED`、`PROVIDER_AUTH_FAILED` 分流；禁止自动重试。完整交接见仓库根目录 `../status/HANDOFF.md` 顶部，问题记录见 `.scratch/character-image-503/issues/04-wan27-media-protocol.md`。
 
 > 2026-09-10 Wan 2.7修复：百炼新版协议要求2.7图生视频使用`input.media`首帧对象，旧版2.1–2.6继续使用`input.img_url`。此前503日志的上游code为InvalidParameter，已修正请求结构和错误分类并部署API。相关任务记录见`.scratch/character-image-503/issues/04-wan27-media-protocol.md`。尚未真实重试，避免额度消耗。
 
@@ -48,7 +48,7 @@
 
 **基于官方文档设计的漫剧视频生成工作流**
 
-> 2026-09-09 最新修订：中文剧本/角色闭环、独立图片 API、API 管理扩展与每次 H3 执行 Skill 已接入。配置仍为 API 进程内状态，Worker 未同步；11 项既有回归未修复，收费验收暂停。以 `HANDOFF.md` 顶部、本文件末节和 `provider-console-upgrade-assessment.md` 为准，历史“全部完成”不代表当前验收结论。
+> 2026-09-09 最新修订：中文剧本/角色闭环、独立图片 API、API 管理扩展与每次 H3 执行 Skill 已接入。配置仍为 API 进程内状态，Worker 未同步；11 项既有回归未修复，收费验收暂停。以 `../status/HANDOFF.md` 顶部、本文件末节和 `provider-console-upgrade-assessment.md` 为准，历史“全部完成”不代表当前验收结论。
 
 参考文档：
 - `🐚MiniMax H3 模型 - 使用手册.md`
@@ -669,7 +669,7 @@ async def test_first_frame_cascade():
 
 ## 十三、Claude 交接执行记录
 
-后续执行者每完成一个任务，必须在本节增加一条记录，并同步更新 `HANDOFF.md` 的”最新交接”区。
+后续执行者每完成一个任务，必须在本节增加一条记录，并同步更新 `../status/HANDOFF.md` 的”最新交接”区。
 
 ### 当前接手点
 
@@ -873,7 +873,7 @@ async def test_first_frame_cascade():
 **修改文件：**
 - `.env`：添加完整的 S3/MinIO 配置
 - `docs/implementation/h3-verification-guide.md`：更新为完整环境验证指南
-- `HANDOFF.md`：更新验证方式说明
+- `../status/HANDOFF.md`：更新验证方式说明
 
 **环境要求：**
 - 完整 Docker 环境（MinIO + PostgreSQL + Redis + API）
@@ -911,7 +911,7 @@ async def test_first_frame_cascade():
 ### 交接完成标准
 
 - 任务书中的状态与代码一致。
-- `HANDOFF.md` 写明最后完成的任务和下一任务。
+- `../status/HANDOFF.md` 写明最后完成的任务和下一任务。
 - 没有把 API Key、完整视频 URL 或原始供应商响应写入文档。
 - 未经用户明确许可，不消耗 MiniMax 视频额度。
 
@@ -958,7 +958,7 @@ async def test_first_frame_cascade():
 4. **完善角色编辑生命周期。** 改名后同步名称引用；修改视觉设定后使旧参考图失效；将角色/剧本写入纳入单事务。当前身份建卡与基本编辑已可用，不能据此宣称全链路一致性已经验证。
 5. **核验真实 H3 Prompt 编译。** Skill 文件路径声明不是执行；首尾帧模式与多参考模式互斥，需要独立离线契约验证。全部离线门禁通过后，再申请一次最小额度的真实验证。
 
-**接手入口：** `HANDOFF.md` 顶部；不要按历史章节直接开始 H3 收费试跑。
+**接手入口：** `../status/HANDOFF.md` 顶部；不要按历史章节直接开始 H3 收费试跑。
 
 ## 2026-09-09：独立图片 API 与每次 H3 生成执行 Skill
 

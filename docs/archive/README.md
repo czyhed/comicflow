@@ -8,4 +8,4 @@
 2. 更新本页索引；
 3. 修正仍然引用旧路径的链接。
 
-当前暂无独立归档文件；根目录的 `H3_VERIFICATION_STEPS.md` 与 `INTEGRATION_COMPLETE.md` 属于专项验收记录，暂保留原位以兼容既有引用。
+当前暂无独立归档文件；`status/H3_VERIFICATION_STEPS.md` 与 `status/INTEGRATION_COMPLETE.md` 属于专项验收记录，保留在 `docs/status/`，不归档。

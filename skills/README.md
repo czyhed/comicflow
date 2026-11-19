@@ -10,5 +10,5 @@ This directory contains vendor-provided prompt skills used by ComicFlow.
   adapted to ComicFlow's image provider and reference asset contracts.
 
 The two drama adapters are project-maintained compatibility layers derived from
-the repositories recorded in `HANDOFF.md`. They supplement the H3 skill; they
+the repositories recorded in `../docs/status/HANDOFF.md`. They supplement the H3 skill; they
 do not replace it or execute vendor scripts.

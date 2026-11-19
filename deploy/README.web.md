@@ -3,8 +3,8 @@
 React + TypeScript + Vite，生产使用 Nginx。后端仓库：
 https://github.com/leifengyang/comicflow
 
-部署说明：[docs/DRONE_DEPLOYMENT.md](docs/DRONE_DEPLOYMENT.md)。
-多模型配置：[模型控制台说明](docs/implementation/persistent-model-console.md)。
+部署说明：[部署说明](../docs/DRONE_DEPLOYMENT.md)。
+多模型配置：[模型控制台说明](../docs/implementation/persistent-model-console.md)。
 推送 main 后先检查，再通过 Drone Runner 的 Docker socket 部署到 18080；Git 版本标签仅用于回溯，不重复触发部署。
 `/api`、`/health` 通过同源代理连接后端。当前外部MinIO素材使用后端签发的直接地址；`/comicflow/`代理只兼容旧内置MinIO，不要改写新素材的签名URL。
 

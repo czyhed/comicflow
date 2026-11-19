@@ -3,8 +3,8 @@
 FastAPI + Celery + PostgreSQL + Redis + MinIO。配套前端：
 https://github.com/leifengyang/comicflow-web
 
-部署说明：[docs/DRONE_DEPLOYMENT.md](docs/DRONE_DEPLOYMENT.md)。
-多模型配置：[模型控制台说明](docs/implementation/persistent-model-console.md)。
+部署说明：[部署说明](../docs/DRONE_DEPLOYMENT.md)。
+多模型配置：[模型控制台说明](../docs/implementation/persistent-model-console.md)。
 推送 main 后先检查，再通过 Drone Runner 的 Docker socket 部署；Git 版本标签仅用于回溯，不重复触发部署。
 当前发布连接宝塔已有数据服务，使用 Drone Secret `backend_external_env`，格式参考 `.env.server.example`。
 部署入口 `deploy/backend-external.sh` 仅更新 API，不新建数据服务，不启动 Worker/Beat。

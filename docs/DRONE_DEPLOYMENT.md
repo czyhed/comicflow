@@ -161,7 +161,7 @@ uv run python scripts/package_deployment.py --output var/releases/2026-09-17
 当前生产依赖已修正：`httpx` 从开发依赖移至运行依赖，镜像不再先安装尚未 COPY 的项目，
 生产命令直接使用虚拟环境可执行文件，避免启动时再次联网同步开发依赖。
 
-本轮检查结果见 [验证记录](DRONE_VERIFICATION.md)，上传提交记录见原工作区 `HANDOFF.md` 的 2026-09-17 条目。
+本轮检查结果见 [验证记录](DRONE_VERIFICATION.md)，上传提交记录见原工作区 `status/HANDOFF.md` 的 2026-09-17 条目。
 发布前执行完整门禁，**流水线保留阻断检查，不跳过以强行上线**。
 仓库上传、Drone 配置、构建通过和服务器健康是四个独立状态；上传成功不等于上线成功。
 

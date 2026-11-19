@@ -2,47 +2,47 @@
 
 ## 2026-10-23：黄龙山单项目已合并上传服务器
 
-用户指定《黄龙山巅韩立大战天哭上人》已上传：prj_57cd8e0c84af/version11，9镜头、4角色整板、3已采用视频，连同终态作业和16引用对象（32,903,373字节）新增到既有服务器。原3项目/角色/作业/17模型配置历史/2outbox/schema0004摘要不变；保留awaiting-confirmation与旧合成失败waiting-retry状态，未重试或生成，6镜仍缺视频。服务器列表/项目/角色/视频接口及4整板、3视频206通过；文件SHA-256全一致，未做浏览器主观画质验收。新增独立insert-only工具，31测试通过/1 Windows符号链接权限跳过，Ruff与临时表事务回滚/幂等验证通过。私有源包与导入前逻辑行备份位于var/project-transfers/20261023-182212-huanglongshan，不是完整pg_dump。详见[迁移记录](docs/implementation/selected-project-transfer-2026-10-23.md)。无代码发布/schema升级/模型请求/密钥或Redis改动；原整库、密钥迁移和Redis切换待办仍保留。
+用户指定《黄龙山巅韩立大战天哭上人》已上传：prj_57cd8e0c84af/version11，9镜头、4角色整板、3已采用视频，连同终态作业和16引用对象（32,903,373字节）新增到既有服务器。原3项目/角色/作业/17模型配置历史/2outbox/schema0004摘要不变；保留awaiting-confirmation与旧合成失败waiting-retry状态，未重试或生成，6镜仍缺视频。服务器列表/项目/角色/视频接口及4整板、3视频206通过；文件SHA-256全一致，未做浏览器主观画质验收。新增独立insert-only工具，31测试通过/1 Windows符号链接权限跳过，Ruff与临时表事务回滚/幂等验证通过。私有源包与导入前逻辑行备份位于var/project-transfers/20261023-182212-huanglongshan，不是完整pg_dump。详见[迁移记录](../implementation/selected-project-transfer-2026-10-23.md)。无代码发布/schema升级/模型请求/密钥或Redis改动；原整库、密钥迁移和Redis切换待办仍保留。
 
 ## 2026-10-09：新增项目面试话术手册
 
-个人面试准备资料已从代码仓库移出；项目演示与技术说明见 [演示手册](docs/PROJECT_DEMO_GUIDE.md)。
+个人面试准备资料已从代码仓库移出；项目演示与技术说明见 [演示手册](../PROJECT_DEMO_GUIDE.md)。
 
 ## 2026-10-09最新：前后端已推送 GitHub，部署待核实
 
-用户中断登录排查后要求“先推送到GitHub”，已完成并再次核对两仓远端main：后端 `e1eebc3c3359143913301a31a7d9071f72a8b79e`，前端 `e47f2d45edac201e67c768d2f12fe5118aa54854`；前端标签publish-20261009-continuity-web。发布工具逐项验证Git对象并fast-forward，无force push。沿用前述已通过的完整测试，不重复生成。详见[发布记录](docs/implementation/drone-continuity-release-2026-10-09.md)。本批未继续手动触发Drone或操作服务器，推送可能触发原流水线；尚未核实新构建/部署成功。下段“前端尚未推送”是本次更新前的历史状态。后续先核对两仓实际构建/线上版本再继续，私有配置/数据库/素材不上传；数据库/MinIO/原密钥迁移与Redis正式切换继续独立保留。
+用户中断登录排查后要求“先推送到GitHub”，已完成并再次核对两仓远端main：后端 `e1eebc3c3359143913301a31a7d9071f72a8b79e`，前端 `e47f2d45edac201e67c768d2f12fe5118aa54854`；前端标签publish-20261009-continuity-web。发布工具逐项验证Git对象并fast-forward，无force push。沿用前述已通过的完整测试，不重复生成。详见[发布记录](../implementation/drone-continuity-release-2026-10-09.md)。本批未继续手动触发Drone或操作服务器，推送可能触发原流水线；尚未核实新构建/部署成功。下段“前端尚未推送”是本次更新前的历史状态。后续先核对两仓实际构建/线上版本再继续，私有配置/数据库/素材不上传；数据库/MinIO/原密钥迁移与Redis正式切换继续独立保留。
 
 ## 2026-10-09：Drone 发布已推送后端，等待 GitHub 重新登录
 
-用户明确要求按原 Drone 流程推送并尝试部署，本批授权已成立，恢复后无需重复问发布许可。先后端成功验收再前端，详见[本次发布记录](docs/implementation/drone-continuity-release-2026-10-09.md)。后端 main 已 fast-forward 推送 `e1eebc3c3359143913301a31a7d9071f72a8b79e`，标签deploy-20261009-continuity-backend；980后端/3条件跳过、38部署相关、Ruff/Mypy96通过。前端修复进度组件隐藏真实流式正文后85浏览器/53 Node/build通过，本地发布提交 `e47f2d45edac201e67c768d2f12fe5118aa54854` 尚未推送。
+用户明确要求按原 Drone 流程推送并尝试部署，本批授权已成立，恢复后无需重复问发布许可。先后端成功验收再前端，详见[本次发布记录](../implementation/drone-continuity-release-2026-10-09.md)。后端 main 已 fast-forward 推送 `e1eebc3c3359143913301a31a7d9071f72a8b79e`，标签deploy-20261009-continuity-backend；980后端/3条件跳过、38部署相关、Ruff/Mypy96通过。前端修复进度组件隐藏真实流式正文后85浏览器/53 Node/build通过，本地发布提交 `e47f2d45edac201e67c768d2f12fe5118aa54854` 尚未推送。
 
 Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main返回Bad credentials且无新构建。已打开原GitHub OAuth登录页等待用户登录刷新Drone凭据，不能声称部署完成，不连续空提交。登录后检查真实新构建SHA、checks/deploy；后端成功才推前端。服务器health200、旧版继续服务；无容器更新/模型调用/迁移/删除。服务器数据库已备份至私有var/releases/2026-10-09-continuity/server-before.dump，schema0004、Worker idle且无活动租约/事件；不重复升级或覆盖备份。本地前后端保持运行。数据库/MinIO/原解密密钥迁移及Redis正式切换仍独立保留。
 
 ## 2026-10-09：镜头裁剪与可选严格尾帧接续本地完成
 
-用户授权先备份后实施，代码/数据库备份在var/change-backups/continuity-20261009-174100。导出→选中镜头新增原视频预览、入点/出点、按播放位置设置和裁剪区间预览，合成作业保存shotTrims，原声同步裁剪，字幕草稿按新时长累计，源视频/剧本/完整导出保留。画面准备单可选previous-tail严格首帧，预览/请求/执行/采用一致，默认参考策略保留；新帧按源视频对象键隔离。详见[实施记录](docs/implementation/shot-continuity-editing-2026-10-09.md)。后端完整离线回归通过/3条件跳过、相关页面21/Node53/build/Ruff/Mypy通过，真实FFmpeg画面/声音切点与字幕测试及桌面/手机截图已检查。本地API/Worker已加载，5173/API健康和Worker pong；未合成实际项目、调用模型、部署或改业务数据。真实衔接效果由用户看试片确认，旧共享帧不自动修复；数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
+用户授权先备份后实施，代码/数据库备份在var/change-backups/continuity-20261009-174100。导出→选中镜头新增原视频预览、入点/出点、按播放位置设置和裁剪区间预览，合成作业保存shotTrims，原声同步裁剪，字幕草稿按新时长累计，源视频/剧本/完整导出保留。画面准备单可选previous-tail严格首帧，预览/请求/执行/采用一致，默认参考策略保留；新帧按源视频对象键隔离。详见[实施记录](../implementation/shot-continuity-editing-2026-10-09.md)。后端完整离线回归通过/3条件跳过、相关页面21/Node53/build/Ruff/Mypy通过，真实FFmpeg画面/声音切点与字幕测试及桌面/手机截图已检查。本地API/Worker已加载，5173/API健康和Worker pong；未合成实际项目、调用模型、部署或改业务数据。真实衔接效果由用户看试片确认，旧共享帧不自动修复；数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
 
 ## 2026-10-09：选中镜头合成本地完成
 
-用户已授权局部试片。导出页新增“选中镜头”，勾选已采用且素材齐全镜头即可按剧本顺序合成；完整成片门禁保持。原composition支持shotIds，独立作业/对象键保存试片，export?job_id读取，不覆盖完整exportManifest或项目完成状态。详见[实现记录](docs/implementation/selected-shot-composition-2026-10-09.md)。后端966通过/3条件跳过、页面相关14通过、请求Node5通过、真实FFmpeg试片/ffprobe和build/Ruff/Mypy通过；桌面/手机截图已检查。本地API/Worker加载完成，前端5173健康，Worker/Beat运行；本批模型0、未对真实项目提交合成、不部署/迁移。数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
+用户已授权局部试片。导出页新增“选中镜头”，勾选已采用且素材齐全镜头即可按剧本顺序合成；完整成片门禁保持。原composition支持shotIds，独立作业/对象键保存试片，export?job_id读取，不覆盖完整exportManifest或项目完成状态。详见[实现记录](../implementation/selected-shot-composition-2026-10-09.md)。后端966通过/3条件跳过、页面相关14通过、请求Node5通过、真实FFmpeg试片/ffprobe和build/Ruff/Mypy通过；桌面/手机截图已检查。本地API/Worker加载完成，前端5173健康，Worker/Beat运行；本批模型0、未对真实项目提交合成、不部署/迁移。数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
 
 ## 2026-10-09：本地图片/视频排队执行器已恢复
 
-用户要求尽快解决图片/视频一直排队。API正常而local-runtime-worker-1/beat-1停止，现已启动原执行器；配置一致、Worker pong、图片/视频各一次无模型队列往返、Beat定时派发及前端/API健康通过。4条当前未调用的pending事件备份后保留为held，作业输入/状态不变，历史held不释放；用户在页面点击“恢复已有图片作业”或“继续处理已有作业”即可产生新事件继续。已取消视频vjob_a91bde48308b43629b1955841fb810b3保持cancelled。详见[恢复记录](docs/implementation/generation-worker-restore-2026-10-09.md)。本批真实模型0，不删除数据、不部署；未修改UI或启动脚本。数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
+用户要求尽快解决图片/视频一直排队。API正常而local-runtime-worker-1/beat-1停止，现已启动原执行器；配置一致、Worker pong、图片/视频各一次无模型队列往返、Beat定时派发及前端/API健康通过。4条当前未调用的pending事件备份后保留为held，作业输入/状态不变，历史held不释放；用户在页面点击“恢复已有图片作业”或“继续处理已有作业”即可产生新事件继续。已取消视频vjob_a91bde48308b43629b1955841fb810b3保持cancelled。详见[恢复记录](../implementation/generation-worker-restore-2026-10-09.md)。本批真实模型0，不删除数据、不部署；未修改UI或启动脚本。数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
 
 ## 2026-10-09：演示手册按完整创作流程优化
 
-用户要求让演示稿更容易讲清项目流程。更新[项目演示手册](docs/PROJECT_DEMO_GUIDE.md)：增加“创意→项目→故事→剧本预览→确认→角色参考→准备单→视频候选→采用→合成导出”的总流程图，重写10—15分钟页面顺序，新增阶段输入/处理/确认/输出表和一段可直接讲的串联话术。补充项目切换边界：剧本拆分请求不会主动取消，但未确认的预览只在当前页面临时状态中，演示时应等待并保存后再切换；已保存剧本和持久媒体作业不受普通切换影响。仅文档修改，无模型调用、业务数据修改或部署。
+用户要求让演示稿更容易讲清项目流程。更新[项目演示手册](../PROJECT_DEMO_GUIDE.md)：增加“创意→项目→故事→剧本预览→确认→角色参考→准备单→视频候选→采用→合成导出”的总流程图，重写10—15分钟页面顺序，新增阶段输入/处理/确认/输出表和一段可直接讲的串联话术。补充项目切换边界：剧本拆分请求不会主动取消，但未确认的预览只在当前页面临时状态中，演示时应等待并保存后再切换；已保存剧本和持久媒体作业不受普通切换影响。仅文档修改，无模型调用、业务数据修改或部署。
 
 ## 2026-10-08：演示手册补充技术逐项讲解
 
-用户要求细化演示文档并解释每项技术。新增[技术详细手册](docs/PROJECT_TECHNOLOGY_GUIDE.md)，按前端、后端、数据库、后台执行、媒体、模型/流式、部署和测试逐项解释职责、实例、边界及现场说法，包含拆分、角色文字整板、视频到导出三个完整流程、模块输入输出表和术语/故障表。原[演示手册](docs/PROJECT_DEMO_GUIDE.md)已链接详细版并更新10月8日本地执行器恢复事实。核对源码、依赖及本地文档链接；仅文档修改，没有模型调用、运行配置变更、业务写入或发布。
+用户要求细化演示文档并解释每项技术。新增[技术详细手册](../PROJECT_TECHNOLOGY_GUIDE.md)，按前端、后端、数据库、后台执行、媒体、模型/流式、部署和测试逐项解释职责、实例、边界及现场说法，包含拆分、角色文字整板、视频到导出三个完整流程、模块输入输出表和术语/故障表。原[演示手册](../PROJECT_DEMO_GUIDE.md)已链接详细版并更新10月8日本地执行器恢复事实。核对源码、依赖及本地文档链接；仅文档修改，没有模型调用、运行配置变更、业务写入或发布。
 
 ## 2026-10-08：本地角色图片卡住已恢复
 
 根因是 `local-runtime-worker-1` / `local-runtime-beat-1` 停止，且本地Compose的restart为no；API仍运行，图片只入库/outbox而无人执行。用户明确批准恢复本次图片并解决问题后，只派发 `ijob_e490a61cd6ef412589c01a7b507fa353` 的一个事件，结果succeeded、attempts1/callsStarted1，1536×1024候选图已保存且对象内容可读取，页面GET返回成功/1资产。没有新建或重复提交作业。
 
-恢复同一命名空间的Worker/Beat；API、Worker、Beat容器及本地Compose均改为unless-stopped，迁移服务仍no。另外5个历史作业保持原状态、调用次数0；它们的8条旧outbox及本次1条重复事件保留为held，未删除。held是本次运维隔离标记，不是图片作业新状态；用户日后显式恢复某个历史作业会产生新的pending事件，不要批量释放旧事件。Worker pong、Beat周期派发任务返回0、API健康及图片读取已验证。详见[恢复记录](docs/implementation/character-image-runtime-recovery-2026-10-08.md)。仅本地运行修复，未发布服务器或迁移数据；数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
+恢复同一命名空间的Worker/Beat；API、Worker、Beat容器及本地Compose均改为unless-stopped，迁移服务仍no。另外5个历史作业保持原状态、调用次数0；它们的8条旧outbox及本次1条重复事件保留为held，未删除。held是本次运维隔离标记，不是图片作业新状态；用户日后显式恢复某个历史作业会产生新的pending事件，不要批量释放旧事件。Worker pong、Beat周期派发任务返回0、API健康及图片读取已验证。详见[恢复记录](../implementation/character-image-runtime-recovery-2026-10-08.md)。仅本地运行修复，未发布服务器或迁移数据；数据库/MinIO/原解密密钥迁移及Redis正式切换继续保留。
 
 ## 2026-10-08：移除剧本页静态AI分析
 
@@ -54,49 +54,49 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 用户后续要求再推送一次，已发布同代码树空提交`ef7e06c4fb4796c763d4ea2906a48ceb452d6f06`与标签`deploy-20260924-image-uuid-retry`，远端main已核实。Drone登录/仓库访问恢复，但重推及一次New Build/main后仍未见新构建，列表最新仍6，GitHub状态列表为空。尚未上线，应核查触发链路，不重复修复或连续空提交；下文“登录阻塞”为此次恢复前状态。
 
-用户已授权“先单独修复这个报错”的前端发布。基于线上4db450a建立独立发布worktree，仅图片入口、UUID工具与回归测试三个文件，提交`eba9e3afa2b5d9aba7484fc6df45c74dbd4f08d5`已推送前端main，标签`deploy-20260924-image-uuid`。81浏览器/40Node/build通过。详见[单项发布记录](docs/implementation/http-image-uuid-release-2026-09-24.md)。不要重复提交；故事/拆分流式、风格库、UI及视频/合成入口修改仍仅本地。
+用户已授权“先单独修复这个报错”的前端发布。基于线上4db450a建立独立发布worktree，仅图片入口、UUID工具与回归测试三个文件，提交`eba9e3afa2b5d9aba7484fc6df45c74dbd4f08d5`已推送前端main，标签`deploy-20260924-image-uuid`。81浏览器/40Node/build通过。详见[单项发布记录](../implementation/http-image-uuid-release-2026-09-24.md)。不要重复提交；故事/拆分流式、风格库、UI及视频/合成入口修改仍仅本地。
 
 线上仍旧JS，健康检查200，GitHub暂无Drone状态。Drone仓库详情Not Found、SYNC失败；用户称重新登录后，代理内置浏览器仍未登录且跳转超时。先恢复可操作的Drone登录会话、核查构建，再发布并运行已备好的线上静态比对和全API拦截浏览器验收，不能声称服务器已修复。数据库、MinIO、原解密密钥迁移及Redis正式切换继续保留；本批无真实模型或业务数据操作。
 
 ## 2026-09-24最新：故事/拆分流式输出、HTTP生图兼容本地完成
 
-用户要求实时显示生成内容、核查拆分多次API调用及修复服务器crypto.randomUUID报错，详见[实施记录](docs/implementation/text-streaming-http-compat-2026-09-24.md)。故事和拆分预览的原POST支持Accept=text/event-stream，同次请求回传真实增量/心跳/最终结果；前端显示可读正文和等待时间，去掉循环假阶段。模板标准Chat流式可用，显式关闭stream或非标准映射仍一次整段返回。失败/断线不自动补发，部分结果不保存为剧本。
+用户要求实时显示生成内容、核查拆分多次API调用及修复服务器crypto.randomUUID报错，详见[实施记录](../implementation/text-streaming-http-compat-2026-09-24.md)。故事和拆分预览的原POST支持Accept=text/event-stream，同次请求回传真实增量/心跳/最终结果；前端显示可读正文和等待时间，去掉循环假阶段。模板标准Chat流式可用，显式关闭stream或非标准映射仍一次整段返回。失败/断线不自动补发，部分结果不保存为剧本。
 
 源码及HTTP计数核实拆分一次文本请求、确认预览零模型调用，后面的检查为本地计算；发现并删除故事无效输出后的自动重生成/修复请求。原输入审核保留，未核查某笔历史供应商账单。HTTP环境缺randomUUID已通过真实按钮复现，统一getRandomValues兼容UUID工具用于图片/视频/合成，未知图片提交保留操作ID。
 
-完整后端949通过/3条件跳过，前端82浏览器+45Node、build/Ruff/Mypy96通过，真实本机HTTP流验证终态前可见内容，窄屏截图已检查。无真实模型、业务数据改动、提交/推送/部署或运行重启；服务器尚未加载修复。后续发布按[Drone手册](docs/DRONE_SUBMISSION_RUNBOOK.md)先后端再前端，仍保留数据库/MinIO/原解密密钥迁移及Redis正式切换。
+完整后端949通过/3条件跳过，前端82浏览器+45Node、build/Ruff/Mypy96通过，真实本机HTTP流验证终态前可见内容，窄屏截图已检查。无真实模型、业务数据改动、提交/推送/部署或运行重启；服务器尚未加载修复。后续发布按[Drone手册](../DRONE_SUBMISSION_RUNBOOK.md)先后端再前端，仍保留数据库/MinIO/原解密密钥迁移及Redis正式切换。
 
 ## 2026-09-24最新：Drone提交手册与港风武侠胶片本地完成
 
-用户要求将之前Drone操作整理为可复用Markdown，并把谢逊/张翠山两次生图提示词融入风格库。下次提交先读[操作手册](docs/DRONE_SUBMISSION_RUNBOOK.md)，明确当前两仓main/push、外部数据服务、backend_external_env、comicflow-server/web及实际故障处理，勿混用旧内置栈。发现已发布的前端ffmpeg安装遗漏于主工作区，已同步回deploy/drone.web.yml；导出脚本携带手册及上次发布记录，两端包扫描通过。
+用户要求将之前Drone操作整理为可复用Markdown，并把谢逊/张翠山两次生图提示词融入风格库。下次提交先读[操作手册](../DRONE_SUBMISSION_RUNBOOK.md)，明确当前两仓main/push、外部数据服务、backend_external_env、comicflow-server/web及实际故障处理，勿混用旧内置栈。发现已发布的前端ffmpeg安装遗漏于主工作区，已同步回deploy/drone.web.yml；导出脚本携带手册及上次发布记录，两端包扫描通过。
 
-新增港风武侠胶片（hong-kong-wuxia-film），风格库10种，旧九种/已保存快照保持。提炼胶片光影、青灰底色、真实材质及防绰号兽化，不固化两个人物、道具、天气或2:3；角色身份图继续中性背景。两次前批真实样图、参数局限及本批边界见[完整记录](docs/implementation/wuxia-film-style-2026-09-24.md)。本批后端939通过/3条件跳过、部署相关38通过、Ruff/Mypy通过；前端应用未改，未重跑浏览器。仅本地源码/文档/导出验证，没有真实生成、数据修改/删除、提交/推送/部署或运行重启。运行实例尚未加载新目录；14B/C和数据库/MinIO/原解密密钥迁移、Redis正式切换继续保留。
+新增港风武侠胶片（hong-kong-wuxia-film），风格库10种，旧九种/已保存快照保持。提炼胶片光影、青灰底色、真实材质及防绰号兽化，不固化两个人物、道具、天气或2:3；角色身份图继续中性背景。两次前批真实样图、参数局限及本批边界见[完整记录](../implementation/wuxia-film-style-2026-09-24.md)。本批后端939通过/3条件跳过、部署相关38通过、Ruff/Mypy通过；前端应用未改，未重跑浏览器。仅本地源码/文档/导出验证，没有真实生成、数据修改/删除、提交/推送/部署或运行重启。运行实例尚未加载新目录；14B/C和数据库/MinIO/原解密密钥迁移、Redis正式切换继续保留。
 
 ## 2026-09-23最新：YouMind风格与轻量UI本地完成
 
-用户要求参考YouMind每周最热真人视频、Image 2/2.5提示词，并补充按钮/UI轻量美化。已新增真人纪实DV、克制悬疑摄影、电影色彩对比，风格库共9种；原六预设/历史快照保留。移除chat-image主图追加的强制3D/毛孔/8K词，不修改整板版式、绑定或调用次数。创建页风格说明、色彩示意、规则层级与按钮/焦点做轻量调整，仍只对新项目选择生效。来源及完整验收见[本批记录](docs/implementation/youmind-style-ui-2026-09-23.md)。后端936通过/3跳过、前端81浏览器+40 Node、build/Ruff/Mypy通过；桌面/手机截图已检查。本批未提交/推送/部署、更新运行进程或调用模型，服务器仍为下述已发布版本。数据库/MinIO/原解密密钥迁移及Redis正式切换保留；14B旧项目换风格、自定义和独立图库仍未实现。
+用户要求参考YouMind每周最热真人视频、Image 2/2.5提示词，并补充按钮/UI轻量美化。已新增真人纪实DV、克制悬疑摄影、电影色彩对比，风格库共9种；原六预设/历史快照保留。移除chat-image主图追加的强制3D/毛孔/8K词，不修改整板版式、绑定或调用次数。创建页风格说明、色彩示意、规则层级与按钮/焦点做轻量调整，仍只对新项目选择生效。来源及完整验收见[本批记录](../implementation/youmind-style-ui-2026-09-23.md)。后端936通过/3跳过、前端81浏览器+40 Node、build/Ruff/Mypy通过；桌面/手机截图已检查。本批未提交/推送/部署、更新运行进程或调用模型，服务器仍为下述已发布版本。数据库/MinIO/原解密密钥迁移及Redis正式切换保留；14B旧项目换风格、自定义和独立图库仍未实现。
 
 ## 2026-09-23最新：经理试用前后端发布完成，不迁本机数据
 
-用户已恢复原宝塔服务器的推送部署授权，明确不需要本机项目/素材。复用原Drone与外部数据服务，详见[本次发布记录](docs/implementation/manager-pilot-deployment-2026-09-23.md)。服务器业务0行盘点后已备份并显式升至0004。后端bb2ac37的Drone8于16:12:58成功，API/Worker/Beat已更新，Worker实测pong；保留deploy-20260923-manager-pilot-readiness标签。前端ead5d32的Drone3及重触发的Drone4已停止，1b643c6的Drone5因Playwright测试镜像缺少ffmpeg而失败。修复提交4db450a的Drone6检查和部署均成功；只读校验确认线上静态资源与本地构建一致，仙宫云控件存在，health/projects/model-registry均200，服务器模型库revision10、4模型/7用途/5个已配置连接。错误根因及验收见发布记录和`var/verification/server-pilot-20260923/frontend.json`。不要重复升级schema或再次重提。创建页referenceImage旧签名15分钟后过期，已记入报告，未因此扩展后端发布。
+用户已恢复原宝塔服务器的推送部署授权，明确不需要本机项目/素材。复用原Drone与外部数据服务，详见[本次发布记录](../implementation/manager-pilot-deployment-2026-09-23.md)。服务器业务0行盘点后已备份并显式升至0004。后端bb2ac37的Drone8于16:12:58成功，API/Worker/Beat已更新，Worker实测pong；保留deploy-20260923-manager-pilot-readiness标签。前端ead5d32的Drone3及重触发的Drone4已停止，1b643c6的Drone5因Playwright测试镜像缺少ffmpeg而失败。修复提交4db450a的Drone6检查和部署均成功；只读校验确认线上静态资源与本地构建一致，仙宫云控件存在，health/projects/model-registry均200，服务器模型库revision10、4模型/7用途/5个已配置连接。错误根因及验收见发布记录和`var/verification/server-pilot-20260923/frontend.json`。不要重复升级schema或再次重提。创建页referenceImage旧签名15分钟后过期，已记入报告，未因此扩展后端发布。
 
 导出后端929通过/3跳过，前端81浏览器+40 Node通过，部署修复后38通过。用户随后明确批准复用当前模型配置：已从本机revision44复制当前绑定的4连接/4模型/7用途至服务器revision9，服务器自身主密钥加密保存API Key；未迁原主密钥或配置历史。保留一条无模型验收草稿prj_66083bdd51a9及测试PNG，保存/签名读取通过。不迁本机项目、不调用模型、不删除数据。正式数据库/MinIO/原解密密钥成套迁移和Redis单写端切换继续保留，工单10未关闭。下方“部署暂停/模型库为空”为历史边界，不要重复请求批准或重做已完成准备。
 
 ## 2026-09-23最新：末班车s1环境声误作旁白已修正
 
-用户已成功生成仙宫云视频但反馈旁白错误，详见[音频输入修复](docs/implementation/h3-audio-input-fix-2026-09-23.md)。实际作业把“暴雨声、车门气动声、雨点敲打车顶声”保存为narration并要求逐字朗读，离线重放与实际提交一致。脚本提示/预览/确认/旧格式及前端统一允许两项明确为空的无台词镜头，仍拒绝缺失/错误类型。后端929通过/3跳过、静态检查/build通过、浏览器13通过。
+用户已成功生成仙宫云视频但反馈旁白错误，详见[音频输入修复](../implementation/h3-audio-input-fix-2026-09-23.md)。实际作业把“暴雨声、车门气动声、雨点敲打车顶声”保存为narration并要求逐字朗读，离线重放与实际提交一致。脚本提示/预览/确认/旧格式及前端统一允许两项明确为空的无台词镜头，仍拒绝缺失/错误类型。后端929通过/3跳过、静态检查/build通过、浏览器13通过。
 
 本机API/Worker已加载修复；备份后通过PATCH script修正项目prj_f9f6e04d5dd7的s1旁白及派生预算，version8→9，保持awaiting-confirmation，环境音和配乐保留。两条旧视频与原作业保留、没有真实生成或重发；真实准备单ready且台词0字/0秒。已有视频不会自动变更。s4亦有同类旧数据，本批未改，生成前需核对。数据库/MinIO/原密钥迁移及Redis正式切换保留，7C暂停。下方503是之前探测结果，不代表此刻仍不可用。
 
 ## 2026-09-23最新：本机已切换仙宫云，远端就绪仍503
 
-用户明确「执行吧」授权运行更新及分辨率自选，已完成[本机运行更新](docs/implementation/xiangongyun-h3-runtime-2026-09-23.md)。实际API是 `local-runtime-api-1` / 18002，已重启加载新版；同一私有Compose的Worker/Beat已启动，沿用原数据/密钥/Redis命名空间。已有「仙宫云minimax」模型同ID切为 `xiangongyun-h3`，revision39→40，原连接/Key/用途绑定保留，默认0.5P/544×960/平衡档。主模型库支持分辨率与档位下拉自选并同步JSON。
+用户明确「执行吧」授权运行更新及分辨率自选，已完成[本机运行更新](../implementation/xiangongyun-h3-runtime-2026-09-23.md)。实际API是 `local-runtime-api-1` / 18002，已重启加载新版；同一私有Compose的Worker/Beat已启动，沿用原数据/密钥/Redis命名空间。已有「仙宫云minimax」模型同ID切为 `xiangongyun-h3`，revision39→40，原连接/Key/用途绑定保留，默认0.5P/544×960/平衡档。主模型库支持分辨率与档位下拉自选并同步JSON。
 
 一笔旧协议queued任务确认attempts0/taskId空/调用0后，已备份并记为配置变更failed，保留记录，防止启调度后自动提交；事件消费后调用仍0。154项目及已成功素材记录保留，无删除/真实生成。真实《末班车》s1准备单ready，2图/6秒/新协议；build和前端模拟6通过。只读远端ready与config均503/text/plain，实例应用尚未确认可用；下一步核对实例就绪，由用户生成验证。不再重复切配置或启动旧消费者。数据迁移与Redis正式切换仍保留、7C暂停。
 
 ## 2026-09-23最新：仙宫云 H3 源码接入及离线验收完成
 
-先读[仙宫云接入与验收](docs/implementation/xiangongyun-h3-integration-2026-09-23.md)。用户已提供桌面 H3-API-SKILL.md，并多次明确批准继续、不逐项确认，本批无需重复批准。新增独立 `xiangongyun-h3` 协议和 multipart 适配器，复用现有模型库/素材库/作业。默认本地中文编译、远端 compile_prompt=false、0.5P竖屏544×960、平衡档；旧 CompShare 通道保留。5模式、鉴权下载、检查点恢复、未知提交不重发与参数预览已离线验证。
+先读[仙宫云接入与验收](../implementation/xiangongyun-h3-integration-2026-09-23.md)。用户已提供桌面 H3-API-SKILL.md，并多次明确批准继续、不逐项确认，本批无需重复批准。新增独立 `xiangongyun-h3` 协议和 multipart 适配器，复用现有模型库/素材库/作业。默认本地中文编译、远端 compile_prompt=false、0.5P竖屏544×960、平衡档；旧 CompShare 通道保留。5模式、鉴权下载、检查点恢复、未知提交不重发与参数预览已离线验证。
 
 最新：专用21通过、完整后端920通过/3跳过、Ruff/Mypy94/前端build通过，浏览器模拟6通过。**只完成源码及离线验收，未更新业务运行进程或真实模型库绑定，未验证真实生成。** 无真实模型/仙宫云请求、业务数据修改、删除、迁移、重启、提交或部署。下一步统一加载新版 API/Worker，再复用现有连接选择仙宫云协议并绑定镜头视频；真实生成由用户验证。不要重复实现适配器或重复提示词收尾。
 
@@ -104,43 +104,43 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 ## 2026-09-22最新：用户批准的提示词收尾已完成
 
-先读[提示词收尾验收](docs/implementation/prompt-closeout-2026-09-22.md)。按用户批准单批核对各用途，修正故事/剧本规则混入、环境声误作旁白、目标时长提示、旧图片材质/天气强加、图生图整板面部区及H3英文多人对白归属/固定节奏。保留已认可文字板、六风格v2和Context-IR v3。相关115、完整后端899通过/3跳过，Ruff/Mypy93通过；16组合成提示词已保存。0真实模型、无业务数据操作/重启/提交推送/部署，不宣称真实画质或运行进程已统一更新；挂载Skill按请求读取，后续请求可能读到文件变更。
+先读[提示词收尾验收](../implementation/prompt-closeout-2026-09-22.md)。按用户批准单批核对各用途，修正故事/剧本规则混入、环境声误作旁白、目标时长提示、旧图片材质/天气强加、图生图整板面部区及H3英文多人对白归属/固定节奏。保留已认可文字板、六风格v2和Context-IR v3。相关115、完整后端899通过/3跳过，Ruff/Mypy93通过；16组合成提示词已保存。0真实模型、无业务数据操作/重启/提交推送/部署，不宣称真实画质或运行进程已统一更新；挂载Skill按请求读取，后续请求可能读到文件变更。
 
 **后续每批先告知计划并等待用户同意，不凭旧授权自动展开新任务。** 用户明天提供的Skill主要用于仙宫云上他人部署的MiniMax接入，不是提示词写作规范；提示词本批无需等待它。150条原稿全文归档、仙宫云接入、真实30秒质量及正式迁移均独立保留。数据库/MinIO/原解密密钥迁移、Redis干净命名空间/单写端切换仍未做，已有迁移阻塞保持，7C暂停。
 
 ## 2026-09-22最新：3.1有限内容增量及真实只读盘点已落盘
 
-接手先读[本批执行记录](docs/implementation/prompt-inventory-verification-2026-09-22.md)，再看下方详细交接和原任务书3/3.1。六风格新增内容使用revision2，旧项目快照保留；中文H3编译v3补动作可见过程。后端及原迁移工具901通过/4跳过，新分组工具聚焦16通过/1跳过，Ruff/Mypy93/build通过；未重跑完整隔离栈。没有真实模型调用、删除、重启、改运行配置、迁移、提交、推送或部署。用户指出本批范围偏多，当前仅收尾，不继续展开新任务。
+接手先读[本批执行记录](../implementation/prompt-inventory-verification-2026-09-22.md)，再看下方详细交接和原任务书3/3.1。六风格新增内容使用revision2，旧项目快照保留；中文H3编译v3补动作可见过程。后端及原迁移工具901通过/4跳过，新分组工具聚焦16通过/1跳过，Ruff/Mypy93/build通过；未重跑完整隔离栈。没有真实模型调用、删除、重启、改运行配置、迁移、提交、推送或部署。用户指出本批范围偏多，当前仅收尾，不继续展开新任务。
 
 只读实测154当前项目/28角色、469对象约435MiB、33配置历史/103凭据解密通过；私有逐项目清单在`var/verification/project-inventory-20260922-222905/projects.md`。**正式迁移仍阻塞：本机额外projects(2行)/generation_jobs(0行)使现有工具拒绝；267个缺引用均mock/、193个仅URL位置、5项目8旧未终结作业、Redis未结束状态待核对。** 未删表、清队列或修改白名单，诊断报告不是迁移认证。数据库、MinIO、原密钥成套迁移及Redis干净命名空间/单一写入端切换均保留，正式7C仍暂停。
 
-来源归档：[222项索引/72条MIT重建全文与ZeroLu7条正文](docs/research/h3-community-archive-2026-09-22.md)。150条作者原稿仍仅索引，不能说222全文完成。用户Skill、新MiniMax接口文档和30秒真实作品验收仍待输入/用户操作。下方“运行时尚未修改、只读盘点待做”为本批前记录；本批只改源码，未宣称运行进程加载新版。
+来源归档：[222项索引/72条MIT重建全文与ZeroLu7条正文](../research/h3-community-archive-2026-09-22.md)。150条作者原稿仍仅索引，不能说222全文完成。用户Skill、新MiniMax接口文档和30秒真实作品验收仍待输入/用户操作。下方“运行时尚未修改、只读盘点待做”为本批前记录；本批只改源码，未宣称运行进程加载新版。
 
 ## 2026-09-22最新入口：已核对仓库并写入新窗口交接
 
-**接手先读[本次交接](docs/implementation/continuation-handoff-2026-09-22.md)，再按[原任务书第3/3.1节](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)执行。下方保留的是带日期的历史记录，不按每条旧“下一步”重复实施。**
+**接手先读[本次交接](../implementation/continuation-handoff-2026-09-22.md)，再按[原任务书第3/3.1节](../implementation/quality-and-modularity-taskbook-2026-09-19.md)执行。下方保留的是带日期的历史记录，不按每条旧“下一步”重复实施。**
 
 本次已实际写入文件，纠正前面只输出Markdown而未保存、误称没有本地编辑工具的问题。只更新文档及来源索引，保留已有未提交源码，没有运行生成、改配置、重启、迁移、删除、提交或部署。
 
 已完成：7B迁移工具/隔离演练、15D三批限定拆分、拆分后完整不扣费回归；角色文字整板和本次相邻镜头连贯性已获用户认可。**不再从零重做迁移工具或继续无目的拆分。** 风格库已有6个结构化预设和快照；中文H3已含素材职责/动作时间线/对白声音，并非待从零新增。
 
-仍未完成：旧本机PostgreSQL＋MinIO＋原模型配置解密密钥正式迁往服务器，Redis干净命名空间及单一写入端切换，新版部署和完整约30秒真实作品验收。服务器库曾建至0002/5张表，不能视为空库覆盖；实际现状临操作复核。正式迁移方案见[DATA_MIGRATION_PLAN](docs/DATA_MIGRATION_PLAN.md)，当前仍未恢复发布/停写操作。
+仍未完成：旧本机PostgreSQL＋MinIO＋原模型配置解密密钥正式迁往服务器，Redis干净命名空间及单一写入端切换，新版部署和完整约30秒真实作品验收。服务器库曾建至0002/5张表，不能视为空库覆盖；实际现状临操作复核。正式迁移方案见[DATA_MIGRATION_PLAN](../DATA_MIGRATION_PLAN.md)，当前仍未恢复发布/停写操作。
 
 最新用户另外授权提示词库/风格库增量与项目只读盘点，后续会给Skill做验证、给租用服务器上的MiniMax接口文档做接入。已纳入任务书3.1；不能因之前“详细提示词后置”遗漏本次授权，也不能因写交接自行把正式迁移改成马上执行。新模型服务器与现有110.42.51.234业务数据服务器是否同一台尚未确定，不默认一起迁移。
 
-资料位置：[小红书7篇及评论实读](docs/implementation/xiaohongshu-character-prompt-review-2026-09-21.md)原已存在；本次新增[H3网页来源/案例索引与规则](docs/research/h3-prompt-source-register-2026-09-22.md)。tryminimax约222条全文尚未完整归档，不能宣称入库完成。此前把仙宫云两条链接误拼成小红书地址的404不能当作原文失效。154项目是此前页面观察，不是本轮数据库盘点；只读分类报告仍待完成，不删除项目。
+资料位置：[小红书7篇及评论实读](../implementation/xiaohongshu-character-prompt-review-2026-09-21.md)原已存在；本次新增[H3网页来源/案例索引与规则](../research/h3-prompt-source-register-2026-09-22.md)。tryminimax约222条全文尚未完整归档，不能宣称入库完成。此前把仙宫云两条链接误拼成小红书地址的404不能当作原文失效。154项目是此前页面观察，不是本轮数据库盘点；只读分类报告仍待完成，不删除项目。
 
 ## 2026-09-22最新：拆分输出截断，已调整当前Flash输出预算
 
 用户新一次拆分已有明确output_truncated日志，另有504；当前用户选择的拆分模型为deepseek-v4-flash-ga-260731，仅绑定script。自定义请求未传max_tokens，官方默认回答上限4K。已通过已有模型库API增加max_tokens=16384，timeoutMs由120000改300000，revision32→33；保留模型/Key/绑定/故事/时长，无需重启。
 
-保存后真实Adapter→MockTransport验证实际出站参数、单次假调用及60秒8镜解析通过，真实模型调用0；最终只读health正常、配置已生效。未改业务代码，不宣称真实生成通过；下一次拆分仍由用户自行点击，可能计费。备份、回退和证据见[输出预算记录](docs/implementation/script-output-budget-2026-09-22.md)。固定计划不变，未提交/推送/部署。下节模型未修改是上一轮记录，本次配置以本节为准。
+保存后真实Adapter→MockTransport验证实际出站参数、单次假调用及60秒8镜解析通过，真实模型调用0；最终只读health正常、配置已生效。未改业务代码，不宣称真实生成通过；下一次拆分仍由用户自行点击，可能计费。备份、回退和证据见[输出预算记录](../implementation/script-output-budget-2026-09-22.md)。固定计划不变，未提交/推送/部署。下节模型未修改是上一轮记录，本次配置以本节为准。
 
 ## 2026-09-22最新：用户拆分502，修复场景说明校验冲突并补诊断
 
 真实项目prj_f9f6e04d5dd7目标60秒，故事828字/v2已保存、尚无剧本；预览返回502通用PROVIDER_INVALID_RESPONSE，原始模型响应未保留，不能断言当次具体根因。离线确认真实Adapter对可选场景说明仍要求非空，与已有编辑器契约冲突；已统一为可选但有值类型必须正确，必要镜头/引用校验继续保留。补封闭分类（输出截断/正文为空/只有思考/JSON损坏/结构不符等）及中文错误信息，不打印原文，不自动重试。
 
-后端883通过/4跳过，Node33、页面31、build/Ruff/Mypy92通过；假响应含60秒3场景8镜、Doubao及用户同形自定义模板接线。已更新本机API/Worker及前端，故事/配置保留；本轮真实模型0，没有重提该次失败请求。用户若再试拆分，是新的文本调用，可能计费；无法从已丢失响应恢复旧预览。详见[诊断与验收](docs/implementation/script-preview-502-2026-09-22.md)。固定后续排期不变，未提交/推送或服务器部署。
+后端883通过/4跳过，Node33、页面31、build/Ruff/Mypy92通过；假响应含60秒3场景8镜、Doubao及用户同形自定义模板接线。已更新本机API/Worker及前端，故事/配置保留；本轮真实模型0，没有重提该次失败请求。用户若再试拆分，是新的文本调用，可能计费；无法从已丢失响应恢复旧预览。详见[诊断与验收](../implementation/script-preview-502-2026-09-22.md)。固定后续排期不变，未提交/推送或服务器部署。
 
 ## 2026-09-22运行更新：已按用户要求启动本机验证环境
 
@@ -152,7 +152,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 固定任务书v2.1第3步完成。真实隔离PostgreSQL/Redis/MinIO/API/Worker、假供应商HTTP、浏览器及FFmpeg贯穿通过：自动故事SSE/导入拆分、文字直接整板与主图后图生图整板、六镜参考及尾帧/候选采用、下载失败恢复、原声提取复用、合成播放下载、API/Worker重启和7项视频资源读取。最终完整流程假文本2/图片5/视频6，真实模型0；成片30.022秒，六段运动和音调顺序正确。独立图片/视频Worker中断恢复也通过，未重提原作业。
 
-本批仅测试/文档修改，未改业务代码/配置/提示词，未提交/推送/部署。测试环境已清理，证据保存在var/verification/post-split-flow-20260922；本机业务服务未启动或更新，不能把旧5173/18002记录当作当前可验证入口。测试中修正了新断言字段及原声提取/合成顺序，最终重跑通过；完整证据、限制和用户验证步骤见[本批验收](docs/implementation/post-split-flow-verification-2026-09-22.md)。
+本批仅测试/文档修改，未改业务代码/配置/提示词，未提交/推送/部署。测试环境已清理，证据保存在var/verification/post-split-flow-20260922；本机业务服务未启动或更新，不能把旧5173/18002记录当作当前可验证入口。测试中修正了新断言字段及原声提取/合成顺序，最终重跑通过；完整证据、限制和用户验证步骤见[本批验收](../implementation/post-split-flow-verification-2026-09-22.md)。
 
 **限定拆分及拆分后回归均已完成，不再拆分。用户验证先恢复并核查本机专用运行环境，复用满意素材补齐30秒；下一工程阶段仍为用户恢复后的7C正式迁移部署，继续暂停。** 真实动作/对白/整体画质不能由假媒体回归代替，下文“等待完整隔离回归”均为历史交接。
 
@@ -160,7 +160,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 新增 `production/audio_production.py` 收拢配音、H3原声提取/复用、时间轴与资产更新及局部口型重生成。显式注入仓储/TTS/口型Provider/AssetStore，按当前调用构造；Pipeline保留原声音入口及原声兼容方法，regenerate_shot仅把lipsync分支委托，跨阶段候选等待逻辑保留。新增api/audio.py及前端api/audio.ts，原1条路由/1个请求不变，不改页面。
 
-验证：前后同组38通过；完整后端含迁移工具861通过/4条件跳过，Ruff/Mypy92、前端build、Node27、相关页面17通过。5个搬迁方法AST、口型分支与跨阶段分支逻辑一致；其余92个Pipeline方法不变，3个签名不变，完整OpenAPI73路径及schema一致。详见[声音契约](docs/implementation/audio-split-contract-2026-09-22.md)与[验收](docs/implementation/audio-split-verification-2026-09-22.md)。
+验证：前后同组38通过；完整后端含迁移工具861通过/4条件跳过，Ruff/Mypy92、前端build、Node27、相关页面17通过。5个搬迁方法AST、口型分支与跨阶段分支逻辑一致；其余92个Pipeline方法不变，3个签名不变，完整OpenAPI73路径及schema一致。详见[声音契约](../implementation/audio-split-contract-2026-09-22.md)与[验收](../implementation/audio-split-verification-2026-09-22.md)。
 
 本批基线在var/change-backups/audio-split-20260922/，证据在var/verification/audio-split-20260922/。既有工作区成果保留，未提交/推送、业务运行未更新，真实模型调用0。未新增声音作业/并发防重，原独立口型错误映射和时间校验差异、非H3音频并发写入限制保留并披露；不把拆分写成修复全部可靠性问题。
 
@@ -170,7 +170,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 用户批准执行后，本批抽取 `production/composition_jobs.py`（合成门禁、创建/执行/取消、导出读取）、`api/composition.py` 的3条路由、前端 `api/composition.ts` 的2个请求。Pipeline原5个入口及Worker调用兼容，显式依赖仓储/Provider/资产存储/revision；已有FFmpeg、原声和历史资源实现不动，无新表或状态机。下一批声音需同时处理生成、原声提取与局部口型重生成，跨阶段协调保留。
 
-验证：同组聚焦拆分前后各48通过，完整后端含迁移工具854通过/4条件跳过，Ruff、Mypy90源文件、前端build、Node27、页面Playwright17通过。7个搬迁方法AST一致、其他89个Pipeline方法不变、5个签名不变、OpenAPI73路径及schema一致；3条路由仅接线变化，2个前端请求一致。详见[本批契约](docs/implementation/composition-split-contract-2026-09-22.md)和[本批验收](docs/implementation/composition-split-verification-2026-09-22.md)。
+验证：同组聚焦拆分前后各48通过，完整后端含迁移工具854通过/4条件跳过，Ruff、Mypy90源文件、前端build、Node27、页面Playwright17通过。7个搬迁方法AST一致、其他89个Pipeline方法不变、5个签名不变、OpenAPI73路径及schema一致；3条路由仅接线变化，2个前端请求一致。详见[本批契约](../implementation/composition-split-contract-2026-09-22.md)和[本批验收](../implementation/composition-split-verification-2026-09-22.md)。
 
 基线 `var/change-backups/composition-split-20260922/`，证据 `var/verification/composition-split-20260922/`。此前迁移工具/故事剧本改动保留；未提交/推送，未改业务数据或重启业务服务，真实模型调用0。取消与运行中FFmpeg交错、并发提交幂等、固定导出键覆盖的既有限制未在结构抽取中修复，不宣称全面并发安全；详见报告限制。
 
@@ -180,7 +180,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 用户授权谨慎拆分并在中断后继续。现已收尾：新增 `production/story_scripts.py` 收拢故事/剧本操作，Pipeline保留18个操作入口，明确注入当前Provider/revision、共享锁和仓储；17条HTTP路由移至 `api/story_scripts.py`，前端12个请求移至 `api/storyScripts.ts`。角色绑定版本更新仍走同一实现；提示词、模型选择、请求/响应、状态和调用次数保持。已有7B未提交改动保留，未混作本批新增工作。
 
-验收：拆分前后同组76项通过；本次完整后端含工具849通过/4条件跳过，Ruff/Mypy88通过，前端build、Node27、页面Playwright34通过。31个搬迁方法逻辑一致，完整OpenAPI73路径一致，12个前端请求一致。首次抽取遗漏角色绑定私有调用已由测试发现并修复；创建页测试补了未mock请求拦截，最终无业务API代理请求。详见[拆分验收](docs/implementation/story-script-split-verification-2026-09-22.md)与[契约](docs/implementation/story-script-split-contract-2026-09-22.md)。
+验收：拆分前后同组76项通过；本次完整后端含工具849通过/4条件跳过，Ruff/Mypy88通过，前端build、Node27、页面Playwright34通过。31个搬迁方法逻辑一致，完整OpenAPI73路径一致，12个前端请求一致。首次抽取遗漏角色绑定私有调用已由测试发现并修复；创建页测试补了未mock请求拦截，最终无业务API代理请求。详见[拆分验收](../implementation/story-script-split-verification-2026-09-22.md)与[契约](../implementation/story-script-split-contract-2026-09-22.md)。
 
 没有真实模型调用、业务数据迁移、服务重启、Git提交/推送；页面测试用mock，未宣称真实数据栈或供应商质量验收。源码基线保存在 `var/change-backups/story-script-split-20260922/`，比较证据在 `var/verification/story-script-split-20260922/`。旧短故事固定补段落和流式JSON修复行为保留，不混入这次结构修改。
 
@@ -188,9 +188,9 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 ## 2026-09-22当前：7B迁移工具及合成演练完成，下一步15D
 
-用户要求“确定一下之后的计划，不要随意变更”。执行入口为[任务书v2.1第3节](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)：**7B迁移工具与隔离演练 → 15D剩余必要拆分 → 拆分后完整不扣费回归 → 7C正式迁移部署**。第1步现已完成工具及合成演练。源码回溯点`b867b16`、计划提交`b940a24`保留；本批修改未提交或推送。
+用户要求“确定一下之后的计划，不要随意变更”。执行入口为[任务书v2.1第3节](../implementation/quality-and-modularity-taskbook-2026-09-19.md)：**7B迁移工具与隔离演练 → 15D剩余必要拆分 → 拆分后完整不扣费回归 → 7C正式迁移部署**。第1步现已完成工具及合成演练。源码回溯点`b867b16`、计划提交`b940a24`保留；本批修改未提交或推送。
 
-本批新增`scripts/migrate_data.py`及`migration_tools/`，提供显式配置的inventory/backup/restore/verify；不加载.env。当前0004七张表及序列、完整桶/候选/历史、模型配置全部历史解密均校验；Redis只分类不复制。源未完成作业、缺对象、错误密钥、备份损坏、额外表及非空目标阻止操作。恢复上传中断保留部分目标，不自动清空重跑。详见[使用说明](docs/implementation/migration-tooling-usage-2026-09-22.md)及[验收记录](docs/implementation/migration-tooling-verification-2026-09-22.md)，[正式迁移方案](docs/DATA_MIGRATION_PLAN.md)已改为宝塔外部服务/backend_external_env，旧内置卷示例不再作为执行步骤。
+本批新增`scripts/migrate_data.py`及`migration_tools/`，提供显式配置的inventory/backup/restore/verify；不加载.env。当前0004七张表及序列、完整桶/候选/历史、模型配置全部历史解密均校验；Redis只分类不复制。源未完成作业、缺对象、错误密钥、备份损坏、额外表及非空目标阻止操作。恢复上传中断保留部分目标，不自动清空重跑。详见[使用说明](../implementation/migration-tooling-usage-2026-09-22.md)及[验收记录](../implementation/migration-tooling-verification-2026-09-22.md)，[正式迁移方案](../DATA_MIGRATION_PLAN.md)已改为宝塔外部服务/backend_external_env，旧内置卷示例不再作为执行步骤。
 
 验证：后端加工具回归847通过/4条件跳过，工具聚焦13通过/1符号链接权限跳过，Ruff通过，Mypy后端86源文件通过。最终真实隔离PostgreSQL/Redis/MinIO演练恢复7表/序列、9对象、2版配置，9份新签名媒体读取、2次仓储重建通过；证据`var/verification/migration-20260922-115722/rehearsal-report.json`。演练项目已清理，没有业务数据读写、服务器连接或真实模型调用，未重启业务服务。仓储重建不是API/Worker重启或浏览器验收；真实数据迁移和30秒作品质量仍未完成。
 
@@ -222,7 +222,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 已核查活动槽/未发布outbox均0后重启本机验证API和Worker，使保存修复生效；Beat保留运行，旧消费者未启。正式保存后s1准备单ready=true（768P/5秒/9:16/context-ir、林夏+司机两图、旁白11字），s2被CASCADE_FRAME_MISSING拦截，等待新s1生成并采用。这是正确保护，不要用旧视频解锁。林秋满意整板仍是候选，用户须确认。图片作业仍3/视频作业仍1，无新生成。真实模型0、未提交/推送/部署或迁移。
 
-**用户操作：** 刷新5173打开暴雨末班车，剧本页确认已保存剧本；角色页选择林秋点“确定使用这张参考板”（不重新生图）；画面页先只生成s1，满意采用后再刷新s2准备单，核对林夏主图/林秋整板/新s1尾帧三图再生成。勿点生成全部。完整步骤见[两镜准备及保存结果](docs/implementation/adjacent-shot-readiness-2026-09-21.md)。等待反馈期间可推进7B迁移工具/隔离恢复，不以画质完美阻塞迁移准备。
+**用户操作：** 刷新5173打开暴雨末班车，剧本页确认已保存剧本；角色页选择林秋点“确定使用这张参考板”（不重新生图）；画面页先只生成s1，满意采用后再刷新s2准备单，核对林夏主图/林秋整板/新s1尾帧三图再生成。勿点生成全部。完整步骤见[两镜准备及保存结果](../implementation/adjacent-shot-readiness-2026-09-21.md)。等待反馈期间可推进7B迁移工具/隔离恢复，不以画质完美阻塞迁移准备。
 
 证据与业务备份：`var/verification/adjacent-shot-readiness-20260921/`，包括before-approved-save.json和approved-save-result.json；编辑前代码/文档副本`var/change-backups/adjacent-shot-readiness-20260921/`。含签名URL的本机副本保持Git忽略，不上传。下文为历史批次，不再询问是否采用已获批准的草案。
 
@@ -234,7 +234,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 补齐此前文字整板交接：`text-board` 读取已保存姓名/外观/服装、项目风格和本地 `character-text-board` Skill，使用 `image` 绑定一次生成“脸部特写＋正面/侧面/背面全身”整张板，无额外文本调用、不带旧主图。原 `board` 继续使用 `image-edit` 和已确认主图。两种板都经候选确认后才进入视频人物参考。用户确认上游无任务的 `ijob_2c472b0c37e44689be9edc404bd510a2` 此前已关闭，本地原错误/次数/历史保留，备份见 `var/verification/text-character-board-20260921/`，不要再次关闭或重发。
 
-本批前端构建、Node 27、Playwright 80通过；后端829通过/3条件跳过。完整真实隔离基础设施联调本批未重跑，既有09B证据不冒充本批结果。详情见[角色图片界面验收](docs/implementation/character-image-ui-verification-2026-09-21.md)，代码修改前副本位于 `var/change-backups/character-ui-20260921/`。未改生成模型、提示词和后端；代理本批真实模型调用0、业务数据写入0、未提交/推送/部署。
+本批前端构建、Node 27、Playwright 80通过；后端829通过/3条件跳过。完整真实隔离基础设施联调本批未重跑，既有09B证据不冒充本批结果。详情见[角色图片界面验收](../implementation/character-image-ui-verification-2026-09-21.md)，代码修改前副本位于 `var/change-backups/character-ui-20260921/`。未改生成模型、提示词和后端；代理本批真实模型调用0、业务数据写入0、未提交/推送/部署。
 
 **页面已热更新：** http://127.0.0.1:5173/ → 角色，刷新可查看；本机API仍为18002，不需要重启后端或消费者。本批已只读检查实际项目页面和健康接口。当前图片绑定仍为image-2.5，图生图绑定仍为万相2.6；选择文字整板不会走万相图生图。
 
@@ -248,7 +248,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 用户明确确认百炼没有这次任务后，备份并通过已有存储事务关闭**仅此本地作业**，保存原错误与核对原因、释放角色活动槽；未重发、未请求供应商取消。现页面显示本地已关闭，三视图按钮可用。代码回溯var/change-backups/style-image-feedback-20260921/，记录备份与处理结果var/verification/style-image-feedback-20260921/（不要上传）。
 
-测试先RED后GREEN；后端822/3条件跳过、前端78、Node27、build/Ruff/Mypy通过。已确认无活动作业/待派发outbox后重启本机API与Worker，前端热更新，5173与Worker正常。真实模型调用0、未提交发布。详见[本批报告](docs/implementation/style-image-feedback-2026-09-21.md)。
+测试先RED后GREEN；后端822/3条件跳过、前端78、Node27、build/Ruff/Mypy通过。已确认无活动作业/待派发outbox后重启本机API与Worker，前端热更新，5173与Worker正常。真实模型调用0、未提交发布。详见[本批报告](../implementation/style-image-feedback-2026-09-21.md)。
 
 下一步仍由用户本人小额验证一张三视图；旧任务只是按人工核对解锁，不代表真实图片生成已修复或验证成功。若再失败，查看新作业详情，不连续点击。此前“图片作业0”是启动时历史值，现在存在这1条已关闭作业。其他任务仍按主任务书，不扩充提示词或提前部署。
 
@@ -256,7 +256,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 修复导入项目缓存自动会话控制误显示、顶部英文/过时状态、分镜无编辑入口、角色设定未保存仍可确认主图候选；清理重复生成入口与不影响实际模型的创建页下拉框，补费用说明和窄屏布局。没有新建参考平台、重写提示词或更换框架。
 
-前端build、Node27、Playwright77通过；真实隔离六镜流程1通过，合成30.022秒、1080×1920/30fps H.264/AAC。后端源码本批未改，沿用09B的817通过/3条件跳过基线。真实模型调用0。详细内容、证据、备份及操作步骤见[本批报告与验证指南](docs/implementation/ui-validation-verification-2026-09-21.md)。
+前端build、Node27、Playwright77通过；真实隔离六镜流程1通过，合成30.022秒、1080×1920/30fps H.264/AAC。后端源码本批未改，沿用09B的817通过/3条件跳过基线。真实模型调用0。详细内容、证据、备份及操作步骤见[本批报告与验证指南](../implementation/ui-validation-verification-2026-09-21.md)。
 
 **本机已实际更新**：备份并验证数据库/解密密钥后迁移0004，153项目/26角色及数据校验值保留。API18002、前端5173和专用验证Worker/Beat运行，namespace为comicflow-local-validation-20260921，合成使用ffmpeg。原API/Worker/Beat容器继续停止，旧queued/running历史不重放；收尾0未发布outbox、0活动槽、图片作业0、视频作业1（原成功记录）。代码回溯var/change-backups/ui-validation-20260921-162101/，数据库/密钥备份及配置var/verification/ui-validation-20260921/local-runtime/，均不得上传。
 
@@ -272,11 +272,11 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 修复一个实际付费风险：`confirm_script`原来在配置图片能力时自动生成缺失场景图，现只校验/确认，场景图通过已有独立按钮显式生成，已有图复用。失败测试先证明确认触发2次图片调用，再修改；风格快照仍在显式生成中验证。其余提示词/Skill/参考策略保持。
 
-成功轮假请求文本1、图片6、视频6，真实调用0。MP4实测30.022秒、1080×1920/30fps、H.264/AAC，六段运动和原声音调顺序通过；H3请求是768P，1080尺寸仅为本地合成输出。后端817通过/3条件跳过、Ruff/Mypy86、build、Node27/Playwright75及独立真实集成1通过。详细证据与复跑命令见[09B验收](docs/implementation/full-flow-verification-2026-09-21.md)，边界见[契约](docs/implementation/full-flow-contract-2026-09-21.md)。回溯副本`var/change-backups/full-flow-20260921-142140/`，输出`var/verification/full-flow-20260921/`。
+成功轮假请求文本1、图片6、视频6，真实调用0。MP4实测30.022秒、1080×1920/30fps、H.264/AAC，六段运动和原声音调顺序通过；H3请求是768P，1080尺寸仅为本地合成输出。后端817通过/3条件跳过、Ruff/Mypy86、build、Node27/Playwright75及独立真实集成1通过。详细证据与复跑命令见[09B验收](../implementation/full-flow-verification-2026-09-21.md)，边界见[契约](../implementation/full-flow-contract-2026-09-21.md)。回溯副本`var/change-backups/full-flow-20260921-142140/`，输出`var/verification/full-flow-20260921/`。
 
 **下一项：7A主流程UI整理**，核查按钮真实用途、跨页状态、保存/加载/错误提示与窄屏，沿用现有页面，不新增全能参考平台、不优化整套提示词。合成已完成时顶部仍显示英文`storyboard-ready · ready`是可核查的一项。完成后核对业务在途队列、备份/schema/API与验证消费者，再让用户亲自小额验证一张板和相邻两镜；按真实反馈优化后补齐30秒。最后迁移演练/服务器更新；数据库、MinIO和解密密钥成套，Redis不搬旧付费队列。
 
-**运行与边界：** 临时测试栈已关闭；业务库/API/Worker/Beat未更新，0004仍仅在临时环境应用；未提交、推送、部署或迁移。模拟只证明工程流程，真实图像质感、身份/动作/音画质量未通过。原任务5/05B完整参考交互仍后置，15D只随真实耦合问题按需拆。排期以[主任务书](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)为准，以下日期段落是历史，旧“下一项”不继续执行。
+**运行与边界：** 临时测试栈已关闭；业务库/API/Worker/Beat未更新，0004仍仅在临时环境应用；未提交、推送、部署或迁移。模拟只证明工程流程，真实图像质感、身份/动作/音画质量未通过。原任务5/05B完整参考交互仍后置，15D只随真实耦合问题按需拆。排期以[主任务书](../implementation/quality-and-modularity-taskbook-2026-09-19.md)为准，以下日期段落是历史，旧“下一项”不继续执行。
 
 ## 2026-09-21最新：一次整板及独立确认已完成，下一项两镜连续性
 
@@ -286,11 +286,11 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 整板规则以小逻适配Skill的独立character-board参考文件本地编译、记录来源，无额外文本调用；去除整板中的单人正面/竖版冲突。不开展后置的主图提示词、风格文案或小红书布局优化。
 
-验收：新增14项，完整后端816 passed/3 skipped；Ruff/Mypy85、Node27、Playwright75、构建通过；最后仅布局变化再构建及角色页3项通过。独立PostgreSQL/Redis/Celery/MinIO联调：假主图提交1、假整板提交1，查询5、下载3；重启API/Worker并切换绑定后恢复不重提，确认板进入H3参考计划仅1张。真实模型0，临时栈已移除。详情见[整板报告](docs/implementation/character-board-verification-2026-09-21.md)、[契约](docs/implementation/character-board-contract-2026-09-21.md)。副本：var/change-backups/character-board-20260921-135219/。
+验收：新增14项，完整后端816 passed/3 skipped；Ruff/Mypy85、Node27、Playwright75、构建通过；最后仅布局变化再构建及角色页3项通过。独立PostgreSQL/Redis/Celery/MinIO联调：假主图提交1、假整板提交1，查询5、下载3；重启API/Worker并切换绑定后恢复不重提，确认板进入H3参考计划仅1张。真实模型0，临时栈已移除。详情见[整板报告](../implementation/character-board-verification-2026-09-21.md)、[契约](../implementation/character-board-contract-2026-09-21.md)。副本：var/change-backups/character-board-20260921-135219/。
 
 **业务服务/schema未更新；没有提交、推送、部署或业务数据迁移。** 0004仍需随业务试用环境升级，真实画质待用户亲自看图；不要把离线通过说成当前运行页面已经生效。准备实际试用时先备份/核查队列、统一API/Worker版本与schema，再由用户复用满意主图生成一张板，代理不代点。
 
-**下一开发批固定为任务5（05B）：两个相邻镜头参考选择与动作衔接。** H3首尾帧与人物参考模式的取舍仍未改；本批只证明ref2va用一张确认板。后续任务6约30秒完整流程，任务7UI整理、数据库/MinIO/密钥迁移和部署。排期唯一入口：[任务书v2](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)。以下日期段落均为历史，不继续执行其中旧“下一项”。
+**下一开发批固定为任务5（05B）：两个相邻镜头参考选择与动作衔接。** H3首尾帧与人物参考模式的取舍仍未改；本批只证明ref2va用一张确认板。后续任务6约30秒完整流程，任务7UI整理、数据库/MinIO/密钥迁移和部署。排期唯一入口：[任务书v2](../implementation/quality-and-modularity-taskbook-2026-09-19.md)。以下日期段落均为历史，不继续执行其中旧“下一项”。
 
 
 ## 2026-09-21：角色图片持久作业已完成，下一项一次整板
@@ -299,21 +299,21 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 三视图部分完成后恢复跳过成功视角；本地拼板失败只重做拼板。模型切换不影响原作业配置；来源改变时不覆盖当前素材，已生成结果保留。角色编辑/确认增加保存冲突保护。角色页新增持久进度、任务号、数量、恢复和未知提示。实际提示词、Skill规则、风格文字均未改；当前仍三次视角生成加本地四格拼板，不是一次整板。
 
-验收：先5项缺入口失败，再补足19项故障/持久化/迁移测试；全后端802通过/3条件跳过、Node27/Playwright75、build/Ruff/Mypy84通过。真实隔离PostgreSQL/Redis/Celery/MinIO中强制终止Worker、重启API、切换当前模型绑定并制造下载失败，恢复成功且假供应商提交总计1次；真实模型调用0。0004下原视频恢复/候选采用/MinIO/FFmpeg联调也通过，假H3提交1次；两套临时Compose已关闭。见[验收报告](docs/implementation/image-job-verification-2026-09-21.md)，回溯副本`var/change-backups/image-jobs-20260921-114109/`。
+验收：先5项缺入口失败，再补足19项故障/持久化/迁移测试；全后端802通过/3条件跳过、Node27/Playwright75、build/Ruff/Mypy84通过。真实隔离PostgreSQL/Redis/Celery/MinIO中强制终止Worker、重启API、切换当前模型绑定并制造下载失败，恢复成功且假供应商提交总计1次；真实模型调用0。0004下原视频恢复/候选采用/MinIO/FFmpeg联调也通过，假H3提交1次；两套临时Compose已关闭。见[验收报告](../implementation/image-job-verification-2026-09-21.md)，回溯副本`var/change-backups/image-jobs-20260921-114109/`。
 
 **运行状态：0004仅在临时测试库应用；业务库、API、Worker/Beat未升级或重启，没有提交/推送/部署。** 新功能不能直接视为正在运行。未知提交没有自动取消/重发能力，须人工核对；本批不包括场景生图异步化。
 
 **下一项固定为06B：确认主图 → 一次图生图生成正/侧/背整板候选 → 独立确认 → 视频使用一张已确认板。** 复用本批作业，不再次做作业平台，不加复杂布局编辑器或额外文本模型。完成模拟后再通知用户亲自验证一张板；现在不需消耗额度。随后任务5两镜连续性、任务6约30秒完整流程、任务7界面整理/数据库与MinIO和密钥迁移/部署。新图片作业表已补入迁移清单，Redis不重放旧付费队列。
 
-以下各日期段为历史交接，其中“下一项”已由本节和[主任务书](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)更新。
+以下各日期段为历史交接，其中“下一项”已由本节和[主任务书](../implementation/quality-and-modularity-taskbook-2026-09-19.md)更新。
 
 ## 2026-09-21：提示词优化后置，先完成角色旧参考板失效修复
 
-用户要求提示词和风格文案后面再改，先完善其他功能。此前小红书7篇正文及部分评论的调研见[研究报告](docs/implementation/xiaohongshu-character-prompt-review-2026-09-21.md)；“大脸＋三视图”仅是建议，本批没有改Skill、风格库、提示词、图片布局或模型调用次数。
+用户要求提示词和风格文案后面再改，先完善其他功能。此前小红书7篇正文及部分评论的调研见[研究报告](../implementation/xiaohongshu-character-prompt-review-2026-09-21.md)；“大脸＋三视图”仅是建议，本批没有改Skill、风格库、提示词、图片布局或模型调用次数。
 
 任务4中先完成一个可独立验收的缺口：确认新主图或更改角色外观/服装后，旧referenceBoard标stale并保留；项目角色编辑和通用角色编辑都执行失效。只改提示词或生成尚未确认的主图候选不使当前板失效。新视角与板记录主图采用版本；视频准备及角色列表核查已知来源，失效板不能作为新视频参考，有有效主图则按既有规则使用主图。新拼板使用独立对象键，不覆盖原图片；拼板期间角色变化拒绝旧快照回写。页面提示已失效并允许展开旧图，查看不触发生成。
 
-验证：首次正确复现8失败/4通过；补充拼板并发编辑用例1失败/12通过后修复；聚焦60通过，全后端783通过/3条件跳过，Node27、Playwright74、build/Ruff/Mypy通过。详情、兼容边界及日志见[验证报告](docs/implementation/character-reference-validity-verification-2026-09-21.md)。回溯备份`var/change-backups/character-reference-validity-20260921-111643/`，原未提交工作保持。旧无可核实来源的板仍兼容读取，不宣称自动判断其身份正确。
+验证：首次正确复现8失败/4通过；补充拼板并发编辑用例1失败/12通过后修复；聚焦60通过，全后端783通过/3条件跳过，Node27、Playwright74、build/Ruff/Mypy通过。详情、兼容边界及日志见[验证报告](../implementation/character-reference-validity-verification-2026-09-21.md)。回溯备份`var/change-backups/character-reference-validity-20260921-111643/`，原未提交工作保持。旧无可核实来源的板仍兼容读取，不宣称自动判断其身份正确。
 
 **下一项：任务4剩余03B/06B，先做角色主图与板的持久图片作业、防重复提交和未知状态恢复，再接一次图生图整板候选与独立采用。** 目前仍是三次视角调用＋本地拼板；任务4未整体完成。跨进程并发、图片历史列表和完整恢复不属于本次修复，不能将现有读后校验当数据库原子并发控制。
 
@@ -321,27 +321,27 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 ## 2026-09-20：任务3角色提示词按用途生成完成，下一项一次整板与图片记录
 
-用户希望参考小红书等平台优秀提示词改善人物质感。本批完成06A，并将可核验的BFL/Google/Seedream官方资料和创作者原始案例写入[来源调研](docs/implementation/character-prompt-source-research-2026-09-20.md)。小红书只取得搜索框架，未看到可引用正文；没有声称复现平台热门效果。
+用户希望参考小红书等平台优秀提示词改善人物质感。本批完成06A，并将可核验的BFL/Google/Seedream官方资料和创作者原始案例写入[来源调研](../implementation/character-prompt-source-research-2026-09-20.md)。小红书只取得搜索框架，未看到可引用正文；没有声称复现平台热门效果。
 
 角色页现在可选“完善角色设定”或“仅润色主图提示词”。前者只生成勾选设定，后者只返回referenceImagePrompt、不会重写整张角色卡，也不携带故事/镜头/性格。沿用同一个预览接口和API管理的角色文本用途；旧full调用兼容。新Skill编写指南使用身份、实际材质、全身清晰构图、光影层次和媒介匹配，移除旧海报式八段示例的强制注入。每次仅1次显式文本调用，草稿采用/保存不生成媒体。
 
 只保存生图提示词不再清空已确认图片，新的提示词用于下次主动生成。更改外观/服装仍走原逻辑；旧referenceBoard失效及三视图手动重试重复调用尚未解决，交任务4。当前三视图仍是三次分图生成后本地四格拼板。
 
-离线结果：新用途先7失败/4通过，完成后聚焦63通过；全后端773通过/3条件跳过，Node27、Playwright74、build/Ruff/Mypy通过。同一合成样本的消息字符数从原完整7212降到图片润色3292；这是字符数不是token或费用。来源复核后限定二维光影规则适用范围，同组63项再次通过。详见[任务3验收](docs/implementation/character-prompt-purpose-verification-2026-09-20.md)，回溯副本`var/change-backups/character-prompt-purpose-20260920-213843/`。
+离线结果：新用途先7失败/4通过，完成后聚焦63通过；全后端773通过/3条件跳过，Node27、Playwright74、build/Ruff/Mypy通过。同一合成样本的消息字符数从原完整7212降到图片润色3292；这是字符数不是token或费用。来源复核后限定二维光影规则适用范围，同组63项再次通过。详见[任务3验收](../implementation/character-prompt-purpose-verification-2026-09-20.md)，回溯副本`var/change-backups/character-prompt-purpose-20260920-213843/`。
 
 **下一项任务4（06B＋03B最小范围）：** 一次图生图生成整张正/侧/背板，同时做最小图片作业记录、防重、候选采用和主图来源失效。不要恢复旧三图扩展或自动增加图片/文本调用。角色真实质感验证安排在该任务后由用户点击；现有满意主图可复用。
 
-本批真实文本/图片/视频调用0；未重启业务API/Worker/Beat、修改运行配置、迁移、提交/推送或部署。源码完成不代表页面运行版本已更新。历史任务书状态按本节和[任务书v2](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)为准。
+本批真实文本/图片/视频调用0；未重启业务API/Worker/Beat、修改运行配置、迁移、提交/推送或部署。源码完成不代表页面运行版本已更新。历史任务书状态按本节和[任务书v2](../implementation/quality-and-modularity-taskbook-2026-09-19.md)为准。
 
 ## 2026-09-20：任务2角色模块拆分完成，下一项按用途生成角色提示词
 
 本批按任务书v2完成15B/15C-character。后端CharacterAssets集中角色卡、提示词预览、主图候选/确认、旧三图和拼板；显式接收存储/Provider/锁/签名依赖，不传整个Pipeline。原Pipeline入口保留委托，剧本角色同步与镜头绑定仍保留在剧本编排处。新增13个角色路由及前端角色API，角色页分为列表、草稿编辑、参考图操作；权限、请求级模型选择和状态语义保持。
 
-验证：原实现与拆分后同组56项通过，主图/三个视角请求与冻结夹具一致，12个移动方法AST一致；完整后端755通过/3条件跳过、Node27、Playwright74、build/Ruff/Mypy通过。范围、文件及局限见[任务2验收报告](docs/implementation/character-module-split-verification-2026-09-20.md)。回溯副本`var/change-backups/character-module-split-20260920-211031/`，原未提交工作保留。
+验证：原实现与拆分后同组56项通过，主图/三个视角请求与冻结夹具一致，12个移动方法AST一致；完整后端755通过/3条件跳过、Node27、Playwright74、build/Ruff/Mypy通过。范围、文件及局限见[任务2验收报告](../implementation/character-module-split-verification-2026-09-20.md)。回溯副本`var/change-backups/character-module-split-20260920-211031/`，原未提交工作保留。
 
 **已确认但本批未改的旧问题：** 更换主图/修改视觉设定时旧referenceBoard可能残留并被视频读取；三视图部分失败后手动重试会重新生成全部视角。分别交任务3/4处理草稿与有效资产、板来源失效和一次整板记录，不能把结构回归通过理解成这些问题已修复。当前仍为正面/四分之三/侧面三次生成，主图加三图本地四格拼板；没有实现一次正/侧/背整板。
 
-**下一项任务3（06A）：** 将完善设定与只润色主图提示词分开，按用途选择上下文和输出字段，前后端/schema/文本校验同步调整；不删除生图实际需要的referenceImagePrompt，不额外用文本模型生成三视图提示词。任务4再做一次整板＋最小图片记录。排期以[任务书v2](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)为准，下方任务1“下一步”为历史记录。
+**下一项任务3（06A）：** 将完善设定与只润色主图提示词分开，按用途选择上下文和输出字段，前后端/schema/文本校验同步调整；不删除生图实际需要的referenceImagePrompt，不额外用文本模型生成三视图提示词。任务4再做一次整板＋最小图片记录。排期以[任务书v2](../implementation/quality-and-modularity-taskbook-2026-09-19.md)为准，下方任务1“下一步”为历史记录。
 
 真实文本/图片/视频调用0；未提交/推送、部署、迁移或重启业务API/Worker/Beat。3项后端跳过为外部脱敏夹具和未启用的Docker冒烟，本批未重新做真实数据栈联调。当前不需用户为结构搬迁付费验证；角色流程真实检查安排在任务4完成后，用户亲自点击。
 
@@ -349,11 +349,11 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 用户“继续任务吧”已授权实施任务书v2，覆盖下方“仅文档、等待实施”的历史状态。本批完成04B剩余视频入口及15C-video：先行为保持拆出后端8个视频/重生成路由与前端视频API，再统一全部新视频为候选，保留旧有效版本直到显式采用。旧同步成功增加jobId/awaitingAdoption；scope=shot遇候选不再调用音频。自动会话保存暂停原因/作业/镜头，重复推进不生成，采用本身不继续；用户继续后重新检查受影响依赖。批量正常提示等待采用，再次点击也不会越过已有候选。
 
-验证：结构抽取前后同组71通过；行为先失败后修复；最终后端752通过/3条件跳过、前端Node27与Playwright73通过、build/Ruff/Mypy通过。详细契约、日志、限制见[任务1验收报告](docs/implementation/video-entry-adoption-verification-2026-09-20.md)。回溯副本`var/change-backups/video-adoption-unify-20260920-202154/`，原未提交工作保留。
+验证：结构抽取前后同组71通过；行为先失败后修复；最终后端752通过/3条件跳过、前端Node27与Playwright73通过、build/Ruff/Mypy通过。详细契约、日志、限制见[任务1验收报告](../implementation/video-entry-adoption-verification-2026-09-20.md)。回溯副本`var/change-backups/video-adoption-unify-20260920-202154/`，原未提交工作保留。
 
 真实文本/图片/视频调用0；未提交/推送、部署、迁移或重启业务API/Worker/Beat。源码完成不代表业务运行镜像更新；本批不宣称改善人物质感、动作或连续性。旧持久任务按原标志恢复，不改写历史采用状态。
 
-**下一项：任务2角色15B/15C行为保持拆分。** 锁定现有主图候选/确认、三次视角生成与拼板、角色编辑失效，再抽取角色资产职责及相关接口；不夹带一次整板和提示词改造。任务3再按用途省文本，任务4再做一次图生图整板及最小图片记录。唯一排期仍为[任务书v2](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)。04完整比较、图片作业、30秒验收与服务器迁移均未完成。
+**下一项：任务2角色15B/15C行为保持拆分。** 锁定现有主图候选/确认、三次视角生成与拼板、角色编辑失效，再抽取角色资产职责及相关接口；不夹带一次整板和提示词改造。任务3再按用途省文本，任务4再做一次图生图整板及最小图片记录。唯一排期仍为[任务书v2](../implementation/quality-and-modularity-taskbook-2026-09-19.md)。04完整比较、图片作业、30秒验收与服务器迁移均未完成。
 
 若用户此时想真实验证，可复用已有素材试单镜候选→播放→采用；需先将API/Worker更新到本批代码并核查在途任务，再由用户亲自点击，不代生成，不要求为结构拆分强制付费。既有《暴雨末班车》旧输入修改/画质待验收保持原记录。
 
@@ -361,7 +361,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 用户要求重新综合设计任务书，并特别强调不要过度设计。本轮只更新主任务书、计划/spec索引、相关工单及工程规约，没有修改业务代码、配置、数据库或测试，没有启动服务、调用模型、提交/推送或部署。
 
-**唯一当前排期入口：[任务书v2](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)。** 建议顺序：①视频入口统一候选采用＋视频15C接口拆分；②角色15B/15C行为保持拆分；③06A按用途生成提示词、省重复token；④06B一次图生图整板＋03B最小图片记录；⑤05B两镜头素材选择/动作衔接；⑥09B完整30秒模拟与09C用户分段真实验收；⑦剩余UI、08迁移演练、13/10服务器切换。当前等待用户安排实施，下一项具体是①，不再追加一个泛化审计阶段。
+**唯一当前排期入口：[任务书v2](../implementation/quality-and-modularity-taskbook-2026-09-19.md)。** 建议顺序：①视频入口统一候选采用＋视频15C接口拆分；②角色15B/15C行为保持拆分；③06A按用途生成提示词、省重复token；④06B一次图生图整板＋03B最小图片记录；⑤05B两镜头素材选择/动作衔接；⑥09B完整30秒模拟与09C用户分段真实验收；⑦剩余UI、08迁移演练、13/10服务器切换。当前等待用户安排实施，下一项具体是①，不再追加一个泛化审计阶段。
 
 15A、准备单、视频作业、历史视频、六种风格等已有基础直接复用。其余15D按真实修改需求拆，不把全项目拆完或全部美化作为样片/迁移前提。不新增通用编排、AI质量打分、自动修稿/重生、复杂风格编辑器或任意协议引擎；有证据的提示词问题才改。
 
@@ -379,7 +379,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 04B画面页已实现：新视频作业默认先保存候选，提供签名播放与人工采用；服务端复核候选、项目/镜头、当前准备指纹/模型配置和媒体对象，原子采用并处理下游失效；重复采用幂等，不复活被后续版本替代的旧结果。批量遇到待采用结果停止后续提交。边界：旧同步 `/visual` 及自动会话仍使用兼容自动采用分支，尚未统一，不能宣称所有入口都要求人工采用；完整比较、历史采用及图片采用仍待办。
 
-验证：全量后端 `744 passed / 3 skipped`；Ruff/Mypy、前端生产构建通过；视频作业/准备单 Playwright `7 passed`，前序Node `27 passed`。契约夹具保留拆分前基线，单独记录质量变更后的11种输入。详见[05A/04B验收与操作说明](docs/implementation/video-quality-adoption-verification-2026-09-20.md)。本批没有真实文本/图片/视频模型调用，没有提交、推送、部署或迁移，也没有重启业务API/Worker；不要把源码验收当成运行镜像已更新。
+验证：全量后端 `744 passed / 3 skipped`；Ruff/Mypy、前端生产构建通过；视频作业/准备单 Playwright `7 passed`，前序Node `27 passed`。契约夹具保留拆分前基线，单独记录质量变更后的11种输入。详见[05A/04B验收与操作说明](../implementation/video-quality-adoption-verification-2026-09-20.md)。本批没有真实文本/图片/视频模型调用，没有提交、推送、部署或迁移，也没有重启业务API/Worker；不要把源码验收当成运行镜像已更新。
 
 下一步：在用户真实点击前先更新本机验证API/Worker并只读核对版本与准备单，再由用户在剧本页统一《暴雨末班车》s1机位/动作终点并处理原56字旁白超出5秒的问题。仅生成一个镜头，播放候选，满意再采用；不要直接拿旧输入重新生成或点批量。05参考模式/换场矩阵、旧生成入口采用统一、15B/06一次图生图整板、03B图片调用记录、09B完整30秒模拟仍待办。服务器旧数据/MinIO/密钥迁移仍在原任务书与数据迁移计划中，未执行。以下条目为历史记录，以本节为当前状态。
 
@@ -389,7 +389,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 只读核查保存输入和抽帧：动作三阶段确实传入，复编译与保存文本一致；末帧人物停在敞开门口，未体现门关闭的完成状态。5秒要求56汉字旁白，而原时长检查仅对白，记录0字/0秒/ok，存在明确漏检。人物参考2张，无场景图或首帧；画面内景与站台跟拍机位不统一，身份参考未明确排除正面站姿，属于待处理的质量约束，不能直接断言唯一根因。
 
-详见[首次质量诊断](docs/implementation/bus-action-quality-review-2026-09-19.md)。证据在忽略目录`var/verification/bus-action-quality-20260919/`。本轮诊断额外模型调用0，未改生成代码、业务提示词/图片或提交部署。下一步按05先做对白+旁白预算和机位/动作终点，再连续性模式与04B采用；不要让用户按旧输入反复重试。报告中的精简动作/旁白是未应用草案，不能声称已优化完或真实效果通过。
+详见[首次质量诊断](../implementation/bus-action-quality-review-2026-09-19.md)。证据在忽略目录`var/verification/bus-action-quality-20260919/`。本轮诊断额外模型调用0，未改生成代码、业务提示词/图片或提交部署。下一步按05先做对白+旁白预算和机位/动作终点，再连续性模式与04B采用；不要让用户按旧输入反复重试。报告中的精简动作/旁白是未应用草案，不能声称已优化完或真实效果通过。
 
 ## 2026-09-19：补齐已有项目入口，首次验证不再依赖控制台
 
@@ -411,11 +411,11 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 推荐《深夜便利店诡事》`prj_8386abe590d7`→画面→第1镜`sh1`“推门进入便利店”。准备单与参考图真实字节检查通过：H3、768P、5秒、9:16、1张人物主参考图、文本0/视频1、配置revision29。当前Context-IR路径未调用英文H3 Skill文本扩写。页面只读检查全部API200，无页面异常或付费请求；有旧视频时按钮是「重新生成」。现在可由用户只点一次，不能点批量；结果与质量另行验收。输入匹配仍自动采用，人工采用属于04B；sh2当前人物图+尾帧是普通参考，并非严格首帧。
 
-详见[验收报告](docs/implementation/video-module-split-verification-2026-09-19.md)和[启动/首次验证说明](docs/implementation/local-test-startup.md)。代码回溯219份：`var/change-backups/video-module-split-20260919-174930/`；日志与业务备份在`var/verification/video-module-split-20260919/`，业务备份含数据及密钥，禁止上传。首次真实反馈前不继续05/06。
+详见[验收报告](../implementation/video-module-split-verification-2026-09-19.md)和[启动/首次验证说明](../implementation/local-test-startup.md)。代码回溯219份：`var/change-backups/video-module-split-20260919-174930/`；日志与业务备份在`var/verification/video-module-split-20260919/`，业务备份含数据及密钥，禁止上传。首次真实反馈前不继续05/06。
 
 ## 2026-09-19：验证时机修订为拆分后先验，仍未开始实施
 
-用户指出不应等全部质量优化后才首次验证。[任务书已更新为v1.1](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)：15A视频拆分 → 不扣费回归/页面检查 → 09A隔离PostgreSQL/Redis/MinIO与执行器联调 → 实际试用环境就绪后，用户复用已有确认素材试一个短视频 → 再改05连续性、06角色整板 → 30秒完整模拟与质量验收。下方v1“所有质量优化后才首次真实验证”的顺序已被替代。
+用户指出不应等全部质量优化后才首次验证。[任务书已更新为v1.1](../implementation/quality-and-modularity-taskbook-2026-09-19.md)：15A视频拆分 → 不扣费回归/页面检查 → 09A隔离PostgreSQL/Redis/MinIO与执行器联调 → 实际试用环境就绪后，用户复用已有确认素材试一个短视频 → 再改05连续性、06角色整板 → 30秒完整模拟与质量验收。下方v1“所有质量优化后才首次真实验证”的顺序已被替代。
 
 首次建议一个模型支持的5秒768P镜头，只核查实际提交、任务号、查询、保存、播放并留质量基线；不重新生主图/三视图。若原local-skill路径会有文本扩写，事先披露，不隐式换路径或多调用。拆分行为是否保持以冻结输入回归为据，不能因模型画面随机变化就认定回归。每个后续拆分也立即做不扣费验证，不强制每批付费。
 
@@ -423,7 +423,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 ## 2026-09-19：后续任务重新综合，当前仅交付待审阅任务书
 
-用户要求先看后续任务安排，不继续实现。最新入口是[30秒成片质量与代码拆分任务书 v1](docs/implementation/quality-and-modularity-taskbook-2026-09-19.md)，状态待用户审阅。**下文“下一步05/06/14B”等是此前排期，不据此自动恢复实施。** 本轮仅编辑规划与交接文档，没有修改业务代码、配置、数据库或调用模型；没有提交、推送、部署或启动消费者。
+用户要求先看后续任务安排，不继续实现。最新入口是[30秒成片质量与代码拆分任务书 v1](../implementation/quality-and-modularity-taskbook-2026-09-19.md)，状态待用户审阅。**下文“下一步05/06/14B”等是此前排期，不据此自动恢复实施。** 本轮仅编辑规划与交接文档，没有修改业务代码、配置、数据库或调用模型；没有提交、推送、部署或启动消费者。
 
 建议顺序：01有限基线/规则来源核对 → 新增15A视频职责拆分（保持行为）→ 05连续性/动作起终及04B最小候选采用 → 15B角色职责拆分、06主图到一次图生图整板及03B最小图片调用记录 → 09隔离真实数据栈/执行器联调和完整30秒模拟 → 用户分步真实验收。相关API/前端拆分15C随功能做；15D其他模块后置。新增工单`.scratch/production-optimization-20260918/issues/15-incremental-module-split.md`为needs-triage/draft-not-started。
 
@@ -566,11 +566,11 @@ Git HTTPS推送修复时直连先reset后443超时，系统127.0.0.1:7890代理�
 - 导出页分开缺项导航、合成、预览和下载。缺素材不隐式调用生成；合成请求处理中和queued/running禁用重复操作；视频/封面/字幕使用已有文件地址，文件加载和作业失败可见。移除固定假检查与空播放控件。
 - 公共导航移除空筛选/收藏/视图切换、假身份，补加载/读取失败与会话pending/error。资源库入口留给11A，不冒充已接通。
 
-离线验证：后端656通过/3条件跳过，Node27通过，Playwright全量54通过；最后仅调整导出页对比度后重建、聚焦8通过。Ruff通过，Mypy70源文件通过。通过本地FFmpeg合成验证动态画面、时长及两种测试音轨，真实模型调用0。浏览器使用拦截fixture和关闭端口代理，未接触真实后端；截图含主动制造的媒体404，不代表真实媒体播放/音质验收。完整证据、限制与文件说明见[12A验证记录](docs/implementation/native-audio-verification-2026-09-18.md)。
+离线验证：后端656通过/3条件跳过，Node27通过，Playwright全量54通过；最后仅调整导出页对比度后重建、聚焦8通过。Ruff通过，Mypy70源文件通过。通过本地FFmpeg合成验证动态画面、时长及两种测试音轨，真实模型调用0。浏览器使用拦截fixture和关闭端口代理，未接触真实后端；截图含主动制造的媒体404，不代表真实媒体播放/音质验收。完整证据、限制与文件说明见[12A验证记录](../implementation/native-audio-verification-2026-09-18.md)。
 
 回溯副本：`var/change-backups/native-audio-20260918-122541/manifest.json`。只覆盖列出的修改前文件，保存了其中原有未提交改动；不能全工作区reset。production-flow.spec.ts的两处本轮测试调整未有修改前副本，须逐处比较撤回。截图在`var/verification/native-audio-20260918/`。没有Git提交/推送，没有部署/重启API或Worker/Beat，没有数据库或服务器配置变更；源码尚未进入已有业务容器。
 
-下一步按[综合计划](docs/implementation/production-optimization-plan-2026-09-18.md)：**11A历史视频资源浏览 → 02生成准备单 → 03视频持久作业与04恢复界面**。12只完成本批公共导航/声音/导出，其余工作区和功能集成仍待做。08旧数据只读盘点可独立推进；数据库/MinIO正式恢复、受保护传输和运行切换继续后置，不直接启动消费者或搬旧Redis队列。H3请求分辨率没有修改，本地合成1080×1920规格不等于提高供应商生成档位。
+下一步按[综合计划](../implementation/production-optimization-plan-2026-09-18.md)：**11A历史视频资源浏览 → 02生成准备单 → 03视频持久作业与04恢复界面**。12只完成本批公共导航/声音/导出，其余工作区和功能集成仍待做。08旧数据只读盘点可独立推进；数据库/MinIO正式恢复、受保护传输和运行切换继续后置，不直接启动消费者或搬旧Redis队列。H3请求分辨率没有修改，本地合成1080×1920规格不等于提高供应商生成档位。
 
 ## 2026-09-18：服务器连接准备与共享Redis隔离已补齐
 
@@ -614,7 +614,7 @@ Git HTTPS推送修复时直连先reset后443超时，系统127.0.0.1:7890代理�
 
 用户明确“先不急着弄”部署，随后要求综合布置生成流程、前端界面和数据迁移任务。本节是当前入口，下面恢复Drone授权/推送部署的下一步均暂停，未经用户恢复不得自动执行。
 
-总计划：[综合优化实施计划](docs/implementation/production-optimization-plan-2026-09-18.md)。任务规格与13个独立任务位于 `.scratch/production-optimization-20260918/`；当前全部未实施，本轮仅整理文档，未执行模型调用、数据库迁移、服务重启或Git推送。
+总计划：[综合优化实施计划](../implementation/production-optimization-plan-2026-09-18.md)。任务规格与13个独立任务位于 `.scratch/production-optimization-20260918/`；当前全部未实施，本轮仅整理文档，未执行模型调用、数据库迁移、服务重启或Git推送。
 
 用户提醒仍需连接服务器数据库，新增P0任务13：01后首批安排13A连接配置准备（与12基础清理并列），目标就绪后13B只读验证；历史数据迁移仍为08/10。代码中Compose显式指定本栈数据库/Redis/MinIO地址，因此只改.env可能无效。尚未核查实时运行目标或服务器数据服务参数；不能据源码断言当前已连接哪台服务器。真实连接不等于迁移，不能启动旧队列消费者或绕过暂停部署决定。
 

@@ -12,8 +12,8 @@
 
 ## 产品与验收
 
-- [PRD](../prd.md)：产品范围与需求。
-- [产品简介](../product-brief.md)：产品定位。
+- [PRD](product/prd.md)：产品范围与需求。
+- [产品简介](product/product-brief.md)：产品定位。
 - [验收计划](ACCEPTANCE_PLAN.md)：功能与发布验收标准。
 - [项目演示指南](PROJECT_DEMO_GUIDE.md)：面向业务和技术同事的项目演示。
 - [技术指南](PROJECT_TECHNOLOGY_GUIDE.md)：技术组件、请求路径与实现说明。
@@ -29,16 +29,20 @@
 - [研究记录](research/)：技术评估与调查结果。
 - [归档文档](archive/)：不再作为当前操作入口的历史资料。
 
-## 根目录中的协作与交接文件
+## 状态与交接
+
+- [交接文档](status/HANDOFF.md)：当前交接信息与最新进展。
+- [阻塞项](status/BLOCKERS.md)：未决问题与依赖记录。
+- [阶段行动计划](status/ACTION-PLAN.md)：阶段性任务安排。
+- [H3 验证步骤](status/H3_VERIFICATION_STEPS.md)：专项验收操作记录。
+- [集成完成记录](status/INTEGRATION_COMPLETE.md)：专项验收结论。
+
+## 根目录中的协作文件
 
 为保持现有脚本、链接和协作约定兼容，这些文件继续保留在仓库根目录：
 
 - `AGENTS.md`：代理协作规则。
 - `CONTEXT.md`：领域上下文（部分规范要求从根目录读取）。
-- `HANDOFF.md`：当前交接信息。
-- `BLOCKERS.md`：阻塞项记录。
-- `ACTION-PLAN.md`：阶段行动计划。
-- `H3_VERIFICATION_STEPS.md`、`INTEGRATION_COMPLETE.md`：专项验收记录。
 
 > 面试准备资料不属于项目交付文档，将单独保存在仓库之外；产品演示与技术说明保留在 `docs/`。
 

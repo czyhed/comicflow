@@ -515,7 +515,7 @@ A: 根据代码分析，当前没有发现 "libtv" 相关引用。推测：
 ### 文档
 
 - `docs/implementation/video-consistency-plan.md` - 视频一致性完整方案
-- `HANDOFF.md` - 项目交接文档
+- `../status/HANDOFF.md` - 项目交接文档
 
 ### 外部资源
 
