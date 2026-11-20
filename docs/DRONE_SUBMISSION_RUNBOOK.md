@@ -6,7 +6,7 @@
 
 | 项目 | 后端 | 前端 |
 | --- | --- | --- |
-| GitHub | `leifengyang/comicflow` | `leifengyang/comicflow-web` |
+| GitHub | 内部 comicflow 仓库 | 内部 comicflow-web 仓库 |
 | 触发 | `main` 分支的 `push` | `main` 分支的 `push` |
 | 本工作区流水线来源 | `.drone.yml` | `deploy/drone.web.yml`，导出后变成 `.drone.yml` |
 | 部署脚本 | `deploy/backend-external.sh` | `deploy/web.sh` |
@@ -41,8 +41,8 @@ uv run python scripts/package_deployment.py --output "$releaseRoot/packages"
 主工作区不要执行 `git add .`。两个发布仓库应从各自远端最新 main 单独克隆，保留其历史：
 
 ```powershell
-git clone --branch main https://github.com/leifengyang/comicflow.git "$releaseRoot/backend-git"
-git clone --branch main https://github.com/leifengyang/comicflow-web.git "$releaseRoot/web-git"
+git clone --branch main <内部 comicflow 仓库地址> "$releaseRoot/backend-git"
+git clone --branch main <内部 comicflow-web 仓库地址> "$releaseRoot/web-git"
 ```
 
 只发布一端时只克隆那一端。把对应导出目录的文件合入该克隆，随后检查 `git diff` 和未跟踪文件。下面以“仅前端”为例，逐文件覆盖，不移动或删除远端既有文件：

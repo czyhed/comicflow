@@ -491,14 +491,14 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 下一步：先进行本地旧数据库、MinIO对象、模型配置生效主密钥只读盘点，再制定隔离备份/恢复与切换方案。服务器数据库现已有0002_model_registry和5表，后续恢复用独立目标，禁止直接覆盖或重放旧Redis队列。部署已完成，不再盲目重跑前端构建1；后续新提交走main/push，保留版本标签。用户可先打开入口查看，真实模型配置与后台消费者启用须作为后续步骤明确处理。
 
-2026-09-18 19:11更新：用户确认服务器Playwright镜像下载完成，继续部署。Drone仓库详情一度显示resource not found，首页仍列仓库；同步并重新进入后恢复。New Build提交未观察到新记录，随后原构建Restart成功创建前端构建2（21da436，http://110.42.51.234:4399/leifengyang/comicflow-web/2）。当前clone首次Empty reply后自动重试，尚未验证镜像缓存使用；没有代码提交、重复推送、模型调用或数据库操作。后端构建6已部署状态保持。
+2026-09-18 19:11更新：用户确认服务器Playwright镜像下载完成，继续部署。Drone仓库详情一度显示resource not found，首页仍列仓库；同步并重新进入后恢复。New Build提交未观察到新记录，随后原构建Restart成功创建前端构建2（21da436，Drone 前端构建 #2）。当前clone首次Empty reply后自动重试，尚未验证镜像缓存使用；没有代码提交、重复推送、模型调用或数据库操作。后端构建6已部署状态保持。
 
 2026-09-18 17:19最新：用户服务器docker images mcr.microsoft.com/playwright为空，curl -I https://mcr.microsoft.com/v2/返回HTTP/2 200；仅证明仓库入口可达，不证明Docker daemon能下载manifest/layers。Drone前端构建1在frontend-checks镜像拉取16分10秒仍仅Pulling无进度，已取消（killed，deploy skipped；总22分49秒）。后端构建6/API保持健康状态，无业务改动。下一步请用户在宝塔终端直接docker pull mcr.microsoft.com/playwright:v1.62.1-noble，提供实际层进度/错误；缓存完成后再恢复前端构建，不跳过门禁。
 
 ## 2026-09-18：当前后端已上线，前端等待测试镜像下载
 
 - 后端Drone构建6全绿，main `5d150d6e1d4429ccf0b64e8067681f5e385eda7d`，回溯标签`deploy-20260918-6`。Ruff/Mypy与656测试通过/3跳过；生产镜像构建成功，数据库版本0002_model_registry(head)，comicflow-server-api-1 healthy，GET /api/projects成功。仅API运行，无宿主端口。
-- 前端main `21da436b364b1ff22b195786c121e755ce4b2fb1`及远端tag `deploy-20260918-6`已发布；Drone构建1（http://110.42.51.234:4399/leifengyang/comicflow-web/1）检出经历443超时/Empty reply后最后一次重试成功（6分38秒）。frontend-checks首次拉取`mcr.microsoft.com/playwright:v1.62.1-noble`，超过10分钟只显示Pulling from playwright，尚无明确失败；检查命令与deploy未开始。没有跳过测试或循环触发新构建。
+- 前端main `21da436b364b1ff22b195786c121e755ce4b2fb1`及远端tag `deploy-20260918-6`已发布；Drone构建1（前端构建 #1）检出经历443超时/Empty reply后最后一次重试成功（6分38秒）。frontend-checks首次拉取`mcr.microsoft.com/playwright:v1.62.1-noble`，超过10分钟只显示Pulling from playwright，尚无明确失败；检查命令与deploy未开始。没有跳过测试或循环触发新构建。
 - 镜像官方manifest本机200、Linux amd64/arm64均存在；不等于服务器layer可下载。Drone healthz200，GitHub仍pending。前端18080尚不可访问，整站部署未完成。
 - 已打开宝塔面板尝试只读检查Docker下载，遇ERR_CERT_AUTHORITY_INVALID。异步请用户手动通过证书提示并登录，未绕过校验、未取得SSH。待登录后只读核查Docker pull/磁盘/网络再决定修复；不影响正在运行的后端。
 - 新数据库已显式建表，不是空schema；旧本地项目/媒体未迁移，Worker/Beat未启动，付费模型调用0。新Secret已被部署实际读取，不必重复填。后续旧数据恢复使用独立目标。
@@ -510,7 +510,7 @@ Drone 后端仍构建8/旧bb2ac379，新推送无状态；一次New Build/main�
 
 ## 2026-09-18：后端构建6成功，前端构建1已触发
 
-前端main已快进至21da436b364b1ff22b195786c121e755ce4b2fb1，远端回溯标签deploy-20260918-6；逐Git对象核对SHA，通过GitHub API非强制更新。Drone前端构建1：http://110.42.51.234:4399/leifengyang/comicflow-web/1。下方前端“未上传”状态已被本段替代。后端构建6全绿，API健康、项目列表检查成功；前端与外部入口仍待验收。
+前端main已快进至21da436b364b1ff22b195786c121e755ce4b2fb1，远端回溯标签deploy-20260918-6；逐Git对象核对SHA，通过GitHub API非强制更新。Drone前端构建1：前端构建 #1。下方前端“未上传”状态已被本段替代。后端构建6全绿，API健康、项目列表检查成功；前端与外部入口仍待验收。
 
 ## 2026-09-18：后端首次真实部署已成功，前端发布中
 
@@ -518,13 +518,13 @@ Drone构建6，后端main5d150d6e1d4429ccf0b64e8067681f5e385eda7d/tag deploy-202
 
 ## 2026-09-18：HTTP/2检出失败后发布构建6
 
-构建5克隆连续HTTP/2 stream 1错误，已取消，未进入测试/部署。参考Drone Docker Runner compiler源码确认pipeline全局环境传给内置clone，前后端加入Git HTTP/1.1环境配置（本机Git读取验证通过），未关闭TLS认证。后端main=`5d150d6e1d4429ccf0b64e8067681f5e385eda7d`，远端回溯标签deploy-20260918-6，Drone构建6进行中：http://110.42.51.234:4399/leifengyang/comicflow/6。
+构建5克隆连续HTTP/2 stream 1错误，已取消，未进入测试/部署。参考Drone Docker Runner compiler源码确认pipeline全局环境传给内置clone，前后端加入Git HTTP/1.1环境配置（本机Git读取验证通过），未关闭TLS认证。后端main=`5d150d6e1d4429ccf0b64e8067681f5e385eda7d`，远端回溯标签deploy-20260918-6，Drone构建6进行中：后端构建 #6。
 
 前端已验证源码树加同样clone配置，发布clone当前分支codex/frontend-deployment-ready，提交21da436（后补当前部署/外部MinIO文档），尚未上传。原f91ecb9保存在main和codex/frontend-original-f91ecb9及本地tag2；待后端健康后发布当前分支，不推旧main覆盖。
 
 ## 2026-09-18：构建5已触发，等待后端验收
 
-backend main为`99bd28baa1723c8015ee22e901387360be307eec`，回溯标签`deploy-20260918-5`；通过GitHub API逐对象核对Git SHA并非强制快进发布。构建4的uv安装已成功，但Debian海外索引下载停滞，已取消（killed，deploy skipped）。本版在CI与Dockerfile使用HTTPS阿里云Debian源，保留GPG签名、Python哈希与全部检查。Drone构建5：http://110.42.51.234:4399/leifengyang/comicflow/5。前端仍等待后端成功后发布。
+backend main为`99bd28baa1723c8015ee22e901387360be307eec`，回溯标签`deploy-20260918-5`；通过GitHub API逐对象核对Git SHA并非强制快进发布。构建4的uv安装已成功，但Debian海外索引下载停滞，已取消（killed，deploy skipped）。本版在CI与Dockerfile使用HTTPS阿里云Debian源，保留GPG签名、Python哈希与全部检查。Drone构建5：后端构建 #5。前端仍等待后端成功后发布。
 
 服务器数据库已初始化至0002_model_registry，不再是无表空库；尚无旧数据迁移。backend_external_env名称已在Drone核对。Worker/Beat未启用，真实模型调用0。后续以构建5实际日志/健康状态判断，不把上传成功当成部署成功。
 
@@ -540,13 +540,13 @@ backend main为`99bd28baa1723c8015ee22e901387360be307eec`，回溯标签`deploy-
 
 修复CI与Docker安装来源：HTTPS阿里云PyPI镜像，uv版本不变；业务依赖由uv.lock frozen导出原版本与SHA256，uv pip sync --require-hashes安装，uv run --no-sync避免重新走锁文件海外URL。锁文件未改、门禁保留。导出检查为CI67个、生产56个带哈希条目，无海外URL。服务器构建4已开始用镜像下载uv，是否完成仍待验收。
 
-Git HTTPS推送修复时直连先reset后443超时，系统127.0.0.1:7890代理未启动；GitHub API仍可用。通过Git Data API上传同一已审查文件树，逐blob/tree/commit SHA比对一致后，以force=false快进main。当前远端提交`6ec43aa5cf6a2803f81e9e594d6fc3debccd75fc`，已发布注释标签`deploy-20260918-4`，文件树`484ed7d403208511ebdb7955306348d3421da91f`。Drone构建4链接http://110.42.51.234:4399/leifengyang/comicflow/4；无需再为这次推送等待代理。原本未推送的7f19a6d和deploy-20260918-3保留于发布clone的codex/mirror-fix-original，不要误推这个旧分叉；发布clone main已对齐6ec43aa。
+Git HTTPS推送修复时直连先reset后443超时，系统127.0.0.1:7890代理未启动；GitHub API仍可用。通过Git Data API上传同一已审查文件树，逐blob/tree/commit SHA比对一致后，以force=false快进main。当前远端提交`6ec43aa5cf6a2803f81e9e594d6fc3debccd75fc`，已发布注释标签`deploy-20260918-4`，文件树`484ed7d403208511ebdb7955306348d3421da91f`。Drone构建4链接：后端构建 #4；无需再为这次推送等待代理。原本未推送的7f19a6d和deploy-20260918-3保留于发布clone的codex/mirror-fix-original，不要误推这个旧分叉；发布clone main已对齐6ec43aa。
 
 用户已确认添加backend_external_env；浏览器仅核对该Secret名称存在，没有读取值。前端f91ecb9仍仅本地准备，待后端健康后发布。旧数据迁移/真实模型调用0，尚未确认部署成功。后续继续观察构建4，而非重试构建3。
 
 ## 2026-09-18：用户恢复部署，后端已推送并触发Drone构建3
 
-用户最新“再尝试一下部署”恢复发布授权，覆盖下方暂停/不提交的历史范围；不包括旧数据迁移或真实模型调用。当前后端main与回溯标签deploy-20260918-2均为`4a6cc87b7ceb1628affc197f69c2a60362bc4d28`，已用ls-remote核对。GitHub状态continuous-integration/drone/push显示pending / Build is running，链接http://110.42.51.234:4399/leifengyang/comicflow/3。这次已真实触发新构建，不能再沿用“只有构建1/2”作为当前结论；是否部署成功仍待构建/健康验收。
+用户最新“再尝试一下部署”恢复发布授权，覆盖下方暂停/不提交的历史范围；不包括旧数据迁移或真实模型调用。当前后端main与回溯标签deploy-20260918-2均为`4a6cc87b7ceb1628affc197f69c2a60362bc4d28`，已用ls-remote核对。GitHub状态continuous-integration/drone/push显示pending / Build is running，链接：后端构建 #3。这次已真实触发新构建，不能再沿用“只有构建1/2”作为当前结论；是否部署成功仍待构建/健康验收。
 
 当前.drone.yml改用deploy/backend-external.sh，从新Secret **backend_external_env** 读取.env.server格式配置。原backend_env和内置栈脚本保留但不作为回退。外部数据Compose增加生产网络覆盖，API通过comicflow-edge别名comicflow-api供前端访问，不发布额外宿主端口、不新建数据库/Redis/MinIO。API构建后先执行alembic current --check-heads；Secret缺失或预留空库schema未就绪会阻断，不自动初始化/恢复数据、不启动Worker/Beat。用户尚需明确空库初始化或旧数据恢复；现有空库不能当成可正常运行的业务库。
 
@@ -684,11 +684,11 @@ Git HTTPS推送修复时直连先reset后443超时，系统127.0.0.1:7890代理�
 
 ## 2026-09-17：后端已发布到 GitHub，等待 Drone 验收后发布前端
 
-用户要求把前端发布到`leifengyang/comicflow-web`、后端发布到`leifengyang/comicflow`，通过同机Drone Runner部署；随后确认先部署空数据服务，数据库/MinIO/模型库主密钥另行迁移。数据迁移当前只有方案`docs/DATA_MIGRATION_PLAN.md`，没有备份、传输、恢复或覆盖任何数据。只读盘点当时为153项目、26角色、29模型配置版本、0未发布outbox；正式迁移必须重新盘点。
+用户要求把前端发布到内部 comicflow-web 仓库、后端发布到内部 comicflow 仓库，通过同机Drone Runner部署；随后确认先部署空数据服务，数据库/MinIO/模型库主密钥另行迁移。数据迁移当前只有方案`docs/DATA_MIGRATION_PLAN.md`，没有备份、传输、恢复或覆盖任何数据。只读盘点当时为153项目、26角色、29模型配置版本、0未发布outbox；正式迁移必须重新盘点。
 
 发布前门禁已修复：Mock不再误用H3尾帧级联，H3缺尾帧仍阻断；剧本Mock和测试按结构化消息契约；SQLite恢复测试不再误连本机带密码Redis；FFmpeg抽帧移出异步事件循环；百炼i2v拒绝未实现的H3式多参考图，不发送官方文档未支持的`reference`媒体类型；浏览器测试同步当前模型管理页面和真实资产状态。独立后端导出目录636 passed/3条件skip，Ruff、Mypy 69文件通过；独立前端导出Node 24、Playwright 46、构建、Linux镜像和Nginx检查通过。模型API调用0。
 
-白名单发布包已通过凭据扫描，后端198文件、前端57文件。网络恢复后已从GitHub fresh clone并快进发布后端：`leifengyang/comicflow`的`main`现为`1510308ed7524173e10a7ec3ca2b1d60e0f623e4`，远端HEAD已核对。前端发布提交已在干净clone中准备为`c8bc6bc`，远端仍为`1616948b22d45c0d95335e554a47bd2afa50696a`；必须先确认后端Drone检查、迁移和容器健康成功，再推送前端。当前尚无Drone控制台地址和服务器域名/IP，本机也没有可读取的Drone浏览器会话，因此不能声称后端已部署。还需确认两个仓库已启用并设为Trusted、后端`backend_env` Secret已配置。验证记录`docs/DRONE_VERIFICATION.md`，任务`.scratch/github-split-deployment-refresh/`。
+白名单发布包已通过凭据扫描，后端198文件、前端57文件。网络恢复后已从GitHub fresh clone并快进发布后端：内部 comicflow 仓库的`main`现为`1510308ed7524173e10a7ec3ca2b1d60e0f623e4`，远端HEAD已核对。前端发布提交已在干净clone中准备为`c8bc6bc`，远端仍为`1616948b22d45c0d95335e554a47bd2afa50696a`；必须先确认后端Drone检查、迁移和容器健康成功，再推送前端。当前尚无Drone控制台地址和服务器域名/IP，本机也没有可读取的Drone浏览器会话，因此不能声称后端已部署。还需确认两个仓库已启用并设为Trusted、后端`backend_env` Secret已配置。验证记录`docs/DRONE_VERIFICATION.md`，任务`.scratch/github-split-deployment-refresh/`。
 
 GitHub提交状态确认Drone构建1已触发；该构建最终因Runner找不到`ghcr.io/astral-sh/uv:python3.12-bookworm`失败。Registry manifest验证标签实际存在且包含Linux amd64，因此问题位于部署服务器拉取GHCR镜像的路径。根工作区和后端发布仓已把CI与生产Dockerfile改为`python:3.12-bookworm`，固定从PyPI安装`uv==0.11.25`；静态注册表门禁、uv锁文件dry-run、Drone YAML解析和diff检查通过。修复提交`fab575bea435b2e073f818911f51f1b9652830ac`已推送并触发构建2，但构建2也失败，具体首条错误仍待从Drone日志确认，不能继续猜测镜像或重复推送。
 
@@ -787,7 +787,7 @@ Drone`/healthz`返回200；服务器原端口8080的三个健康路径由其他N
 
 ## 2026-09-17：分仓上传完成，部署已按用户要求暂停
 
-- 后端已上传 `https://github.com/leifengyang/comicflow` main：`93dc60d8457f4892a81b4f5f48e25aaecb6c54d6`；前端已上传 `https://github.com/leifengyang/comicflow-web` main：`1616948b22d45c0d95335e554a47bd2afa50696a`。远端分支哈希已核对。原工作区未提交的业务变更保留，未上传本地 .env、数据库、媒体或调试载荷。
+- 后端已上传到内部 comicflow 仓库 main：`93dc60d8457f4892a81b4f5f48e25aaecb6c54d6`；前端已上传到内部 comicflow-web 仓库 main：`1616948b22d45c0d95335e554a47bd2afa50696a`。远端分支哈希已核对。原工作区未提交的业务变更保留，未上传本地 .env、数据库、媒体或调试载荷。
 - 新增两套 Drone/生产 Compose、前端 Nginx、白名单导出脚本。说明见 `docs/DRONE_DEPLOYMENT.md`，验证见 `docs/DRONE_VERIFICATION.md`。后端 httpx 已移入运行依赖；本地开发 Compose 未因本轮修改。
 - 后续本地 Linux 前后端镜像均构建成功，Nginx 配置检查通过；临时 PostgreSQL/Redis/MinIO 健康。建桶工具 minio/mc 拉取被本机镜像源返回 422，完整容器联调未完成。用户暂停后已停止仅本轮创建的三个 `comicflow-deployment-check-*` 容器，测试卷保留；没有继续部署或推送。
 - CI 门禁仍有问题：后端 544 passed / 14 failed / 3 skipped，Ruff 23 项；Mypy 通过；前端构建与 Node 18 项通过，Playwright 40 passed / 3 failed。没有跳过门禁。GitHub 提交状态查询两仓库均无检查记录，未证明 Drone 已运行或服务器上线。用户报告服务器 404，本轮尚未定位。

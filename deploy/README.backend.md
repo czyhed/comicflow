@@ -1,7 +1,6 @@
 # ComicFlow 后端
 
-FastAPI + Celery + PostgreSQL + Redis + MinIO。配套前端：
-https://github.com/leifengyang/comicflow-web
+FastAPI + Celery + PostgreSQL + Redis + MinIO。配套前端为内部 comicflow-web 仓库。
 
 部署说明：[部署说明](../docs/DRONE_DEPLOYMENT.md)。
 多模型配置：[模型控制台说明](../docs/implementation/persistent-model-console.md)。

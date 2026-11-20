@@ -32,8 +32,8 @@
 
 | 用途 | GitHub 仓库 | 流水线文件 | Compose 项目 |
 | --- | --- | --- | --- |
-| 后端、Worker、Beat、数据库和对象存储 | https://github.com/leifengyang/comicflow | 本工作区 `.drone.yml` | `comicflow-backend` |
-| 前端、Nginx | https://github.com/leifengyang/comicflow-web | 本工作区 `deploy/drone.web.yml`，导出后为 `.drone.yml` | `comicflow-web` |
+| 后端、Worker、Beat、数据库和对象存储 | 内部 comicflow 仓库 | 本工作区 `.drone.yml` | `comicflow-backend` |
+| 前端、Nginx | 内部 comicflow-web 仓库 | 本工作区 `deploy/drone.web.yml`，导出后为 `.drone.yml` | `comicflow-web` |
 
 前端默认 `http://服务器IP:18080`。Nginx 同源代理 `/api`、`/health` 到 `comicflow-api:8000`，
 并代理 `/comicflow/` 到 MinIO，完整保留签名路径/查询及签名 Host。

@@ -1,7 +1,6 @@
 # ComicFlow 前端
 
-React + TypeScript + Vite，生产使用 Nginx。后端仓库：
-https://github.com/leifengyang/comicflow
+React + TypeScript + Vite，生产使用 Nginx。后端为内部 comicflow 仓库。
 
 部署说明：[部署说明](../docs/DRONE_DEPLOYMENT.md)。
 多模型配置：[模型控制台说明](../docs/implementation/persistent-model-console.md)。

@@ -1,6 +1,6 @@
 # 2026-10-09 Drone 发布
 
-用户明确要求通过原 Drone 流程推送并尝试部署；本批先后端再前端。复用 leifengyang/comicflow 与 comicflow-web 的 main/push、backend_external_env、comicflow-server / comicflow-web 和原外部数据服务。
+用户明确要求通过原 Drone 流程推送并尝试部署；本批先后端再前端。复用内部 comicflow 与 comicflow-web 仓库的 main/push、backend_external_env、comicflow-server / comicflow-web 和原外部数据服务。
 
 ## 最新：两仓 GitHub 推送完成
 

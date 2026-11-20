@@ -10,7 +10,7 @@
 
 ## 发布范围
 
-从GitHub API核对远端`leifengyang/comicflow-web/main`为上次成功的`4db450a4b40c21e043b74f371f2de1edbbccde18`（Drone 6）。基于此提交建立独立worktree：`var/releases/2026-09-24-web-uuid`，分支`codex/http-image-uuid-hotfix`。
+从GitHub API核对远端 comicflow-web 仓库的 `main` 为上次成功的`4db450a4b40c21e043b74f371f2de1edbbccde18`（Drone 6）。基于此提交建立独立worktree：`var/releases/2026-09-24-web-uuid`，分支`codex/http-image-uuid-hotfix`。
 
 仅三个文件：`frontend/src/operation-id.ts`、`frontend/src/features/characters/CharacterReferences.tsx`、`frontend/tests/e2e/character-image-workspace.spec.ts`。原生randomUUID不可用时用getRandomValues生成UUIDv4；主图、图生图板及文字板共用该修复，未知提交仍保留原操作ID。
 

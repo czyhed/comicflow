@@ -20,7 +20,7 @@
 
 ## 2026-09-18 本轮重试准备
 
-2026-09-18 19:11更新：用户确认服务器Playwright镜像下载完成，继续部署。Drone仓库详情一度显示resource not found，首页仍列仓库；同步并重新进入后恢复。New Build提交未观察到新记录，随后原构建Restart成功创建前端构建2（21da436，http://110.42.51.234:4399/leifengyang/comicflow-web/2）。当前clone首次Empty reply后自动重试，尚未验证镜像缓存使用；没有代码提交、重复推送、模型调用或数据库操作。后端构建6已部署状态保持。
+2026-09-18 19:11更新：用户确认服务器Playwright镜像下载完成，继续部署。Drone仓库详情一度显示resource not found，首页仍列仓库；同步并重新进入后恢复。New Build提交未观察到新记录，随后原构建Restart成功创建前端构建2（21da436，Drone 前端构建 #2）。当前clone首次Empty reply后自动重试，尚未验证镜像缓存使用；没有代码提交、重复推送、模型调用或数据库操作。后端构建6已部署状态保持。
 
 2026-09-18 17:19最新：用户服务器docker images mcr.microsoft.com/playwright为空，curl -I https://mcr.microsoft.com/v2/返回HTTP/2 200；仅证明仓库入口可达，不证明Docker daemon能下载manifest/layers。Drone前端构建1在frontend-checks镜像拉取16分10秒仍仅Pulling无进度，已取消（killed，deploy skipped；总22分49秒）。后端构建6/API保持健康状态，无业务改动。下一步请用户在宝塔终端直接docker pull mcr.microsoft.com/playwright:v1.62.1-noble，提供实际层进度/错误；缓存完成后再恢复前端构建，不跳过门禁。
 

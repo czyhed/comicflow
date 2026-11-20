@@ -20,7 +20,7 @@
 
 ## 发布状态
 
-后端提交`787f841a113b0cbe666f879234970bbc7f47eaa6`已fast-forward发布到`leifengyang/comicflow`的main，标签`deploy-20260923-manager-pilot`。Git直连失败后复用GitHub API发布工具，逐项校验blob/tree/commit SHA，未force push。Drone构建7在最后Worker单次ping检查超时，整轮结果failure；镜像构建、schema0004检查、API/Worker/Beat启动已执行，不能将构建失败等同旧版本未替换。
+后端提交`787f841a113b0cbe666f879234970bbc7f47eaa6`已 fast-forward 发布到内部 comicflow 仓库的 main，标签`deploy-20260923-manager-pilot`。Git直连失败后复用GitHub API发布工具，逐项校验blob/tree/commit SHA，未force push。Drone构建7在最后Worker单次ping检查超时，整轮结果failure；镜像构建、schema0004检查、API/Worker/Beat启动已执行，不能将构建失败等同旧版本未替换。
 
 用户提供构建7完整部署日志后，使用相同服务器Redis/命名空间只发Celery inspect查询，真实Worker返回pong、运行159秒、prefork并发48。新版API/模型库均HTTP200且已包含xiangongyun-h3，MinIO桶读取正常。该证据排除持续不可用，支持首次就绪检查过早；未获取首次启动完整Worker日志，不把具体初始化耗时断言为已证实根因。Compose对没有healthcheck的Worker/Beat只确认进程已启动，原脚本只做一次ping，没有就绪等待。
 
@@ -28,7 +28,7 @@
 
 2026-09-23 16:12:58（北京时间），后端Drone构建8成功，GitHub状态success；新Worker再次返回pong，调度检查正常。后端发布已完成。
 
-随后已fast-forward推送前端`ead5d324a094745563ddf3e1b159eaed7e2b0f9f`到`leifengyang/comicflow-web`的main，保留标签`deploy-20260923-manager-pilot`。构建3运行过久后按用户要求取消；空提交`5de07de`触发的构建4也按要求取消。构建5（空提交`1b643c6`）的类型检查、生产构建及40项Node测试通过，但81项Playwright中80通过、1失败：视频播放/下载测试执行`ffmpeg`时报告ENOENT。原因是该E2E在运行时调用ffmpeg，而Drone的Playwright镜像不包含它；推送代码不会保证流水线通过，测试失败会阻止后续部署步骤。CI检查步骤增加ffmpeg后，提交`4db450a4b40c21e043b74f371f2de1edbbccde18`的Drone构建6于2026-09-23成功，检查与部署步骤均为success。只读验收确认线上JS/CSS与本地构建逐字节匹配，仙宫云控件存在；`/nginx-health`、`/health`、`/api/projects`及`/api/model-registry`均为200，模型库revision10，含4模型/7用途/5个已配置连接。验收未调用模型，详情见`var/verification/server-pilot-20260923/frontend.json`。
+随后已 fast-forward 推送前端`ead5d324a094745563ddf3e1b159eaed7e2b0f9f`到内部 comicflow-web 仓库的 main，保留标签`deploy-20260923-manager-pilot`。构建3运行过久后按用户要求取消；空提交`5de07de`触发的构建4也按要求取消。构建5（空提交`1b643c6`）的类型检查、生产构建及40项Node测试通过，但81项Playwright中80通过、1失败：视频播放/下载测试执行`ffmpeg`时报告ENOENT。原因是该E2E在运行时调用ffmpeg，而Drone的Playwright镜像不包含它；推送代码不会保证流水线通过，测试失败会阻止后续部署步骤。CI检查步骤增加ffmpeg后，提交`4db450a4b40c21e043b74f371f2de1edbbccde18`的Drone构建6于2026-09-23成功，检查与部署步骤均为success。只读验收确认线上JS/CSS与本地构建逐字节匹配，仙宫云控件存在；`/nginx-health`、`/health`、`/api/projects`及`/api/model-registry`均为200，模型库revision10，含4模型/7用途/5个已配置连接。验收未调用模型，详情见`var/verification/server-pilot-20260923/frontend.json`。
 
 ## 试用配置与后续
 
